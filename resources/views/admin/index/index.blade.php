@@ -1,5 +1,5 @@
 <!-- 继承后台模板 -->
-@extends('admin.index.public.header')
+@extends('admin.public.header')
 
 <!-- 后台内容填充开始 -->
 @section('content_01')

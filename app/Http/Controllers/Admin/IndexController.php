@@ -20,4 +20,5 @@ class IndexController extends Controller
     	$title = '大迪克';
     	return view('admin.index.index',['title'=>$title]);
     }
+
 }

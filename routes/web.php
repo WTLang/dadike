@@ -13,3 +13,6 @@
 
 Route::get('admin', 'Admin\IndexController@index');
 
+
+
+Route::resource('admin/user','Admin\UserController');

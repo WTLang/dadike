@@ -52,7 +52,7 @@
 					<a href="#"><i class="icon icon-user"></i> <span>用户管理</span> <span class="label">2</span></a>
 					<ul>
 						<li><a href="">管理员</a></li>
-						<li><a href="">会员管理</a></li>
+						<li><a href="/admin/user">会员管理</a></li>
 					</ul>
 				</li>
 
