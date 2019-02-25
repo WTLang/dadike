@@ -1,9 +1,22 @@
-<!-- 继承后台模板 -->
+{{-- 继承后台模板 --}}
 @extends('admin.public.header')
 
-<!-- 后台内容填充开始 -->
+{{-- 后台内容填充开始 --}}
+
+@section('cxy_01', 'active')
+@section('cxy_02', 'active')
+@section('cxy_03', 'active')
+@section('cxy_04', 'active')
+@section('cxy_05', 'active')
+@section('cxy_06', 'active')
+@section('cxy_07', 'active')
+@section('cxy_08', 'active')
+@section('cxy_09', 'active')
+@section('cxy_10', 'active')
+
+
 @section('content_01')
-		<!-- 统计表开始 -->
+		{{-- 统计表开始 --}}
 		<div id="content">
 			<div id="content-header">
 				<h1>大迪克</h1>
@@ -18,7 +31,7 @@
 			</div>
 			<div id="breadcrumb">
 				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>分析</a>
-				<a href="#" class="current">统计图</a>
+				<a href="#" class="current">仪表盘</a>
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
@@ -123,7 +136,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- 最新评论开始 -->
+					{{-- 最新评论开始 --}}
 
 				</div>
 				<div class="row-fluid">
@@ -133,6 +146,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- 统计表结束 -->
+		{{-- 统计表结束 --}}
 @endsection
-<!-- 后台内容填充结束 -->
+{{-- 后台内容填充结束 --}}

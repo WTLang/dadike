@@ -15,13 +15,13 @@
 		
 		<div id="header"><h1>大迪克</h1></div>
 					
-		<!-- 搜索开始 -->
+		{{-- 搜索开始 --}}
 		<div id="search">
 			<input type="text" placeholder="搜索..." /><button type="submit" class="tip-right" title="Search"><i class="icon-search icon-white"></i></button>
 		</div>
-		<!-- 搜索结束 -->
+		{{-- 搜索结束 --}}
 
-		<!-- 导航开始 -->
+		{{-- 导航开始 --}}
 		<div id="user-nav" class="navbar navbar-inverse">
             <ul class="nav btn-group">
                 <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">管理员</span></a></li>
@@ -37,18 +37,22 @@
                 <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">退出登录</span></a></li>
             </ul>
         </div>
-        <!-- 导航结束 -->
+        {{-- 导航结束 --}}
             
-        <!-- 侧边开始 -->
+        {{-- 侧边开始 --}}
 		<div id="sidebar">
-			<!-- <a href="#" class="visible-phone"><i class="icon icon-home"></i> 44455666</a> -->
+			{{-- <a href="#" class="visible-phone"><i class="icon icon-home"></i> 44455666</a> --}}
 			<ul>
-				<!-- 1.统计图模块 -->
-				<!-- class="active"是左侧白色三角指向图标 -->
-				<li class=""><a href="index.html"><i class="icon icon-home"></i> <span>统计图</span></a></li>
+				{{-- 1.统计图模块 --}}
+				{{-- class="active"是左侧白色三角指向图标 --}}
+				<li class="@yield('cxy_01')"><a href="index.html"><i class="icon icon-home"></i> <span>仪表盘</span></a></li>
+					
 
-				<!-- 2.用户管理模块 -->
-				<li class="submenu">
+				
+				{{-- <li class=""><a href="index.html"><i class="icon icon-home"></i> <span>统计图</span></a></li> --}}
+
+				{{-- 2.用户管理模块 --}}
+				<li class="submenu @yield('cxy_02') ">
 					<a href="#"><i class="icon icon-user"></i> <span>用户管理</span> <span class="label">2</span></a>
 					<ul>
 						<li><a href="">管理员</a></li>
@@ -56,8 +60,8 @@
 					</ul>
 				</li>
 
-				<!-- 3.文章管理模块 -->
-				<li class="submenu">
+				{{-- 3.文章管理模块 --}}
+				<li class="submenu @yield('cxy_03')">
 					<a href="#"><i class="icon icon-pencil"></i></i> <span>文章管理</span> <span class="label">3</span></a>
 					<ul>
 						<li><a href="">浏览文章</a></li>
@@ -66,8 +70,8 @@
 					</ul>
 				</li>
 
-				<!-- 3.文章分类管理模块 -->
-				<li class="submenu">
+				{{-- 3.文章分类管理模块 --}}
+				<li class="submenu @yield('cxy_04')">
 					<a href="#"><i class="icon icon-plus"></i></i> <span>文章分类</span> <span class="label">3</span></a>
 					<ul>
 						<li><a href="">浏览分类</a></li>
@@ -76,8 +80,8 @@
 					</ul>
 				</li>
 
-				<!-- 4.文章分类管理模块 -->
-				<li class="submenu">
+				{{-- 4.文章分类管理模块 --}}
+				<li class="submenu @yield('cxy_05')">
 					<a href="#"><i class="icon icon-signal"></i></i> <span>文章排行</span> <span class="label">3</span></a>
 					<ul>
 						<li><a href="">按时间</a></li>
@@ -86,8 +90,8 @@
 					</ul>
 				</li>
 
-				<!-- 5.友情链接模块 -->
-				<li class="submenu">
+				{{-- 5.友情链接模块 --}}
+				<li class="submenu @yield('cxy_06')">
 					<a href="#"><i class="icon icon-asterisk"></i></i> <span>友情链接</span> <span class="label">3</span></a>
 					<ul>
 						<li><a href="">浏览友情链接</a></li>
@@ -96,8 +100,8 @@
 					</ul>
 				</li>
 
-				<!-- 6.权限模块 -->
-				<li class="submenu">
+				{{-- 6.权限模块 --}}
+				<li class="submenu @yield('cxy_07')">
 					<a href="#"><i class="icon icon-tag"></i></i> <span>用户权限</span> <span class="label">2</span></a>
 					<ul>
 						<li><a href="">浏览用户权限</a></li>
@@ -105,16 +109,16 @@
 					</ul>
 				</li>
 
-				<!-- 7.评论模块 -->
-				<li class="submenu">
+				{{-- 7.评论模块 --}}
+				<li class="submenu @yield('cxy_08')">
 					<a href="#"><i class="icon icon-comment"></i></i> <span>评论管理</span> </a>
-					<!-- 	<ul>
+					{{-- 	<ul>
 						<li><a href="">审核评论</a></li>
-					</ul> -->
+					</ul> --}}
 				</li>
 
-				<!-- 8.广告模块 -->
-				<li class="submenu">
+				{{-- 8.广告模块 --}}
+				<li class="submenu @yield('cxy_09')">
 					<a href="#"><i class="icon icon-asterisk"></i></i> <span>广告管理</span> <span class="label">3</span></a>
 					<ul>
 						<li><a href="">浏览广告</a></li>
@@ -123,8 +127,8 @@
 					</ul>
 				</li>
 
-				<!-- 9.用户意见模块 -->
-				<li class="submenu">
+				{{-- 9.用户意见模块 --}}
+				<li class="submenu @yield('cxy_10')">
 					<a href="#"><i class="icon icon-info-sign"></i></i> <span>用户建议</span> <span class="label">3</span></a>
 					<ul>
 						<li><a href="">查看用户意见</a></li>
@@ -134,7 +138,7 @@
 
 		
 		</div>
-		<!-- 侧边结束 -->
+		{{-- 侧边结束 --}}
 		@section('content_01')
 
 

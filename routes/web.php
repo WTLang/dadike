@@ -11,8 +11,13 @@
 |
 */
 
+/*
+	仪表盘模块
+ */
 Route::get('admin', 'Admin\IndexController@index');
 
 
-
+/*
+	用户模块
+ */
 Route::resource('admin/user','Admin\UserController');
