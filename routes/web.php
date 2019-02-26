@@ -1,9 +1,11 @@
 <?php
-
-/**
- * 仪表盘模块
- * Route::prefix = 路由组
+/*
+|--------------------------------------------------------------------------
+| 								后台模块路由
+|--------------------------------------------------------------------------
  */
+
+/* 仪表盘路由 */
 Route::prefix('admin')->group(function ()
 {
 	Route::get('index', 'Admin\IndexController@index');
@@ -11,9 +13,12 @@ Route::prefix('admin')->group(function ()
 	Route::get('count', 'Admin\IndexController@count');
 });
 
+/* 用户模块路由 */
+Route::resource('admin/user','Admin\UserController');
+
+
 /*
 |--------------------------------------------------------------------------
-| 用户模块
+| 								前台模块路由
 |--------------------------------------------------------------------------
  */
-Route::resource('admin/user','Admin\UserController');
