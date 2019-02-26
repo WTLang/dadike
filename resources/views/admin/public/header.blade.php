@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
-		<title>{{ $title }}</title>
+		<title>{{ $title or '大迪克' }}</title>
 		<meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/backstage_public/css/bootstrap.min.css" />
@@ -13,7 +13,7 @@
 	<body>
 		
 		
-		<div id="header"><h1>大迪克</h1></div>
+		<div id="header"><a href="/admin/index"><h1>大迪克</h1></a></div>
 					
 		{{-- 搜索开始 --}}
 		<div id="search">
@@ -34,29 +34,30 @@
                     </ul>
                 </li>
                 <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">设置</span></a></li>
-                <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">退出登录</span></a></li>
+                <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
             </ul>
         </div>
         {{-- 导航结束 --}}
             
         {{-- 侧边开始 --}}
 		<div id="sidebar">
-			{{-- <a href="#" class="visible-phone"><i class="icon icon-home"></i> 44455666</a> --}}
 			<ul>
 				{{-- 1.统计图模块 --}}
 				{{-- class="active"是左侧白色三角指向图标 --}}
-				<li class="@yield('cxy_01')"><a href="index.html"><i class="icon icon-home"></i> <span>仪表盘</span></a></li>
-					
-
-				
-				{{-- <li class=""><a href="index.html"><i class="icon icon-home"></i> <span>统计图</span></a></li> --}}
+				<li class="submenu @yield('cxy_01')">
+					<a href="#"><i class="icon icon-home"></i><span>仪表盘</span><span class="label">2</span></a>
+					<ul>
+						<li class="@yield('bxy_01')"><a href="/admin/index">本站信息</a></li>
+						<li class="@yield('bxy_02')"><a href="/admin/count">网站总览</a></li>
+					</ul>
+				</li>
 
 				{{-- 2.用户管理模块 --}}
 				<li class="submenu @yield('cxy_02') ">
 					<a href="#"><i class="icon icon-user"></i> <span>用户管理</span> <span class="label">2</span></a>
 					<ul>
-						<li><a href="">管理员</a></li>
-						<li><a href="/admin/user">会员管理</a></li>
+						<li class="@yield('bxy_03')"><a href="">管理员</a></li>
+						<li class="@yield('bxy_04')"><a href="/admin/user">会员管理</a></li>
 					</ul>
 				</li>
 
@@ -64,9 +65,9 @@
 				<li class="submenu @yield('cxy_03')">
 					<a href="#"><i class="icon icon-pencil"></i></i> <span>文章管理</span> <span class="label">3</span></a>
 					<ul>
-						<li><a href="">浏览文章</a></li>
-						<li><a href="">添加文章</a></li>
-						<li><a href="">修改文章</a></li>
+						<li class="@yield('bxy_05')"><a href="">浏览文章</a></li>
+						<li class="@yield('bxy_06')"><a href="">添加文章</a></li>
+						<li class="@yield('bxy_07')"><a href="">修改文章</a></li>
 					</ul>
 				</li>
 
@@ -74,9 +75,9 @@
 				<li class="submenu @yield('cxy_04')">
 					<a href="#"><i class="icon icon-plus"></i></i> <span>文章分类</span> <span class="label">3</span></a>
 					<ul>
-						<li><a href="">浏览分类</a></li>
-						<li><a href="">添加分类</a></li>
-						<li><a href="">修改分类</a></li>
+						<li class="@yield('bxy_08')"><a href="">浏览分类</a></li>
+						<li class="@yield('bxy_09')"><a href="">添加分类</a></li>
+						<li class="@yield('bxy_10')"><a href="">修改分类</a></li>
 					</ul>
 				</li>
 
@@ -84,9 +85,9 @@
 				<li class="submenu @yield('cxy_05')">
 					<a href="#"><i class="icon icon-signal"></i></i> <span>文章排行</span> <span class="label">3</span></a>
 					<ul>
-						<li><a href="">按时间</a></li>
-						<li><a href="">按最新</a></li>
-						<li><a href="">按浏览</a></li>
+						<li class="@yield('bxy_11')"><a href="">按时间</a></li>
+						<li class="@yield('bxy_12')"><a href="">按最新</a></li>
+						<li class="@yield('bxy_13')"><a href="">按浏览</a></li>
 					</ul>
 				</li>
 
@@ -94,9 +95,9 @@
 				<li class="submenu @yield('cxy_06')">
 					<a href="#"><i class="icon icon-asterisk"></i></i> <span>友情链接</span> <span class="label">3</span></a>
 					<ul>
-						<li><a href="">浏览友情链接</a></li>
-						<li><a href="">添加友情链接</a></li>
-						<li><a href="">修改友情链接</a></li>
+						<li class="@yield('bxy_14')"><a href="">浏览友情链接</a></li>
+						<li class="@yield('bxy_15')"><a href="">添加友情链接</a></li>
+						<li class="@yield('bxy_16')"><a href="">修改友情链接</a></li>
 					</ul>
 				</li>
 
@@ -104,8 +105,8 @@
 				<li class="submenu @yield('cxy_07')">
 					<a href="#"><i class="icon icon-tag"></i></i> <span>用户权限</span> <span class="label">2</span></a>
 					<ul>
-						<li><a href="">浏览用户权限</a></li>
-						<li><a href="">修改用户权限</a></li>
+						<li class="@yield('bxy_17')"><a href="">浏览用户权限</a></li>
+						<li class="@yield('bxy_18')"><a href="">修改用户权限</a></li>
 					</ul>
 				</li>
 
@@ -113,7 +114,7 @@
 				<li class="submenu @yield('cxy_08')">
 					<a href="#"><i class="icon icon-comment"></i></i> <span>评论管理</span> </a>
 					{{-- 	<ul>
-						<li><a href="">审核评论</a></li>
+						<li class="@yield('bxy_19')"><a href="">审核评论</a></li>
 					</ul> --}}
 				</li>
 
@@ -121,9 +122,9 @@
 				<li class="submenu @yield('cxy_09')">
 					<a href="#"><i class="icon icon-asterisk"></i></i> <span>广告管理</span> <span class="label">3</span></a>
 					<ul>
-						<li><a href="">浏览广告</a></li>
-						<li><a href="">添加广告</a></li>
-						<li><a href="">修改广告</a></li>
+						<li class="@yield('bxy_20')"><a href="">浏览广告</a></li>
+						<li class="@yield('bxy_21')"><a href="">添加广告</a></li>
+						<li class="@yield('bxy_22')"><a href="">修改广告</a></li>
 					</ul>
 				</li>
 
@@ -131,8 +132,8 @@
 				<li class="submenu @yield('cxy_10')">
 					<a href="#"><i class="icon icon-info-sign"></i></i> <span>用户建议</span> <span class="label">3</span></a>
 					<ul>
-						<li><a href="">查看用户意见</a></li>
-						<li><a href="">发布处理结果</a></li>
+						<li class="@yield('bxy_23')"><a href="">查看用户意见</a></li>
+						<li class="@yield('bxy_24')"><a href="">发布处理结果</a></li>
 					</ul>
 				</li>
 
@@ -143,7 +144,11 @@
 
 
 		@show
-
+			<div class="row-fluid">
+				<div id="footer" class="span12">
+					2019 &copy; 大迪克博客
+				</div>
+			</div>
 
             <script src="/backstage_public/js/excanvas.min.js"></script>
             <script src="/backstage_public/js/jquery.min.js"></script>

@@ -14,11 +14,21 @@ class IndexController extends Controller
     public function index()
     {
     	/**
-    	 * 网站标题
+    	 * 本站信息
     	 * @titile 大迪克
     	 */
     	$title = '大迪克';
     	return view('admin.index.index',['title'=>$title]);
+    }
+
+    public function count()
+    {
+        /**
+         * 网站标题
+         * @titile 大迪克
+         */
+        $title = '大迪克';
+        return view('admin.index.count');
     }
 
 }

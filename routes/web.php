@@ -1,23 +1,19 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-/*
-	仪表盘模块
+/**
+ * 仪表盘模块
+ * Route::prefix = 路由组
  */
-Route::get('admin', 'Admin\IndexController@index');
+Route::prefix('admin')->group(function ()
+{
+	Route::get('index', 'Admin\IndexController@index');
 
+	Route::get('count', 'Admin\IndexController@count');
+});
 
 /*
-	用户模块
+|--------------------------------------------------------------------------
+| 用户模块
+|--------------------------------------------------------------------------
  */
 Route::resource('admin/user','Admin\UserController');

@@ -3,16 +3,59 @@
 
 {{-- 后台内容填充开始 --}}
 
-@section('cxy_01', 'active')
-@section('cxy_02', 'active')
-@section('cxy_03', 'active')
-@section('cxy_04', 'active')
-@section('cxy_05', 'active')
-@section('cxy_06', 'active')
-@section('cxy_07', 'active')
-@section('cxy_08', 'active')
-@section('cxy_09', 'active')
-@section('cxy_10', 'active')
+{{-- 仪表盘标签 --}}
+	@section('cxy_01', 'active open')	
+		@section('bxy_01', 'active')
+		@section('bxy_02', '')
+
+{{-- 用户管理标签 --}}
+	@section('cxy_02', '')
+		@section('bxy_03', '')
+		@section('bxy_04', '')
+
+{{-- 文章管理标签 --}}
+	@section('cxy_03', '')
+		@section('bxy_05', '')
+		@section('bxy_06', '')
+		@section('bxy_07', '')
+
+{{-- 文章分类标签 --}}
+	@section('cxy_04', '')
+		@section('bxy_08', '')
+		@section('bxy_09', '')
+		@section('bxy_10', '')
+
+{{-- 文章排行标签 --}}
+	@section('cxy_05', '')
+		@section('bxy_11', '')
+		@section('bxy_12', '')
+		@section('bxy_13', '')
+
+{{-- 友情链接标签 --}}
+	@section('cxy_06', '')
+		@section('bxy_14', '')
+		@section('bxy_15', '')
+		@section('bxy_16', '')
+
+{{-- 用户权限标签 --}}
+	@section('cxy_07', '')
+		@section('bxy_17', '')
+		@section('bxy_18', '')
+
+{{-- 评论管理标签 --}}
+	@section('cxy_08', '')
+		@section('bxy_19', '')
+
+{{-- 广告管理标签 --}}
+	@section('cxy_09', '')
+		@section('bxy_20', '')
+		@section('bxy_21', '')
+		@section('bxy_22', '')
+
+{{-- 用户管理标签 --}}
+	@section('cxy_10', '')
+		@section('bxy_23', '')
+		@section('bxy_24', '')
 
 
 @section('content_01')
@@ -25,127 +68,128 @@
 						<i class="icon-comment"></i>
 						<span class="label label-important" style="width: 20px;">0</span>
 					</a>
-					<!-- <a class="btn btn-large tip-bottom" title="管理文件"><i class="icon-file"></i></a> -->
-					<!-- <a class="btn btn-large tip-bottom" title="管理用户"><i class="icon-user"></i></a> -->
 				</div>
 			</div>
 			<div id="breadcrumb">
 				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>分析</a>
-				<a href="#" class="current">仪表盘</a>
+				<a href="/admin/index" class="current">本站</a>
 			</div>
-			<div class="container-fluid">
-				<div class="row-fluid">
+		
 
-					<!-- 最新发帖开始 -->
-					<div class="span6">
-						<div class="widget-box">
-							<div class="widget-title"><span class="icon"><i class="icon-file"></i></span><h5>最新发帖</h5><span title="54 total posts" class="label label-info tip-left">54</span></div>
-							<div class="widget-content nopadding">
-								<ul class="recent-posts">
-									<li>
-										<div class="user-thumb">
-											<img width="40" height="40" alt="User" src="/backstage_public/img/demo/av2.jpg" />
-										</div>
-										<div class="article-post">
-											<span class="user-info"> By: neytiri on 2 Aug 2012, 09:27 AM, IP: 186.56.45.7 </span>
-											<p>
-												<a href="#">Vivamus sed auctor nibh congue, ligula vitae tempus pharetra...</a>
-											</p>
-											<a href="#" class="btn btn-primary btn-mini">Edit</a> <a href="#" class="btn btn-success btn-mini">Publish</a> <a href="#" class="btn btn-danger btn-mini">Delete</a>
-										</div>
-									</li>
-									<li>
-										<div class="user-thumb">
-											<img width="40" height="40" alt="User" src="/backstage_public/img/demo/av3.jpg" />
-										</div>
-										<div class="article-post">
-											<span class="user-info"> By: john on on 24 Jun 2012, 04:12 PM, IP: 192.168.24.3 </span>
-											<p>
-												<a href="#">Vivamus sed auctor nibh congue, ligula vitae tempus pharetra...</a>
-											</p>
-											<a href="#" class="btn btn-primary btn-mini">Edit</a> <a href="#" class="btn btn-success btn-mini">Publish</a> <a href="#" class="btn btn-danger btn-mini">Delete</a>
-										</div>
-									</li>
-									<li>
-										<div class="user-thumb">
-											<img width="40" height="40" alt="User" src="/backstage_public/img/demo/av1.jpg" />
-										</div>
-										<div class="article-post">
-											<span class="user-info"> By: michelle on 22 Jun 2012, 02:44 PM, IP: 172.10.56.3 </span>
-											<p>
-												<a href="#">Vivamus sed auctor nibh congue, ligula vitae tempus pharetra...</a>
-											</p>
-											<a href="#" class="btn btn-primary btn-mini">Edit</a> <a href="#" class="btn btn-success btn-mini">Publish</a> <a href="#" class="btn btn-danger btn-mini">Delete</a>
-										</div>
-									</li>
-									<li class="viewall">
-										<a title="View all posts" class="tip-top" href="#"> + 查看全部 + </a>
-									</li>
-								</ul>
-							</div>
-						</div>
+
+		<div class="span12">
+			<div class="row-fluid">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon">
+							<i class="icon-home"></i>
+						</span>
+						<h5>本站信息</h5>
 					</div>
-					<!-- 最新发帖结束 -->
-
-					<!-- 最新评论开始 -->
-					<div class="span6">
-						<div class="widget-box">
-							<div class="widget-title"><span class="icon"><i class="icon-comment"></i></span><h5>最新评论</h5><span title="88 total comments" class="label label-info tip-left">88</span></div>
-							<div class="widget-content nopadding">
-								<ul class="recent-comments">
-									<li>
-										<div class="user-thumb">
-											<img width="40" height="40" alt="User" src="/backstage_public/img/demo/av1.jpg" />
-										</div>
-										<div class="comments">
-											<span class="user-info"> User: michelle on IP: 172.10.56.3 </span>
-											<p>
-												<a href="#">Vivamus sed auctor nibh congue, ligula vitae tempus pharetra...</a>
-											</p>
-											<a href="#" class="btn btn-primary btn-mini">Edit</a> <a href="#" class="btn btn-success btn-mini">Approve</a> <a href="#" class="btn btn-warning btn-mini">Mark as spam</a> <a href="#" class="btn btn-danger btn-mini">Delete</a>
-										</div>
-									</li>
-									<li>
-										<div class="user-thumb">
-											<img width="40" height="40" alt="User" src="/backstage_public/img/demo/av3.jpg" />
-										</div>
-										<div class="comments">
-											<span class="user-info"> User: john on IP: 192.168.24.3 </span>
-											<p>
-												<a href="#">Vivamus sed auctor nibh congue, ligula vitae tempus pharetra...</a>
-											</p>
-											<a href="#" class="btn btn-primary btn-mini">Edit</a> <a href="#" class="btn btn-success btn-mini">Approve</a> <a href="#" class="btn btn-warning btn-mini">Mark as spam</a> <a href="#" class="btn btn-danger btn-mini">Delete</a>
-										</div>
-									</li>
-									<li>
-										<div class="user-thumb">
-											<img width="40" height="40" alt="User" src="/backstage_public/img/demo/av2.jpg" />
-										</div>
-										<div class="comments">
-											<span class="user-info"> User: neytiri on IP: 186.56.45.7 </span>
-											<p>
-												<a href="#">Vivamus sed auctor nibh congue, ligula vitae tempus pharetra...</a>
-											</p>
-											<a href="#" class="btn btn-primary btn-mini">Edit</a> <a href="#" class="btn btn-success btn-mini">Approve</a> <a href="#" class="btn btn-warning btn-mini">Mark as spam</a> <a href="#" class="btn btn-danger btn-mini">Delete</a>
-										</div>
-									</li>
-									<li class="viewall">
-										<a title="View all comments" class="tip-top" href="#"> + 查看全部 + </a>
-									</li>
-								</ul>
+					<div class="widget-content">
+						<div class="invoice-content">
+							<div class="invoice-head">
+								<div class="invoice-meta">
+									 <span class="invoice-number">大迪克 </span><span class="invoice-date">创建时间: 2019-2-25</span>
+								</div>
+								<h5>网站类型:技术博客</h5>
+								<div class="invoice-to">
+									<ul>
+										<li>
+										<span><strong>成员:</strong></span>
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;后端主管:吴亮</span>
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;前端主管:黄汉豪</span>
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;网页架构:萧瑞泽</span>
+										</li>
+									</ul>
+								</div>
+								<div class="invoice-from">
+									<ul>
+										<li>
+										<span><strong>致谢:</strong></span>
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;项目经理:林峰</span>
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;前讲师:王猛</span>
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;后讲师:刘春</span>
+										</li>
+									</ul>
+								</div>
 							</div>
-						</div>
-					</div>
-					{{-- 最新评论开始 --}}
+							<div>
+								<table class="table table-bordered">
+								<thead>
 
-				</div>
-				<div class="row-fluid">
-					<div id="footer" class="span12">
-						2019 &copy; 大迪克博客</a>
+								<tr>
+									<th colspan="3">关于本站</th>
+								</thead>
+								<tfoot>
+
+								</tfoot>
+								<tbody>
+
+								<tr>
+									<td>
+										网站名称
+									</td>
+									<td>
+										大迪克
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										网站类型
+									</td>
+									<td>
+										技术博客
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										备案号
+									</td>
+									<td>
+										京公网安备00000000000000号
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										联系号码
+									</td>
+									<td>
+										13513513513
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										网站地址
+									</td>
+									<td>
+										http://dadike.com
+									</td>
+								</tr>
+
+								</tbody>
+								</table>
+							</div>
+							
+							<h5>Do you know?</h5>
+							<p>
+								There's nothing special about what's in here.
+							</p>
+							<p class="help-block">
+								<strong>Note:</strong> This line of English is just for good looking,
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
 		{{-- 统计表结束 --}}
+
 @endsection
 {{-- 后台内容填充结束 --}}
