@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        dump('用户管理');
+        return view('admin.user.index');
     }
 
     /**
