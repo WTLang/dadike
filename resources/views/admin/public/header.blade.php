@@ -2,8 +2,7 @@
 <html lang="zh-CN">
 	<head>
 		<title>{{ $title or '大迪克' }}</title>
-		<meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 		<link rel="stylesheet" href="/backstage_public/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/backstage_public/css/bootstrap-responsive.min.css" />
 		<link rel="stylesheet" href="/backstage_public/css/fullcalendar.css" />	

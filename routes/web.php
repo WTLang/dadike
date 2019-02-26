@@ -17,3 +17,6 @@ Route::prefix('admin')->group(function ()
 |--------------------------------------------------------------------------
  */
 Route::resource('admin/user','Admin\UserController');
+Route::resource('/','Home\IndexController');
+Route::get('/login', 'Home\IndexController@login');
+
