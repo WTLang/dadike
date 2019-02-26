@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xmlns:wb="http://open.weibo.com/wb" lang="zh-CN">
 	<head>
 		<title>{{ $title or '大迪克' }}</title>
 		<meta charset="UTF-8" />
@@ -160,5 +160,8 @@
             <script src="/backstage_public/js/fullcalendar.min.js"></script>
             <script src="/backstage_public/js/unicorn.js"></script>
             <script src="/backstage_public/js/unicorn.dashboard.js"></script>
+
+            {{-- 微博关注 --}}
+            <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

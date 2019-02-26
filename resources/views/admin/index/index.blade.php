@@ -131,7 +131,7 @@
 										网站名称
 									</td>
 									<td>
-										大迪克
+										{{ $index->web_name }}
 									</td>
 								</tr>
 
@@ -140,7 +140,7 @@
 										网站类型
 									</td>
 									<td>
-										技术博客
+										{{ $index->web_describe }}
 									</td>
 								</tr>
 
@@ -149,7 +149,7 @@
 										备案号
 									</td>
 									<td>
-										京公网安备00000000000000号
+										{{ $index->web_filing }}
 									</td>
 								</tr>
 
@@ -158,7 +158,7 @@
 										联系号码
 									</td>
 									<td>
-										13513513513
+										{{ $index->web_tel }}
 									</td>
 								</tr>
 
@@ -167,7 +167,7 @@
 										网站地址
 									</td>
 									<td>
-										http://dadike.com
+										{{ $index->web_url }}
 									</td>
 								</tr>
 
@@ -182,6 +182,18 @@
 							<p class="help-block">
 								<strong>Note:</strong> This line of English is just for good looking,
 							</p>
+							
+							{{-- 微博关注 --}}
+							<wb:follow-button uid="6124227284" type="red_1" width="67" height="24" ></wb:follow-button>
+
+							{{-- 联系QQ --}}
+							<a href="tencent://message/?Menu=yes&uin=760811659& Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45">
+								<button class="btn btn-info">
+									<img src="/backstage_public/img/qq112233.png" alt="" style="width: 15px;height: 16px;">
+									联系我们
+								</button>
+							</a>
+
 						</div>
 					</div>
 				</div>
