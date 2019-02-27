@@ -17,6 +17,13 @@ Route::prefix('admin')->group(function ()
 Route::resource('admin/user','Admin\UserController');
 
 
+/* 文章分类模块路由 */
+Route::resource('acm','Admin\ArticleCategoriesController');
+
+/* 文章添加模块路由 */
+Route::resource('am','Admin\ArticleController');
+
+
 /*
 |--------------------------------------------------------------------------
 | 								前台模块路由
