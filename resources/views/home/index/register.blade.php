@@ -20,32 +20,40 @@
                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <div class="footer-widget widget-newsletter">
                         <h2 class="widget-title">加入我们</h2>
+                        <form action="/" method="POST">
+                            {{ csrf_field() }}
                         <div class="col-md-12">
-                            <label class="" for="name"> 用户名</label>
-                            <input type="text" name="name" id="name" placeholder="" class="form-control">
+                            <label class="" for="uname"> 用户名</label>
+                            <input type="text" name="us_name" id="name" placeholder="" class="form-control">
                         </div>
 
                         <div class="col-md-12">
-                            <label class="" for="pass">密码</label>
+                            <label class="" for="us_password">密码</label>
                             <input type="text" name="pass" id="pass" placeholder="" class="form-control">
                         </div>
 
                         <div class="col-md-12">
                             <label class="" for="phone"> 手机号码</label>
-                            <input type="text" name="phone" id="phone" placeholder="" class="form-control">
+                            <input type="text" name="us_tel" id="phone" placeholder="" class="form-control">
                         </div>
                         
+                        <div class="col-md-12">
+                            <label class="" for="phone"> 电子邮件</label>
+                            <input type="text" name="us_email" id="phone" placeholder="" class="form-control">
+                        </div>
+
                         <div class="col-md-8">
-                            <label class="" for="captcha"> 验证码</label>
+                            <label class="" for="captcha"> 邮箱验证码</label>
                             <input type="text" name="captcha" id="captcha" placeholder="" class="form-control" style="width: 250px;">
                         </div>
                         <div class="col-md-4">
-			                <a href="#" class="btn btn-white btn-primary mt20" style="width: 110px;margin-top: 33px;padding-left: 20px;">获取验证码</a>
+			                <a onclick="send()" class="btn btn-white btn-primary mt20" style="width: 110px;margin-top: 33px;padding-left: 20px;">发送验证码</a>
 			            </div>
 
                         <div class="col-md-8">
-                            <a href="#" class="btn btn-white btn-lg mt20" style="width: 387px;font-size: 20px;height: auto">立即注册</a>
+                            <input type="submit" name="" value="立即注册" class="btn btn-white btn-lg mt20" style="width: 387px;font-size: 20px;height: auto">
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -54,7 +62,13 @@
         </div>
     </div>
 </div>
-    </div>
+</div>
+<script>
+    function send(){
+        var us_email = $('input[name=us_email]').val();
+        
+    }
+</script>
 <!-- 登录 -->
 
 @endsection

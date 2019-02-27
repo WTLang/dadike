@@ -20,6 +20,8 @@
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                         <div class="footer-widget widget-newsletter">
+                            <form action="/dologin" method="POST">
+                                {{ csrf_field() }}
                             <h2 class="widget-title">登录你的账号</h2>
                             <div class="col-md-12">
                                 <label class="" for="name"> 用户名</label>
@@ -31,17 +33,18 @@
                                 <input type="text" name="pass" id="pass" placeholder="" class="form-control">
                             </div>
 
-                            <div class="col-md-8">
-                                <label class="" for="captcha"> 验证码</label>
-                                <input type="text" name="captcha" id="captcha" placeholder="" class="form-control" style="width: 250px; padding-bottom: 55px">
+                             <div class="col-md-8">
+                                <label class="" for="pass">验证码</label>
+                                <input type="text" name="verify" id="pass" placeholder="" class="form-control">
                             </div>
-                            <div class="col-md-4">
-                                <p></p>
-                                <a href="#" class="btn btn-white btn-primary mt20" style="width: auto;background-color:">获取验证码</a>
+                            <div class="col-md-4" style="margin-top: 36px;">
+                                <a href="javascript:viod(0);" onclick="changeimg()"><img id="verify" width="160"src="/reception_public/Model/verify/verify.php" alt="" onclick="changeimg()"></a><br/>
                             </div>
                             <div class="col-md-5">
-                                <a href="#" class="btn btn-white btn-lg mt20" style="width: 200px;">登录</a>
+                                <input type="submit" name="login" value="登录" class="btn btn-white btn-lg mt20" style="width: 200px;">
+                                <!-- <a href="/dologin" class="btn btn-white btn-lg mt20" style="width: 200px;">登录</a> -->
                             </div>
+                            </form>
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
                                 <a href="/create" class="btn btn-white btn-lg mt20" style="width: 200px;">没有账号?注册</a>
@@ -55,5 +58,10 @@
     </div>
 </div>
 <!-- 登录 -->
-
+<script>
+    function changeimg(){
+        var a = document.getElementById('verify');
+        a.src = '/reception_public/Model/verify/verify.php?'+Math.random();
+    }
+</script>
 @endsection

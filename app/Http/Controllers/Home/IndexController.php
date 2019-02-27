@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Mail;
 
 class IndexController extends Controller
 {
@@ -22,7 +23,7 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('home.index.register');
     }
@@ -35,7 +36,7 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dump($request->all());
     }
 
     /**
@@ -85,5 +86,26 @@ class IndexController extends Controller
 
     public function login(){
         return view('home.index.login');
+    }
+
+    public function dologin(Request $request){
+        session_start();
+        dump($_SESSION);
+        dump($request->all());
+        // if(strtolower($_POST['verify']) !== strtolower($_SESSION['code'])){
+        //     echo "验证失败";
+        // }else{
+        //     echo "验证成功,查询数据库，验证账号密码";
+        // }
+    }
+
+    public function send(){
+        session_start();
+        $code = mt_rand(000000,999999);
+        $_SESSION['code'] = $code;
+        Mail::raw($code,function($message){
+            $message->subject('激活提示信息,以下是您的验证码');
+            $message->to('760811659@qq.com');
+        });
     }
 }

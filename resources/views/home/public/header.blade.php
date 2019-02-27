@@ -12,6 +12,7 @@
     <link href="/reception_public/css/font-awesome.min.css" rel="stylesheet">
     {{-- Style --}}
     <link href="/reception_public/css/style.css" rel="stylesheet">
+    @yield('meta');
 
 </head>
 <body>

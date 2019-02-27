@@ -16,7 +16,11 @@ Route::prefix('admin')->group(function ()
 | 用户模块
 |--------------------------------------------------------------------------
  */
+
+
 Route::resource('admin/user','Admin\UserController');
 Route::resource('/','Home\IndexController');
 Route::get('/login', 'Home\IndexController@login');
+Route::post('/dologin', 'Home\IndexController@dologin');
+Route::get('/send', 'Home\IndexController@send');
 
