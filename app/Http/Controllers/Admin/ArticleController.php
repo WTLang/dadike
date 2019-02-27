@@ -15,6 +15,7 @@ class ArticleController extends Controller
     public function index()
     {
         //
+        echo '文章浏览首页';
     }
 
     /**
@@ -25,6 +26,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
+        echo '文章添加页';
     }
 
     /**
@@ -58,6 +60,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
         //
+        echo $id;
     }
 
     /**

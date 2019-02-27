@@ -18,10 +18,10 @@ Route::resource('admin/user','Admin\UserController');
 
 
 /* 文章分类模块路由 */
-Route::resource('acm','Admin\ArticleCategoriesController');
+Route::resource('admin/acm','Admin\ArticleCategoriesController');
 
 /* 文章添加模块路由 */
-Route::resource('am','Admin\ArticleController');
+Route::resource('admin/am','Admin\ArticleController');
 
 
 /*

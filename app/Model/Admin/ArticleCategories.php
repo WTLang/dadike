@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 /*
 |--------------------------------------------------------------------------
-|                             大迪克库->网站管理表 web
+|           大迪克数据库库->文章分类管理表 article_categories_manage
 |--------------------------------------------------------------------------
  */
 
-class Index extends Model
+class ArticleCategories extends Model
 {
     //
     /**
@@ -18,7 +18,7 @@ class Index extends Model
      *
      * @var string
      */
-    protected $table = 'web';
+    protected $table = 'article_categories_manage';
 
     //
     /**
@@ -26,7 +26,7 @@ class Index extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'web_id';
+    protected $primaryKey = 'acm_id';
 
     /**
      * 该模型是否被自动维护时间戳
@@ -44,5 +44,5 @@ class Index extends Model
      *
      * @var array
      */
-    protected $guarded = ['web_id'];
+    protected $guarded = [];
 }

@@ -20,7 +20,9 @@ class IndexController extends Controller
     	 * 本站信息
     	 * @titile 大迪克
     	 */
-    	$title = '大迪克';
+    	$title = '大迪克'; //标题
+
+        /* 引入--后台首页(本站信息) */
     	return view('admin.index.index',[
             'title'=>$title,
             'index' => $index
@@ -34,6 +36,8 @@ class IndexController extends Controller
          * @titile 大迪克
          */
         $title = '大迪克';
+
+        /* 引入--统计页 */
         return view('admin.index.count');
     }
 
