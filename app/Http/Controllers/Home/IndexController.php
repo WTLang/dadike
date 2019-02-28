@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
+use App\Model\Home\User;
+use Hash;
+use DB;
 
 class IndexController extends Controller
 {
@@ -13,8 +16,9 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         return view('home.index.index');
     }
 
@@ -36,7 +40,38 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        dump($request->all());
+        //表单输入判断
+        $this->validate($request ,[
+            'us_name' => 'required|regex:/^[a-zA-Z]{1}[\w]{5,16}$/',
+            'us_password' => 'required|regex:/^[\w]{6,18}$/',
+            'reus_password' => 'required|same:us_password',
+            'us_tel' => 'required|regex:/^1{1}[3456789]{1}[0-9]{9}$/',
+            'us_email' => 'required|email',
+            'code' => 'required',
+        ],[
+            'us_name.required'=>'用户名必填',
+            'us_name.regex'=>'输入正确的用户名,6-16位,不以数字开头',
+            'us_password.required'=>'密码必填',
+            'us_password.regex'=>'输入正确的密码,6-18位,不含空格',
+            'reus_password.required'=>'重复密码必填',
+            'reus_password.same'=>'重复密码必须和密码输入一致',
+            'us_tel.required'=>'手机必填',
+            'us_tel.regex'=>'请输入正确的手机号码!',
+            'us_email.required'=>'电子邮箱必填',
+            'us_email.regex'=>'输入正确的邮箱',
+            'code.required'=>'验证码必填',
+        ]);
+        $data = $request->except(['_token','code','reus_password']);
+        $code = $request->get('code');
+        //密码加密
+        $data['us_password'] = Hash::make($data['us_password']);
+        //存入数据库
+        $res = User::create($data);
+        if ($res) {
+            echo "<script>alert('注册成功!');location='/login';</script>";
+        }else{
+            echo "<script>alert('注册失败!');location='/login';</script>";
+        }
     }
 
     /**
@@ -89,23 +124,65 @@ class IndexController extends Controller
     }
 
     public function dologin(Request $request){
+        //表单判断
+         $this->validate($request ,[
+            'us_name' => 'required',
+            'us_password' => 'required',
+            'code' => 'required'
+        ],[
+            'us_name.required'=>'用户名必填',
+            'us_password.required'=>'密码必填',
+            'code.required'=>'验证码必填',
+        ]);
         session_start();
-        dump($_SESSION);
-        dump($request->all());
-        // if(strtolower($_POST['verify']) !== strtolower($_SESSION['code'])){
-        //     echo "验证失败";
-        // }else{
-        //     echo "验证成功,查询数据库，验证账号密码";
-        // }
+        $data = $request->all();
+        //判断验证码是否正确
+        if(strtolower($_POST['code']) !== strtolower($_SESSION['code'])){
+            echo "<script>alert('验证码错误!');</script>";
+            // return redirect('/login')->with('us_name',$data['us_name']);
+        }else{
+            //查询数据库
+            $res = DB::table('users')->where('us_name', $data['us_name'])->first();
+            //判断用户是否存在
+            if ($res) {
+                if (Hash::check($_POST['us_password'],$res->us_password)) {
+                    echo "<script>alert('登录成功!');location='/';</script>";
+                }else{
+                    var_dump('密码错误');
+                }
+            }else{
+                var_dump('账号不存在');
+            }
+        }
+        
     }
 
     public function send(){
         session_start();
         $code = mt_rand(000000,999999);
         $_SESSION['code'] = $code;
-        Mail::raw($code,function($message){
+        $codes = Mail::raw($code,function($message){
+            $us_email = $_GET['us_email'];
             $message->subject('激活提示信息,以下是您的验证码');
-            $message->to('760811659@qq.com');
+            $message->to($us_email);
         });
+        return 1;
+        // if($codes){
+        //     return 1;
+        // }else{
+        //     return 0;
+        // }
+        
+    }
+
+    public function check(){
+        session_start();
+        $code = $_SESSION['code'];
+        $us_code = $_GET['code'];
+        if ($code == $us_code) {
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }

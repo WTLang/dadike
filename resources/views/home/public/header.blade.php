@@ -12,7 +12,8 @@
     <link href="/reception_public/css/font-awesome.min.css" rel="stylesheet">
     {{-- Style --}}
     <link href="/reception_public/css/style.css" rel="stylesheet">
-    @yield('meta');
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('meta')
 
 </head>
 <body>

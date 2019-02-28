@@ -23,4 +23,5 @@ Route::resource('/','Home\IndexController');
 Route::get('/login', 'Home\IndexController@login');
 Route::post('/dologin', 'Home\IndexController@dologin');
 Route::get('/send', 'Home\IndexController@send');
+Route::get('/check', 'Home\IndexController@check');
 

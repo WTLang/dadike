@@ -1,6 +1,9 @@
 @extends('home.public.header')
 
 @section('content_01')
+
+<!-- 显示错误处理 -->
+
 <div class="content">
     <div class="container">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -22,23 +25,33 @@
                         <div class="footer-widget widget-newsletter">
                             <form action="/dologin" method="POST">
                                 {{ csrf_field() }}
+                                {{-- 显示错误的信息 --}}
+                                    @if (count($errors) > 0)
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                             <h2 class="widget-title">登录你的账号</h2>
                             <div class="col-md-12">
                                 <label class="" for="name"> 用户名</label>
-                                <input type="text" name="name" id="name" placeholder="" class="form-control">
+                                <input type="text" name="us_name" id="name" placeholder="" class="form-control" value="{{ session('us_name') }}">
                             </div>
 
                             <div class="col-md-12">
                                 <label class="" for="pass">密码</label>
-                                <input type="text" name="pass" id="pass" placeholder="" class="form-control">
+                                <input type="password" name="us_password" id="pass" placeholder="" class="form-control">
                             </div>
 
                              <div class="col-md-8">
                                 <label class="" for="pass">验证码</label>
-                                <input type="text" name="verify" id="pass" placeholder="" class="form-control">
+                                <input type="text" name="code" id="pass" placeholder="" class="form-control">
                             </div>
                             <div class="col-md-4" style="margin-top: 36px;">
-                                <a href="javascript:viod(0);" onclick="changeimg()"><img id="verify" width="160"src="/reception_public/Model/verify/verify.php" alt="" onclick="changeimg()"></a><br/>
+                                <a href="javascript:viod(0);" onclick="changeimg()"><img id="verify" width="160" src="/reception_public/Model/verify/verify.php" alt="" onclick="changeimg()"></a><br/>
                             </div>
                             <div class="col-md-5">
                                 <input type="submit" name="login" value="登录" class="btn btn-white btn-lg mt20" style="width: 200px;">
