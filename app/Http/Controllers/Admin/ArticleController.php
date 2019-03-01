@@ -26,7 +26,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
-        echo '文章添加页';
+        return view('admin.article_manage.create');
     }
 
     /**
@@ -38,6 +38,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
     }
 
     /**
@@ -60,7 +61,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
         //
-        echo $id;
+        // dd($id);
     }
 
     /**

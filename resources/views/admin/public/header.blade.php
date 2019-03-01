@@ -77,7 +77,7 @@
 					<ul>
 						<li class="@yield('bxy_08')"><a href="/admin/acm">浏览分类</a></li>
 						<li class="@yield('bxy_09')"><a href="/admin/acm/create">添加分类</a></li>
-						<li class="@yield('bxy_10')"><a href="/admin/acm/{id}/edit">修改分类</a></li>
+						<li class="@yield('bxy_10')" hidden><a href="/admin/acm/{id}/edit">修改分类</a></li>
 					</ul>
 				</li>
 

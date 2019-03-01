@@ -16,11 +16,11 @@ Route::prefix('admin')->group(function ()
 /* Admin->用户模块路由 */
 Route::resource('admin/user','Admin\UserController');
 
-
 /* Admin->文章分类模块路由 */
 Route::resource('admin/acm','Admin\ArticleCategoriesController');
+Route::get('admin/acm/create/{id}', 'Admin\ArticleCategoriesController@create');//添加子分类
 
-/* Admin->文章添加模块路由 */
+/* Admin->文章添加路由 */
 Route::resource('admin/am','Admin\ArticleController');
 
 

@@ -94,42 +94,17 @@
 							<h5>文章分类添加</h5>
 						</div>
 						<div class="widget-content nopadding">
-							<form action="/admin/acm" method="post" class="form-horizontal">
+							<form action="/admin/acm/{{ $edit_id }}" method="post" class="form-horizontal">
 								{{ csrf_field() }}
+								{{ method_field('put') }}
 								<div class="control-group">
 									<label class="control-label">文章分类名称</label>
 									<div class="controls">
-										<input type="text" name="acm_name">
+										<input type="text" name="acm_name" value="{{ $edit_acm_name }}">
 									</div>
 								</div>
-								<div class="control-group">
-									<label class="control-label">所属文章分类</label>
-									<div class="btn-group">
-										<select name="acm_pid" style="margin-left: 20px;margin-top: 8px;margin-bottom: 10px;">
-											<option value="0" >--请选择--</option>
-@foreach($data as $k => $v)
-	<option value="{{ $v->acm_id }}" @if($mca_id == $v->acm_id) selected @endif >
-
-		{{ $v->acm_name }}</option>
-	@php  
-		$data_01 = $v->one
-	@endphp
-	@foreach($data_01 as $kk => &$vv)
-		@if ($kk == 'two')
-			@php
-            	continue;
-            @endphp
-        @else
-            <option value="{{ $vv->acm_id }}" disabled>{{ $vv->acm_name }}</option>
-        @endif
-	@endforeach
-@endforeach
-										</select>
-									</div>
-								</div>
-								
 								<div class="form-actions">
-									<input type="submit" class="btn btn-inverse btn-large" value="添加">
+									<input type="submit" class="btn btn-inverse btn-large" value="修改">
 									<input type="reset" class="btn btn-large" value="重置">
 								</div>
 							</form>
