@@ -32,27 +32,29 @@
                         @endif
                         <form action="/" method="POST">
                             {{ csrf_field() }}
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                             <label class="" for="uname"> 用户名</label>
-                            <input type="text" name="us_name" id="name"  class="form-control" placeholder="输入您的用户名,字母组成,6-16位" value="{{ old('us_name') }}">
+                            <input type="text" name="us_name" id="us_name"  class="form-control" placeholder="输入您的用户名,字母组成,6-16位" value="{{ old('us_name') }}" onblur="namecheck(this)">
                         </div>
-
-                        <div class="col-md-12">
+                        <div>
+                            <img id="right-img" src="" style="padding-top: 30px;" >
+                        </div>
+                        <div class="col-md-10">
                             <label class="" for="us_password">密码</label>
                             <input type="password" name="us_password" id="pass"  class="form-control" placeholder="输入密码,6-18位,不含空格">
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                             <label class="" for="reus_password">再次输入密码</label>
                             <input type="password" name="reus_password" id="pass" placeholder="重新输入您的密码" class="form-control" >
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                             <label class="" for="phone"> 手机号码</label>
                             <input type="text" name="us_tel" id="phone" placeholder="输入您的11位手机号" class="form-control" value="{{ old('us_tel') }}">
                         </div>
                         
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                             <label class="" for="phone"> 电子邮件</label>
                             <input type="text" name="us_email" id="phone"  class="form-control" placeholder="输入您的电子邮箱" value="{{ old('us_email') }}">
                         </div>
@@ -165,6 +167,26 @@
             },'json'); 
     }
 
+    /**
+     * 检测输入名是否与数据库有重复
+     */
+    function namecheck(){
+        var us_name = $('input[name=us_name]').val();
+        $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }});
+
+            // 发送ajax 请求后台 
+            $.get('/namecheck',{'us_name':us_name},function(data){
+                if (data) {     
+                    $('#submit').attr('disabled',true);
+                    alert('用户名已存在,请重新输入');
+                }else{
+                    $('#right-img').attr('src','/reception_public/images/right.jpg');
+                }
+            },'json'); 
+    }
 </script>
 <!-- 登录 -->
 

@@ -49,13 +49,19 @@
                                 </ul>
                             </li>
                             <li><a href="contact.html" title="Contact Us">联系我们</a> </li>
-                           <!--  <li class="has-sub"><a href="blog-default.html" title="Blog ">欢迎您,xxx</a>
+
+                            @if(\Session::get('us_name'))
+                            <li class="has-sub"><a href="blog-default.html" title="Blog ">欢迎您,{{ \Session::get('us_name') }}</a>
                                 <ul>
                                     <li><a href="blog-default.html" title="Blog">个人中心</a></li>
-                                    <li><a href="blog-single.html" title="Blog Single ">登出</a></li>
+                                    <li><a href="/logout" title="Blog Single ">登出</a></li>
                                 </ul>
-                            </li> -->
+                            </li>
+                            @else
                             <li class=""><a href="/login" title="Blog ">登入/注册</a>
+                            @endif
+
+
                             </li>
                             </ul>
                         </div>

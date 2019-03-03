@@ -8,6 +8,7 @@ use Mail;
 use App\Model\Home\User;
 use Hash;
 use DB;
+use SESSION;
 
 class IndexController extends Controller
 {
@@ -17,8 +18,7 @@ class IndexController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-
+    {   
         return view('home.index.index');
     }
 
@@ -138,15 +138,22 @@ class IndexController extends Controller
         $data = $request->all();
         //判断验证码是否正确
         if(strtolower($_POST['code']) !== strtolower($_SESSION['code'])){
-            echo "<script>alert('验证码错误!');</script>";
+            return back();
+            // echo "<script>alert('验证码错误!');</script>";
             // return redirect('/login')->with('us_name',$data['us_name']);
         }else{
+            //干掉session中的验证码
+            unset($_SESSION['code']);
+
             //查询数据库
             $res = DB::table('users')->where('us_name', $data['us_name'])->first();
             //判断用户是否存在
             if ($res) {
                 if (Hash::check($_POST['us_password'],$res->us_password)) {
+                    
                     echo "<script>alert('登录成功!');location='/';</script>";
+                    //登录成功把用户名写入session
+                    session(['us_name' => $data['us_name']]);
                 }else{
                     var_dump('密码错误');
                 }
@@ -184,5 +191,20 @@ class IndexController extends Controller
         }else{
             return 0;
         }
+    }
+
+    public function namecheck(){
+        $us_name = $_GET['us_name'];
+        $res = DB::table('users')->where('us_name', $us_name)->first();
+        if ($res) {
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function logout(){
+        session()->pull('us_name');
+        return back();
     }
 }
