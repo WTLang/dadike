@@ -107,7 +107,7 @@ class ArticleCategoriesController extends Controller
 
         /* 执行添加$data数据 */
         if($ArticleCategories->save()){
-            return redirect('admin/acm')->with('sort_success');
+            return redirect('admin/acm')->with('sort_success','添加成功');
         }else{
             return back()->with('sort_error');
         }
@@ -126,33 +126,49 @@ class ArticleCategoriesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 修改文章分类名页
      */
     public function edit($id)
     {
+        /* 接受文章分类的id */
         $edit_id = $id;
+        /* 查找文章分类的名字 */
         $edit_data = DB::table('article_categories_manage')->where('acm_id',$edit_id)->get();
         $edit_acm_name = $edit_data[0]->acm_name;
+        /* 把文章分类的id和名字压入页面 */
         return view('admin.article_categories_manage.edit',['edit_acm_name'=>$edit_acm_name,'edit_id'=>$edit_id]);
         
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 执行修改的分类名
+     * @return bool
      */
     public function update(Request $request, $id)
     {
-        //
-        dump($id);
-        $update_data = $request->except(['_token','_method']);
-        dump($update_data);
+
+        if($request['acm_name']){
+            /* 查询该ID没修改之前的acm_name的名称 */
+            $update_get = DB::table('article_categories_manage')->where('acm_id',$id)->get();
+            $update_name = $update_get[0]->acm_name;
+            /* 判断修改的名称是否跟之前的一样 */
+            if($update_name == $request['acm_name']){
+                return back()->with('acm_updata_error_02','值不能重复');
+                }else{
+                $update_data = $request->except(['_token','_method']);
+                $update_res = DB::table('article_categories_manage')
+                            ->where('acm_id',$id)
+                            ->update($update_data);
+                /* 判断修改 */
+                if ($update_res){
+                    return redirect('admin/acm')->with('acm_updata_success','修改成功');
+                }
+            }
+        }else{
+            // return back()->with('acm_updata_error_01');
+            return redirect('admin/acm/18/edit')->with('acm_updata_error_01','内容不能为空');
+        }
+
     }
 
     /**

@@ -77,10 +77,17 @@
 			<a href="/admin/index" class="current">添加分类</a>
 		</div>
 
-		@if (session('sort_error'))
+		@if (session('acm_updata_error_01'))
 			<div class="alert alert-error">
 				<button class="close" data-dismiss="alert">×</button>
-				<strong>发生错误!</strong> 分类不能为空.
+				<strong>发生错误!</strong>分类内容不可以为空.
+			</div>
+		@endif
+
+		@if (session('acm_updata_error_02'))
+			<div class="alert alert-error">
+				<button class="close" data-dismiss="alert">×</button>
+				<strong>发生错误!</strong>请勿提交重复值.
 			</div>
 		@endif
 

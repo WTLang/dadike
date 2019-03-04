@@ -78,6 +78,13 @@
 				<a href="/admin/index" class="current">浏览分类</a>
 			</div>
 			
+			@if (session('sort_success'))
+				<div class="rt-success alert-block">
+					<button class="close" data-dismiss="alert">×</button>
+					<strong>添加成功!</strong>
+				</div>
+			@endif
+
 			@if (session('sonsort_error'))
 				<div class="alert alert-error">
 					<button class="close" data-dismiss="alert">×</button>
@@ -89,6 +96,13 @@
 				<div class="alert alert-success alert-block">
 					<button class="close" data-dismiss="alert">×</button>
 					<strong>删除成功!</strong>
+				</div>
+			@endif
+
+			@if (session('acm_updata_success'))
+				<div class="alert alert-success alert-block">
+					<button class="close" data-dismiss="alert">×</button>
+					<strong>修改成功!</strong>
 				</div>
 			@endif
 

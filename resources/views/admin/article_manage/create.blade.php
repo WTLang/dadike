@@ -69,6 +69,19 @@
 		<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 文章管理</a>
 		<a href="#" class="tip-bottom">添加文章</a>
 	</div>
+
+	{{-- 验证内容,显示错误信息 --}}
+	@if (count($errors) > 0)
+    <div class="alert alert-error">
+    	<button class="close" data-dismiss="alert">×</button>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+	@endif
+
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
@@ -80,18 +93,18 @@
 						<h5>添加文章</h5>
 					</div>
 					<div class="widget-content nopadding">
-						<form action="/admin/am" method="post" class="form-horizontal" />
+						<form action="/admin/am" method="post" class="form-horizontal" enctype="multipart/form-data" />
 							{{ csrf_field() }}
 							<div class="control-group">
 								<label class="control-label">标题</label>
 								<div class="controls" style="width: 500px;">
-									<input type="text" name="am_title" />
+									<input type="text" name="am_title"  value="{{ old('am_title') }}" />
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">作者</label>
 								<div class="controls" style="width: 150px;">
-									<input type="text" name="am_author" />
+									<input type="text" name="am_author" value="{{ old('am_author') }}" />
 								</div>
 							</div>
 							<div class="control-group">
@@ -109,14 +122,16 @@
 							<div class="control-group">
 								<label class="control-label">分类</label>
 
-								<select name="am_name" style="margin-left: 20px;margin-top: 5px;">
-									<option  value="一级分类" >一级分类</option>
-									<option  value="二级分类" >二级分类</option>
+								<select name="am_sortname" style="margin-left: 20px;margin-top: 5px;">
+									<option  value="0" >--请选择--</option>
+									@foreach($acm_data as $k => $v )
+									<option  value="{{ old('am_sortname') }}" >{{ $v->acm_name }}</option>
+									@endforeach
 								</select>
 							</div>
 							<div class="control-group">
 								<label class="control-label">内容</label>
-									<textarea name="am_content" rows="15" style="width: 850px;margin-left: 18px;margin-top: 25px;margin-bottom: 20px;"></textarea>
+									<textarea name="am_content" rows="15" style="width: 850px;margin-left: 18px;margin-top: 25px;margin-bottom: 20px;">{{ old('am_content') }}</textarea>
 							</div>
 							<div class="form-actions">
 								<input type="submit" class="btn btn-primary" value="添加" style="margin-left: 50px;width: 200px;">

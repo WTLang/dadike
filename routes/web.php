@@ -33,7 +33,6 @@ Route::resource('admin/am','Admin\ArticleController');
 /* Home->首页路由 */
 Route::resource('/','Home\IndexController');
 
-
 /* Home->登录页路由 */
 Route::get('/login', 'Home\IndexController@login'); 
 
