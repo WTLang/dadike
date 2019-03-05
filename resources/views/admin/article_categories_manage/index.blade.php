@@ -66,12 +66,6 @@
 		<div id="content">
 			<div id="content-header">
 				<h1>大迪克 </h1>
-				<div class="btn-group">
-					<a class="btn btn-large tip-bottom" title="消息" style="width: 60px;">
-						<i class="icon-comment"></i>
-						<span class="label label-important" style="width: 20px;">0</span>
-					</a>
-				</div>
 			</div>
 			<div id="breadcrumb">
 				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>文章分类</a>

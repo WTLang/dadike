@@ -63,17 +63,17 @@
 
 				{{-- 3.文章管理模块 --}}
 				<li class="submenu @yield('cxy_03')">
-					<a href="#"><i class="icon icon-pencil"></i></i> <span>文章管理</span> <span class="label">3</span></a>
+					<a href="#"><i class="icon icon-pencil"></i></i> <span>文章管理</span> <span class="label">2</span></a>
 					<ul>
 						<li class="@yield('bxy_05')"><a href="/admin/am">浏览文章</a></li>
 						<li class="@yield('bxy_06')"><a href="/admin/am/create">添加文章</a></li>
-						<li class="@yield('bxy_07')"><a href="/admin/am/{id}/edit">修改文章</a></li>
+						<li class="@yield('bxy_07')" hidden><a href="/admin/am/{id}/edit">修改文章</a></li>
 					</ul>
 				</li>
 
 				{{-- 3.文章分类管理模块 --}}
 				<li class="submenu @yield('cxy_04')">
-					<a href="#"><i class="icon icon-plus"></i></i> <span>文章分类</span> <span class="label">3</span></a>
+					<a href="#"><i class="icon icon-plus"></i></i> <span>文章分类</span> <span class="label">2</span></a>
 					<ul>
 						<li class="@yield('bxy_08')"><a href="/admin/acm">浏览分类</a></li>
 						<li class="@yield('bxy_09')"><a href="/admin/acm/create">添加分类</a></li>

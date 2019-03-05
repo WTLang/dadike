@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\ArticleCategories;
 use DB;
 
+/*
+|--------------------------------------------------------------------------
+|           大迪克控制器->文章分类控制器 ArticleCategoriesController
+|--------------------------------------------------------------------------
+ */
 class ArticleCategoriesController extends Controller
 {
 
@@ -155,6 +160,7 @@ class ArticleCategoriesController extends Controller
             if($update_name == $request['acm_name']){
                 return back()->with('acm_updata_error_02','值不能重复');
                 }else{
+                /* 剔除数据中不需要的信息 */
                 $update_data = $request->except(['_token','_method']);
                 $update_res = DB::table('article_categories_manage')
                             ->where('acm_id',$id)

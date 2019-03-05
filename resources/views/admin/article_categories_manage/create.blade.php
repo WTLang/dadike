@@ -1,62 +1,9 @@
 {{-- 继承后台模板 --}}
 @extends('admin.public.header')
 
-{{-- 后台内容填充开始 --}}
-
-{{-- 仪表盘标签 --}}
-	@section('cxy_01', '')	
-		@section('bxy_01', '')
-		@section('bxy_02', '')
-
-{{-- 用户管理标签 --}}
-	@section('cxy_02', '')
-		@section('bxy_03', '')
-		@section('bxy_04', '')
-
-{{-- 文章管理标签 --}}
-	@section('cxy_03', '')
-		@section('bxy_05', '')
-		@section('bxy_06', '')
-		@section('bxy_07', '')
-
 {{-- 文章分类标签 --}}
 	@section('cxy_04', 'active open')
-		@section('bxy_08', '')
 		@section('bxy_09', 'active')
-		@section('bxy_10', '')
-
-{{-- 文章排行标签 --}}
-	@section('cxy_05', '')
-		@section('bxy_11', '')
-		@section('bxy_12', '')
-		@section('bxy_13', '')
-
-{{-- 友情链接标签 --}}
-	@section('cxy_06', '')
-		@section('bxy_14', '')
-		@section('bxy_15', '')
-		@section('bxy_16', '')
-
-{{-- 用户权限标签 --}}
-	@section('cxy_07', '')
-		@section('bxy_17', '')
-		@section('bxy_18', '')
-
-{{-- 评论管理标签 --}}
-	@section('cxy_08', '')
-		@section('bxy_19', '')
-
-{{-- 广告管理标签 --}}
-	@section('cxy_09', '')
-		@section('bxy_20', '')
-		@section('bxy_21', '')
-		@section('bxy_22', '')
-
-{{-- 用户管理标签 --}}
-	@section('cxy_10', '')
-		@section('bxy_23', '')
-		@section('bxy_24', '')
-
 
 @section('content_01')
 	
@@ -65,12 +12,6 @@
 	<div id="content">
 		<div id="content-header">
 			<h1>大迪克</h1>
-			<div class="btn-group">
-				<a class="btn btn-large tip-bottom" title="消息" style="width: 60px;">
-					<i class="icon-comment"></i>
-					<span class="label label-important" style="width: 20px;">0</span>
-				</a>
-			</div>
 		</div>
 		<div id="breadcrumb">
 			<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>文章分类</a>
