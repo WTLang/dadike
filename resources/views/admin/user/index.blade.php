@@ -1,12 +1,15 @@
-{{-- 继承后台模板 --}}
+{-- 继承后台模板 --}}
 @extends('admin.public.header')
 
+
 {{-- 后台内容填充开始 --}}
+
 
 {{-- 用户管理标签 --}}
 	@section('cxy_02', 'active open')
 		@section('bxy_03', '')
 		@section('bxy_04', 'active')
+
 
 @section('content_01')
 		{{-- 用户表开始 --}}
@@ -27,19 +30,24 @@
 			<div class="widget-box">
 			<div class="widget-title">
 
+
 				{{-- 搜索框 --}}
+				<form action="/admin/user" method="get">
 				<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
 					<div class="dataTables_filter" id="DataTables_Table_0_filter">
 						<label>Search: 
-							<input type="text" aria-controls="DataTables_Table_0" />
+							<input type="text" name="search" aria-controls="DataTables_Table_1" value="{{ $request['search'] or '' }}">
+						<input type="submit" value="搜索" class="btn btn-info">
 						</label>
 					</div>
-					
 				</div>
+				</form>
 				{{-- 搜索框结束 --}}
+
 
 			</div>
 				<div class="widget-content nopadding">
+
 
 					<table class="table table-bordered data-table">
 						<thead>
@@ -48,39 +56,41 @@
 							<th>用户名</th>
 							<th>手机号</th>
 							<th>电子邮箱</th>
-							<th>状态</th>
 							<th>身份</th>
 							<th>注册时间</th>
 						</tr>
 						</thead>
 						<tbody>
+						{{-- 遍历会员 --}}
+						@foreach($userdata as $k=>$v)
 						<tr class="gradeX">
-							<td>123</td>
-							<td>InternetExplorer</td>
-							<td>13580339679</td>
-							<td>nopysiu@gmail.com</td>
-							<td>在线</td>
-							<td>会员</td>
-							<td class="center">2018-2-26</td>
+							<td>{{ $v->uid }}</td>
+							<td>{{ $v->us_name }}</td>
+							<td>{{ $v->us_tel }}</td>
+							<td>{{ $v->us_email }}</td>
+							@if($v->identify == 0)
+							<td>普通会员</td>
+							@elseif($v->identify == 1)
+							<td>VIP</td>
+							@else
+							<td>管理员</td>
+							@endif
+							<td>{{ $v->created_at }}</td>
 						</tr>
+						@endforeach
 						</tbody>
 					</table>  
 				</div>
 			</div>
 			{{-- 用户表结束 --}}
 
+
 			{{-- 页码 --}}
-			<div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="DataTables_Table_0_paginate">
-				<a tabindex="0" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default ui-state-disabled" id="DataTables_Table_0_first">First</a>
-				<a tabindex="0" class="previous fg-button ui-button ui-state-default ui-state-disabled" id="DataTables_Table_0_previous">Previous</a>
-				<span>
-					<a tabindex="0" class="fg-button ui-button ui-state-default ui-state-disabled">1
-					</a>
-				</span>
-				<a tabindex="0" class="next fg-button ui-button ui-state-default ui-state-disabled" id="DataTables_Table_0_next">Next</a>
-				<a tabindex="0" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default ui-state-disabled" id="DataTables_Table_0_last">Last</a>
+			<div class="pagination pagination-lg " style="float: right;">
+ 				{{ $userdata->appends($request)->links() }}
 			</div>
 			{{-- 页码结束 --}}
+
 
 @endsection
 {{-- 后台内容填充结束 --}}

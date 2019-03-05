@@ -12,7 +12,8 @@
     <link href="/reception_public/css/font-awesome.min.css" rel="stylesheet">
     {{-- Style --}}
     <link href="/reception_public/css/style.css" rel="stylesheet">
-    @yield('meta');
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('meta')
 
 </head>
 <body>
@@ -47,14 +48,20 @@
                                     <li><a href="styleguide.html" title="Service Detail">新闻分类二</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html" title="Contact Us">联系我们</a> </li>
-                           <!--  <li class="has-sub"><a href="blog-default.html" title="Blog ">欢迎您,xxx</a>
+                            <li><a href="contact.html" title="Contact Us">联系我们</a></li>
+
+                            @if(\Session::get('us_name'))
+                            <li class="has-sub"><a href="" title="Blog ">欢迎您,{{ \Session::get('us_name') }}</a>
                                 <ul>
-                                    <li><a href="blog-default.html" title="Blog">个人中心</a></li>
-                                    <li><a href="blog-single.html" title="Blog Single ">登出</a></li>
+                                    <li><a href="/personal" title="Blog">个人中心</a></li>
+                                    <li><a href="/logout" title="Blog Single ">登出</a></li>
                                 </ul>
-                            </li> -->
+                            </li>
+                            @else
                             <li class=""><a href="/login" title="Blog ">登入/注册</a>
+                            @endif
+
+
                             </li>
                             </ul>
                         </div>
