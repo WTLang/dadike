@@ -93,11 +93,11 @@
 
 				{{-- 5.友情链接模块 --}}
 				<li class="submenu @yield('cxy_06')">
-					<a href="#"><i class="icon icon-asterisk"></i></i> <span>友情链接</span> <span class="label">3</span></a>
+					<a href="#"><i class="icon icon-asterisk"></i></i> <span>友情链接</span> <span class="label">2</span></a>
 					<ul>
-						<li class="@yield('bxy_14')"><a href="">浏览友情链接</a></li>
-						<li class="@yield('bxy_15')"><a href="">添加友情链接</a></li>
-						<li class="@yield('bxy_16')"><a href="">修改友情链接</a></li>
+						<li class="@yield('bxy_14')"><a href="/admin/friend">浏览友情链接</a></li>
+						<li class="@yield('bxy_15')"><a href="/admin/friend/create">添加友情链接</a></li>
+						<li class="@yield('bxy_16')" hidden><a href="">修改友情链接</a></li>
 					</ul>
 				</li>
 
@@ -120,11 +120,11 @@
 
 				{{-- 8.广告模块 --}}
 				<li class="submenu @yield('cxy_09')">
-					<a href="#"><i class="icon icon-asterisk"></i></i> <span>广告管理</span> <span class="label">3</span></a>
+					<a href="#"><i class="icon icon-asterisk"></i></i> <span>广告管理</span> <span class="label">2</span></a>
 					<ul>
-						<li class="@yield('bxy_20')"><a href="">浏览广告</a></li>
-						<li class="@yield('bxy_21')"><a href="">添加广告</a></li>
-						<li class="@yield('bxy_22')"><a href="">修改广告</a></li>
+						<li class="@yield('bxy_20')"><a href="/admin/advertising">浏览广告</a></li>
+						<li class="@yield('bxy_21')"><a href="/admin/advertising/create">添加广告</a></li>
+						<li class="@yield('bxy_22')" hidden><a href="">修改广告</a></li>
 					</ul>
 				</li>
 
@@ -140,9 +140,10 @@
 		
 		</div>
 		{{-- 侧边结束 --}}
+
 		@section('content_01')
-
-
+		
+		
 		@show
 			<div class="row-fluid">
 				<div id="footer" class="span12">

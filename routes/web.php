@@ -23,11 +23,16 @@ Route::get('admin/acm/create/{id}', 'Admin\ArticleCategoriesController@create');
 /* Admin->文章添加路由 */
 Route::resource('admin/am','Admin\ArticleController');
 
+/* 友情连接路由 */
+Route::resource('admin/friend','Admin\FriendController');
 
+/* 广告管理路由 */
+Route::resource('admin/advertising','Admin\AdvertisingController');
 /*
 |--------------------------------------------------------------------------
 | 								前台模块路由=Home
 |--------------------------------------------------------------------------
+<<<<<<< HEAD
 */
 
 /* Home->首页路由 */
@@ -41,4 +46,7 @@ Route::post('/dologin', 'Home\IndexController@dologin');
 
 /* Home->发送验证码路由 */
 Route::get('/send', 'Home\IndexController@send');
+
+
+
 
