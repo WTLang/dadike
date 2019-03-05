@@ -48,12 +48,12 @@
                                     <li><a href="styleguide.html" title="Service Detail">新闻分类二</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html" title="Contact Us">联系我们</a> </li>
+                            <li><a href="contact.html" title="Contact Us">联系我们</a></li>
 
                             @if(\Session::get('us_name'))
-                            <li class="has-sub"><a href="blog-default.html" title="Blog ">欢迎您,{{ \Session::get('us_name') }}</a>
+                            <li class="has-sub"><a href="" title="Blog ">欢迎您,{{ \Session::get('us_name') }}</a>
                                 <ul>
-                                    <li><a href="blog-default.html" title="Blog">个人中心</a></li>
+                                    <li><a href="/personal" title="Blog">个人中心</a></li>
                                     <li><a href="/logout" title="Blog Single ">登出</a></li>
                                 </ul>
                             </li>

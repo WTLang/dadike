@@ -119,11 +119,13 @@ class IndexController extends Controller
         //
     }
 
-    public function login(){
+    public function login()
+    {
         return view('home.index.login');
     }
 
-    public function dologin(Request $request){
+    public function dologin(Request $request)
+    {
         //表单判断
          $this->validate($request ,[
             'us_name' => 'required',
@@ -147,13 +149,13 @@ class IndexController extends Controller
 
             //查询数据库
             $res = DB::table('users')->where('us_name', $data['us_name'])->first();
-            //判断用户是否存在
             if ($res) {
                 if (Hash::check($_POST['us_password'],$res->us_password)) {
                     
                     echo "<script>alert('登录成功!');location='/';</script>";
                     //登录成功把用户名写入session
-                    session(['us_name' => $data['us_name']]);
+                    session(['us_name' => $res->us_name]);
+                    session(['uid' => $res->uid]);
                 }else{
                     var_dump('密码错误');
                 }
@@ -164,7 +166,8 @@ class IndexController extends Controller
         
     }
 
-    public function send(){
+    public function send()
+    {
         session_start();
         $code = mt_rand(000000,999999);
         $_SESSION['code'] = $code;
@@ -174,15 +177,10 @@ class IndexController extends Controller
             $message->to($us_email);
         });
         return 1;
-        // if($codes){
-        //     return 1;
-        // }else{
-        //     return 0;
-        // }
-        
     }
 
-    public function check(){
+    public function check()
+    {
         session_start();
         $code = $_SESSION['code'];
         $us_code = $_GET['code'];
@@ -193,7 +191,8 @@ class IndexController extends Controller
         }
     }
 
-    public function namecheck(){
+    public function namecheck()
+    {
         $us_name = $_GET['us_name'];
         $res = DB::table('users')->where('us_name', $us_name)->first();
         if ($res) {
@@ -203,8 +202,11 @@ class IndexController extends Controller
         }
     }
 
-    public function logout(){
+    public function logout()
+    {
         session()->pull('us_name');
-        return back();
+        session()->pull('uid');
+        return redirect('/');
     }
+
 }

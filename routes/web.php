@@ -17,10 +17,10 @@ Route::prefix('admin')->group(function ()
 |--------------------------------------------------------------------------
  */
 
-//用户管理
-Route::resource('admin/user','Admin\UserController');
 //首页
 Route::resource('/','Home\IndexController');
+//用户管理
+Route::resource('admin/user','Admin\UserController');
 //登录页面
 Route::get('/login', 'Home\IndexController@login');
 //执行登录
@@ -33,4 +33,7 @@ Route::get('/check', 'Home\IndexController@check');
 Route::get('/namecheck', 'Home\IndexController@namecheck');
 //登出
 Route::get('/logout', 'Home\IndexController@logout');
+//个人中心
+Route::resource('/personal', 'Home\PersonalController');
+
 

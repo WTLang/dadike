@@ -15,6 +15,6 @@ class User extends Model
     protected $guarded = [];
 
     public function infos(){
-    	return $this->hasOne('App\Model\Admin\Userinfo','uid');
+    	return $this->hasOne('App\Model\Home\User_details','uid','uid');
     }
 }
