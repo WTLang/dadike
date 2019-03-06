@@ -35,5 +35,6 @@ Route::get('/namecheck', 'Home\IndexController@namecheck');
 Route::get('/logout', 'Home\IndexController@logout');
 //个人中心
 Route::resource('/personal', 'Home\PersonalController');
+Route::post('/personal/update', 'Home\PersonalController@update');
 
 
