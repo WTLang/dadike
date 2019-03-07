@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
+use App\Model\Home\Friend;
+use App\Model\Home\Advertising;
 
 class IndexController extends Controller
 {
@@ -15,7 +17,14 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('home.index.index');
+        /*连接友情链接数据表*/
+        $friend_data = Friend::get();
+        /*连接广告数据表*/
+        $advertising_data = Advertising::all();
+        /* 获取第一个id */
+        $first_id = $advertising_data[0]->ad_id;
+        /*接收信息*/
+        return view('home.index.index',['friend_data'=>$friend_data,'advertising_data'=>$advertising_data,'first_id'=>$first_id]);
     }
 
     /**

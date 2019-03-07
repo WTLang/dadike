@@ -60,4 +60,3 @@ Route::get('/logout', 'Home\IndexController@logout');
 /* Home->个人中心 */
 Route::resource('/personal', 'Home\PersonalController');
 
-

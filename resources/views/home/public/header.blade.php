@@ -83,30 +83,35 @@
             <div class="footer-block">
             {{-- footer block --}}
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="footer-widget">
-                            <h2 class="widget-title">联系我们</h2>
-                            <ul class="listnone contact">
-                                <li><i class="fa fa-map-marker"></i> 4958 Norman Street Los Angeles, CA 90042 </li>
-                                <li><i class="fa fa-phone"></i> +00 (800) 123-4567</li>
-                                <li><i class="fa fa-fax"></i> +00 (123) 456 7890</li>
-                                <li><i class="fa fa-envelope-o"></i> info@salon.com</li>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="padding-left: 125px;">
+                        <div class="footer-widget footer-social">
+                        {{-- social block --}}
+                            <h2 class="widget-title">友情链接</h2>
+                            {{-- 友情链接遍历开始 --}}
+                            @foreach($friend_data as $k=>$v)
+                            <ul class="listnone">
+                                <li>
+                                <a href="http://www.{{ $v->flk_url }}">{{ $v->flk_name }}</a>
+                                </li>
                             </ul>
+                            @endforeach
+                            {{-- 友情链接遍历结束 --}}
                         </div>
+                    {{-- /.social block --}}
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="footer-widget footer-social">
                         {{-- social block --}}
-                            <h2 class="widget-title">友情链接</h2>
+                            <h2 class="widget-title"></h2>
                             <ul class="listnone">
                                 <li>
-                                <a href="#"> <i class="fa fa-facebook"></i> Facebook </a>
+                                <a href="#"></a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i> Google Plus</a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i> Linked In</a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
                                 <li>
-                                <a href="#"> <i class="fa fa-youtube"></i>Youtube</a>
+                                <a href="#"></a>
                                 </li>
                             </ul>
                         </div>
@@ -116,12 +121,11 @@
                         <div class="footer-widget widget-newsletter">
                         {{-- newsletter block --}}
                             <h2 class="widget-title">咨询</h2>
-                            <p>输入您的电子邮件地址，以便在收件箱中接收新的患者信息和其他有用信息。</p>
+                            <p>如有问题可使用微信扫一扫，扫取以下二维码即可获取我们的联系方式。</p>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="输入您的邮箱">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">提交</button>
-                                </span>
+                                {{-- 微信二维码图片 --}}
+                                <img src="/reception_public/Rotation/img/5.jpg" alt="" style="width:250px;height:250px">
+                                }
                             </div>
                         {{-- /input-group --}}
                         </div>
@@ -133,7 +137,8 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="copyright-content">
-                            <p>© dadike 2020 | all rights reserved</p>
+                            <p>© 大迪克 2019 | 版权所有 | <a href="">使用前必读</a> | <a href="">意见反馈</a> | 京IPC号000000号</p>
+                            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000001" target="_blank"><i></i>京公网安备00000000000000号</a>
                         </div>
                     </div>
                 </div>
