@@ -18,9 +18,9 @@ class IndexController extends Controller
     public function index()
     {
         /*连接友情链接数据表*/
-        $friend_data = Friend::get();
+        $friend_data = Friend::where('flk_status',1)->get();
         /*连接广告数据表*/
-        $advertising_data = Advertising::all();
+        $advertising_data = Advertising::where('ad_status',1)->get();
         /* 获取第一个id */
         $first_id = $advertising_data[0]->ad_id;
         /*接收信息*/

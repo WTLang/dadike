@@ -108,7 +108,7 @@ class FriendController extends Controller
         $res = $friend->update();
         /* 判断修改 */
         if($res){
-            return redirect('admin/friend')->with('success','修改成功');
+            return redirect('admin/friend?')->with('success','修改成功');
         }else{
             return back()->with('error','修改失败');
         }
