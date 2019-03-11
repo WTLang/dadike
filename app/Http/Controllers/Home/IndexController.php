@@ -127,7 +127,7 @@ class IndexController extends Controller
     public function dologin(Request $request)
     {
         //表单判断
-         $this->validate($request ,[
+        $this->validate($request ,[
             'us_name' => 'required',
             'us_password' => 'required',
             'code' => 'required'
@@ -140,9 +140,7 @@ class IndexController extends Controller
         $data = $request->all();
         //判断验证码是否正确
         if(strtolower($_POST['code']) !== strtolower($_SESSION['code'])){
-            return back();
-            // echo "<script>alert('验证码错误!');</script>";
-            // return redirect('/login')->with('us_name',$data['us_name']);
+            return redirect()->back()->withInput()->with('msg','验证码错误');
         }else{
             //干掉session中的验证码
             unset($_SESSION['code']);
@@ -157,10 +155,10 @@ class IndexController extends Controller
                     session(['us_name' => $res->us_name]);
                     session(['uid' => $res->uid]);
                 }else{
-                    var_dump('密码错误');
+                    return back()->with('msg','密码错误');
                 }
             }else{
-                var_dump('账号不存在');
+                return redirect()-> back()->withInput()->with('msg','用户不存在');
             }
         }
         

@@ -35,10 +35,15 @@
                                             </ul>
                                         </div>
                                     @endif
+                                    @if (session('msg'))
+                                    <div class="alert alert-danger" style="width: 373px;margin-left: 18px;">
+                                            <li>{{ session('msg') }}</li>
+                                    </div>
+                                    @endif
                             <h2 class="widget-title">登录你的账号</h2>
                             <div class="col-md-12">
                                 <label class="" for="name"> 用户名</label>
-                                <input type="text" name="us_name" id="name" placeholder="" class="form-control" value="{{ session('us_name') }}">
+                                <input type="text" name="us_name" id="name" placeholder="" class="form-control" value="{{ old('us_name') }}" >
                             </div>
 
                             <div class="col-md-12">
