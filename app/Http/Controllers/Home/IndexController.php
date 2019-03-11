@@ -163,12 +163,18 @@ class IndexController extends Controller
         }
         
     }
-
+    /**
+     * 发送验证码
+     * @return [type] [description]
+     */
     public function send()
     {
         session_start();
+        //随机一个6位数的数字作为用户的验证码
         $code = mt_rand(000000,999999);
+        //存入session
         $_SESSION['code'] = $code;
+        //发送
         $codes = Mail::raw($code,function($message){
             $us_email = $_GET['us_email'];
             $message->subject('激活提示信息,以下是您的验证码');
@@ -176,19 +182,27 @@ class IndexController extends Controller
         });
         return 1;
     }
-
+    /**
+     * 检测验证码是否正确
+     * @return [type] [description]
+     */
     public function check()
     {
         session_start();
         $code = $_SESSION['code'];
         $us_code = $_GET['code'];
         if ($code == $us_code) {
+            //如果一样,清除掉session
+            session()->pull('code');
             return 1;
         }else{
             return 0;
         }
     }
-
+    /**
+     * 检测名字是否有与数据库重复
+     * @return [num] [description]
+     */
     public function namecheck()
     {
         $us_name = $_GET['us_name'];
@@ -199,7 +213,10 @@ class IndexController extends Controller
             return 0;
         }
     }
-
+    /**
+     * 退出登录
+     * @return [type] [description]
+     */
     public function logout()
     {
         session()->pull('us_name');

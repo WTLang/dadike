@@ -52,7 +52,7 @@
                                 </ul>
                             </div>
                         @endif
-
+                    {{-- 显示修改的结果信息 --}}
                     @if(session('psuccess'))
                         <p>success!</p>
                     @endif
@@ -150,6 +150,7 @@
     </div>
 @endsection
 <script type="text/javascript">
+    {{-- 按钮文字变化  --}}
     function change(){
         if($('#changea').text() == '取消') {
             $('input').prop('disabled',true);
