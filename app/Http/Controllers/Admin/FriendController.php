@@ -75,7 +75,7 @@ class FriendController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

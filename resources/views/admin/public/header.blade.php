@@ -137,6 +137,16 @@
 					</ul>
 				</li>
 
+				{{-- 10.帖子模块 --}}
+				<li class="submenu @yield('cxy_11')">
+					<a href="#"><i class="icon icon-heart"></i></i> <span>心情管理</span> <span class="label">3</span></a>
+					<ul>
+						<li class="@yield('bxy_25')"><a href="">浏览心情</a></li>
+						<li class="@yield('bxy_26')"><a href="">发布心情</a></li>
+						<li class="@yield('bxy_27')"><a href="">修改心情</a></li>
+					</ul>
+				</li>
+
 		
 		</div>
 		{{-- 侧边结束 --}}

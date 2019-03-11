@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +13,12 @@
     <link href="/reception_public/css/style.css" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('meta')
-
+    {{-- 轮播图样式 --}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/reception_public/Rotation/css/normalize.css" />
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/reception_public/Rotation/css/main.css">
 </head>
 <body>
     {{-- 头部开始 --}}
@@ -60,8 +64,6 @@
                             @else
                             <li class=""><a href="/login" title="Blog ">登入/注册</a>
                             @endif
-
-
                             </li>
                             </ul>
                         </div>
@@ -69,102 +71,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>   
     {{-- 头部结束 --}}
-
+    
     @section('content_01')
 
-
     @show
-
-    {{-- 脚部开始 --}}
-    <div class="footer">
-        <div class="container">
-            <div class="footer-block">
-            {{-- footer block --}}
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="padding-left: 125px;">
-                        <div class="footer-widget footer-social">
-                        {{-- social block --}}
-                            <h2 class="widget-title">友情链接</h2>
-                            {{-- 友情链接遍历开始 --}}
-                            @foreach($friend_data as $k=>$v)
-                            <ul class="listnone">
-                                <li>
-                                <a href="http://www.{{ $v->flk_url }}">{{ $v->flk_name }}</a>
-                                </li>
-                            </ul>
-                            @endforeach
-                            {{-- 友情链接遍历结束 --}}
-                        </div>
-                    {{-- /.social block --}}
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="footer-widget footer-social">
-                        {{-- social block --}}
-                            <h2 class="widget-title"></h2>
-                            <ul class="listnone">
-                                <li>
-                                <a href="#"></a>
-                                </li>
-                                <li><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                                <li>
-                                <a href="#"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    {{-- /.social block --}}
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                        <div class="footer-widget widget-newsletter">
-                        {{-- newsletter block --}}
-                            <h2 class="widget-title">咨询</h2>
-                            <p>如有问题可使用微信扫一扫，扫取以下二维码即可获取我们的联系方式。</p>
-                            <div class="input-group">
-                                {{-- 微信二维码图片 --}}
-                                <img src="/reception_public/Rotation/img/5.jpg" alt="" style="width:250px;height:250px">
-                                }
-                            </div>
-                        {{-- /input-group --}}
-                        </div>
-                    {{-- newsletter block --}}
-                    </div>
-                </div>
-            <div class="tiny-footer">
-            {{-- tiny footer block --}}
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="copyright-content">
-                            <p>© 大迪克 2019 | 版权所有 | <a href="">使用前必读</a> | <a href="">意见反馈</a> | 京IPC号000000号</p>
-                            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000001" target="_blank"><i></i>京公网安备00000000000000号</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- /.tiny footer block --}}
-            </div>
-        {{-- 脚部结束 --}}
-        </div>
-    </div>
-
-    <div class="tiny-footer">
-    {{-- 最底下文字 --}}
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="copyright-content">
-                    <p>© Men Salon 2020 | all rights reserved</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- 最底下文字结束 --}}
-    <script src="reception_public/js/jquery.min.js"></script>
-    <script src="reception_public/js/bootstrap.min.js"></script>
-    <script src="reception_public/js/menumaker.js"></script>
-    <script src="reception_public/js/jquery.sticky.js"></script>
-    <script src="reception_public/js/sticky-header.js"></script>
-</body>
-
-</html>

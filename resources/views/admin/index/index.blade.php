@@ -57,6 +57,11 @@
 		@section('bxy_23', '')
 		@section('bxy_24', '')
 
+{{-- 帖子管理标签 --}}
+	@section('cxy_11', '')
+		@section('bxy_25', '')
+		@section('bxy_26', '')
+
 
 @section('content_01')
 		{{-- 统计表开始 --}}

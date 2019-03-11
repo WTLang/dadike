@@ -1,5 +1,6 @@
 @extends('home.public.header')
 
+
 @section('content_01')
 
 <!-- 显示错误处理 -->

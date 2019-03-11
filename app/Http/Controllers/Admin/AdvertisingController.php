@@ -93,9 +93,21 @@ class AdvertisingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($ad_id)
     {
-        //
+        /*查找接收id的信息*/
+        $data = DB::table('advertising_management')->where('ad_id',$ad_id)->get();
+        /*改变查找id的状态*/
+        $new_status = $data[0]->ad_status == 1 ? 0:1;
+        $ad = Advertising::find($ad_id);
+        $ad->ad_status = $new_status;
+        /*更新数据*/
+        $res = $ad->update();
+        if($res){
+                return redirect('admin/advertising');
+        }else{
+                return back();
+        }
     }
 
     /**

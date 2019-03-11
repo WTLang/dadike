@@ -16,13 +16,19 @@
 				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i>广告管理</a>
 				<a href="#" class="current">浏览广告</a>
 			</div>
+					@if (session('success'))
+					<div class="alert alert-success">
+						<button class="close" data-dismiss="alert">×</button>
+						<strong>修改成功！</strong>
+					</div>
+					@endif
 					<div class="span12">
 						<div class="widget-box">
 							<div class="widget-title">
 								<h5>浏览广告</h5>
 								{{-- 搜索框开始 --}}
-								<form action="/admin/advertising" method="get" style="float: right;padding-top: 4px;">
-									Search: <input type="text" aria-controls="DataTables_Table_0" name="search" value="{{ $request['search'] or '' }}" ><button class="btn btn-info" style="padding-top: 5px;">搜索</button>
+								<form action="/admin/advertising" method="get" style="float: right;padding-top: 3px;padding-right: 3px;">
+									Search: <input type="text" aria-controls="DataTables_Table_0" name="search" value="{{ $request['search'] or '' }}" ><button class="btn btn-info" style="float: right;padding-top: 3px;padding-right: 15px;">搜索</button>
 
 								</form>
 								{{-- 搜索框结束 --}}
@@ -53,7 +59,7 @@
 									<td class="center" style="padding-left:52px;padding-top:19px">{{ $v->ad_url }}</td>
 									<td style="padding-left:30px;padding-top:19px">{{ $v->ad_people }}</td>
 									<td style="padding-left:50px;padding-top:19px">{{ $v->ad_phone }}</td>
-									<td style="padding-left:30px;padding-top:19px">{{ $v->ad_status==0? '待审':'通过' }}</td>
+									<td style="padding-left:30px;padding-top:19px;color:{{ $v->ad_status==0? 'red':'green' }};">{{ $v->ad_status==0? '待审':'通过' }}</td>
 									<td style="padding-left:52px;padding-top:15px">
 										<form action="/admin/advertising/{{ $v->ad_id }}" method="post" style="display: inline-block;">
                 							{{ csrf_field() }}
@@ -61,10 +67,10 @@
                 						<input type="submit" value="删除" class="btn btn-danger" >
                 						</form>
                 						<a href="/admin/advertising/{{ $v->ad_id }}/edit" class="btn btn-warning">修改</a>
+                						<a href="/admin/advertising/{{ $v->ad_id }}" class="btn btn-primary">发布/关闭</a>
 									</td>
 									</tr>
            							 @endforeach
-
 									</tbody>
 									</table>	 
 								</div>
