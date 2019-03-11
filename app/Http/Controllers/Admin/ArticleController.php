@@ -16,9 +16,8 @@ use Storage;
 class ArticleController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * 后台文章浏览首页
+     * @return $data
      */
     public function index(Request $request)
     {
@@ -28,7 +27,7 @@ class ArticleController extends Controller
         $search = $request->input('search','');
         /* 模糊搜索 */
         $data = ArticleManage::where('am_title','like','%'.$search.'%')->paginate($count);
-        // dd($data[0]->am_id);
+        // dd($data);
          return view('admin.article_manage.index',['data'=>$data,'request'=>$request->all()]);
     }
 
@@ -92,14 +91,24 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 文章发布于关闭->执行判断
+     * @return bool
      */
     public function show($id)
     {
-        //
+        /* 查找该id的信息 */
+        $data = DB::table('article_manage')->where('am_id',$id)->get();
+        /* 更改信息的状态 */
+        $new_status = $data[0]->am_status == 1 ? 0:1;
+        $am_data = ArticleManage::find($id);
+        $am_data->am_status = $new_status;
+        $res = $am_data->update();
+        /* 判断 */
+        if ($res) {
+            return redirect('admin/am');
+        }else{
+            return back();
+        }
     }
 
     /**

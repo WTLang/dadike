@@ -21,37 +21,6 @@ class ArticleCategoriesController extends Controller
      *
      * @titile 大迪克
      */
-    public static function getdata1()
-    {
-        
-        /* 查出表中的顶级分类 */
-        $ac_data = DB::table("article_categories_manage")->where('acm_pid',0)->get();
-
-        /* 顶级分类遍历 */
-        /* 给顶级分类下面添加一个one键存放一级分类的路径,查所有顶级分类下的一级分类 */
-        foreach ($ac_data as $key => $val) 
-        {
-           $ac_data[$key]->one = DB::table("article_categories_manage")->where('acm_pid',$val->acm_id)->get();
-
-           /* 添加一级标识 */
-            $n1 = substr_count($val->acm_path,',');
-            $val->acm_name = str_repeat('|--->',$n1).$val->acm_name;
-
-            /* 一级分类遍历 */
-            /* 给一级分类下面添加一个two键存放二级分类的路径,查所有一级分类下的二级分类 */
-            // dd($ac_data);
-           foreach($ac_data[$key]->one as $keyt => $valt)
-           {
-                $ac_data[$key]->one['two'] = DB::table("article_categories_manage")->where('acm_pid',$valt->acm_id)->get();
-
-                /* 添加二级标识 */
-                // $n2 = substr_count($ac_data[$key]->one[$key]->acm_path,',');
-                $valt->acm_name = str_repeat('|--->',1).$valt->acm_name;
-           }
-        }
-
-        return $ac_data;
-    }
     public static function getdata()
     {
         $ac_data = ArticleCategories::select('*',DB::raw("concat(acm_path,',',acm_id) as paths"))->orderBy('paths','asc')->get();

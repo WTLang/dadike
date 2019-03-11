@@ -12,7 +12,7 @@ class IndexController extends Controller
      * 载入后台首页
      * @include 统计图
      */
-    public function index()
+    public function index(Request $request)
     {
         $index = Index::find(1);
 

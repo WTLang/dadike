@@ -1,15 +1,10 @@
-{-- 继承后台模板 --}}
+{{-- 继承后台模板 --}}
 @extends('admin.public.header')
-
-
-{{-- 后台内容填充开始 --}}
-
 
 {{-- 用户管理标签 --}}
 	@section('cxy_02', 'active open')
 		@section('bxy_03', '')
 		@section('bxy_04', 'active')
-
 
 @section('content_01')
 		{{-- 用户表开始 --}}
@@ -30,7 +25,6 @@
 			<div class="widget-box">
 			<div class="widget-title">
 
-
 				{{-- 搜索框 --}}
 				<form action="/admin/user" method="get">
 				<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
@@ -44,10 +38,8 @@
 				</form>
 				{{-- 搜索框结束 --}}
 
-
 			</div>
 				<div class="widget-content nopadding">
-
 
 					<table class="table table-bordered data-table">
 						<thead>
@@ -90,7 +82,6 @@
  				{{ $userdata->appends($request)->links() }}
 			</div>
 			{{-- 页码结束 --}}
-
 
 @endsection
 {{-- 后台内容填充结束 --}}

@@ -13,7 +13,7 @@
 			</div>
 			<div id="breadcrumb">
 				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>文章管理</a>
-				<a href="/admin/index" class="current">添加文章</a>
+				<a href="/admin/index" class="current">浏览文章</a>
 			</div>
 		@if (session('article_manage_success'))
 			<div class="alert alert-success">
@@ -116,10 +116,10 @@
 					</td>
 					<td style="width:20px;padding-top: 35px;padding-left: 55px;">{{ $v->am_acm_id }}</td>
 					<td style="max-width: 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 35px;padding-left: 20px;padding-right: 20px;">{{ $v->am_content }}</td>
-					<td style="width:10px;padding-top: 35px;padding-left: 10px;">已发布</td>
+					<td style="width:10px;padding-top: 35px;padding-left: 10px;color: {{ $v->am_status == 0 ? 'red':'green' }} ;">{{ $v->am_status == 0 ? '未发布':'已发布' }}</td>
 					<td style="padding-top: 5px;">
-						<a href="" class="btn btn-primary" style="margin-bottom: 5px;">发布</a>
-						<a href="" class="btn btn-primary" style="float: right;">关闭</a>
+						<a href="/admin/am/{{ $v->am_id }}" class="btn btn-primary" style="margin-bottom: 5px;width: 110px;">发布/关闭</a>
+						
 						<a href="/admin/am/{{ $v->am_id }}/edit" class="btn btn-primary" style="float: right;">修改</a>
 						<form action="/admin/am/{{ $v->am_id }}" method="post">
 							{{ csrf_field() }}

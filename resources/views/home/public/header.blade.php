@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:wb="http://open.weibo.com/wb" lang="zh-CN">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +50,6 @@
                                 </ul>
                             </li>
                             <li><a href="/aboutus" title="Contact Us">关于我们</a></li>
-
                             @if(\Session::get('us_name'))
                             <li class="has-sub"><a href="" title="Blog ">欢迎您,{{ \Session::get('us_name') }}</a>
                                 <ul>
@@ -62,8 +60,6 @@
                             @else
                             <li class=""><a href="/login" title="Blog ">登入/注册</a>
                             @endif
-
-
                             </li>
                             </ul>
                         </div>
@@ -145,7 +141,6 @@
         {{-- 脚部结束 --}}
         </div>
     </div>
-
     <div class="tiny-footer">
     {{-- 最底下文字 --}}
         <div class="row">
