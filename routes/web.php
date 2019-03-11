@@ -28,12 +28,13 @@ Route::resource('admin/friend','Admin\FriendController');
 
 /* Admin->广告管理路由 */
 Route::resource('admin/advertising','Admin\AdvertisingController');
+
+/* Admin->联系我们管理路由 */
+Route::resource('admin/aboutus','Admin\AboutUsController');
 /*
 |--------------------------------------------------------------------------
 | 								前台模块路由=Home
 |--------------------------------------------------------------------------
-<<<<<<< HEAD
-<<<<<<< HEAD
 */
 
 /* Home->首页路由 */
@@ -60,4 +61,8 @@ Route::get('/logout', 'Home\IndexController@logout');
 /* Home->个人中心 */
 Route::resource('/personal', 'Home\PersonalController');
 
+/* Home->关于我们 */
+Route::get('/aboutus', 'Home\AboutUsController@index');
+/* Home->关于我们->信息写入数据库 */
+Route::post('/aboutus/store', 'Home\AboutUsController@store');
 

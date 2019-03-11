@@ -21,7 +21,7 @@ class ArticleCategoriesController extends Controller
      *
      * @titile 大迪克
      */
-    public static function getdata()
+    public static function getdata1()
     {
         
         /* 查出表中的顶级分类 */
@@ -52,6 +52,17 @@ class ArticleCategoriesController extends Controller
 
         return $ac_data;
     }
+    public static function getdata()
+    {
+        $ac_data = ArticleCategories::select('*',DB::raw("concat(acm_path,',',acm_id) as paths"))->orderBy('paths','asc')->get();
+        foreach ($ac_data as $k => $v) {
+            $n = substr_count($v->acm_path,',');
+
+            $ac_data[$k]->acm_name = str_repeat('|--->',$n).$v->acm_name;
+        }
+
+        return $ac_data;
+    }
 
     /**
      * 文章分类 --首页
@@ -61,6 +72,7 @@ class ArticleCategoriesController extends Controller
     public function index()
     {
         $data = self::getdata();
+        // dd($data);
         return view('admin.article_categories_manage.index',['data'=>$data]);
     }
 

@@ -162,6 +162,34 @@
 								<a href="/admin/acm/create/{{ $v->acm_id }}" class="btn btn-inverse btn-mini" style="margin-top: 4px;width: 120px;">添加子分类</a>
 							</td>
 						</tr>
+							@php  
+								$data_01 = $v->one
+							@endphp
+							@foreach($data_01 as $kk => &$vv)
+								@if ($kk == 'two')
+									@php
+						            	continue;
+						            @endphp
+						        @else
+						            <tr class="gradeA odd">
+										<td>{{ $vv->acm_id 		}}</td>
+										<td>{{ $vv->acm_name 	}}</td>
+										<td>{{ $vv->acm_pid 		}}</td>
+										<td>{{ $vv->acm_path 	}}</td>
+										<td style="color: green;">{{ $vv->acm_status == 1 ? '已激活' : '静止'}}</td>
+										<td >
+											<form action="/admin/acm/{{ $vv->acm_id }}/edit" method="get" >
+												<input type="submit" value="修改" class="btn btn-primary btn-mini" style="float: left;margin-right: 3px;width: 68px;">
+											</form>
+											<form action="/admin/acm/{{ $vv->acm_id }}" method="post" >
+												{{ csrf_field() }}
+												{{ method_field('DELETE') }}
+												<input type="submit" value="删除" class="btn btn-danger btn-mini" style="width: 68px;">
+											</form>
+										</td>
+									</tr>
+						        @endif
+							@endforeach
 						@endforeach
 						</tbody>
 						</table>

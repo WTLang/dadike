@@ -56,22 +56,22 @@
 		<table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
 			<thead>
 				<tr role="row">
-					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 224px;">
+					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 100px;">
 						<div class="DataTables_sort_wrapper">
 							ID<span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
 						</div>
 					</th>
-					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 369px;">
+					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 150px;">
 						<div class="DataTables_sort_wrapper">
 							文章标题<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
 						</div>
 					</th>
-					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 181px;">
+					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 80px;">
 						<div class="DataTables_sort_wrapper">
 							作者<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
 						</div>
 					</th>
-					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 181px;">
+					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 150px;">
 						<div class="DataTables_sort_wrapper">
 							发表时间<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
 						</div>
@@ -81,7 +81,7 @@
 							封面图路径<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
 						</div>
 					</th>
-					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 181px;">
+					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 120px;">
 						<div class="DataTables_sort_wrapper">
 							一级分类id<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
 						</div>
@@ -91,7 +91,12 @@
 							文章内容<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
 						</div>
 					</th>
-					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 181px;">
+					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 70px;">
+						<div class="DataTables_sort_wrapper">
+							状态<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+						</div>
+					</th>
+					<th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 130px;">
 						<div class="DataTables_sort_wrapper">
 							操作<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
 						</div>
@@ -102,16 +107,19 @@
 				<tbody role="alert" aria-live="polite" aria-relevant="all">
 				@foreach($data as $k => $v)
 				<tr class="gradeA odd">
-					<td style="padding-top: 20px;padding-left: 20px;"">{{ $v->am_id }}</td>
-					<td style="padding-top: 20px;padding-left: 20px;"">{{ $v->am_title }}</td>
-					<td style="padding-top: 20px;padding-left: 20px;">{{ $v->am_author }}</td>
-					<td style="padding-top: 20px;padding-left: 30px;">{{ $v->am_create_time }}</td>
+					<td style="padding-top: 35px;padding-left: 20px;">{{ $v->am_id }}</td>
+					<td style="padding-top: 35px;padding-left: 20px;">{{ $v->am_title }}</td>
+					<td style="padding-top: 35px;padding-left: 20px;">{{ $v->am_author }}</td>
+					<td style="padding-top: 35px;padding-left: 30px;">{{ $v->am_create_time }}</td>
 					<td>
-						<img src="/all_uploads/{{ $v->am_img }}" style="width: 75px;height:40px;padding-top: 5px;padding-left: 13px;">
+						<img src="/all_uploads/{{ $v->am_img }}" style="width: 75px;height:40px;padding-top: 15px;padding-left: 13px;">
 					</td>
-					<td style="width:20px;padding-top: 20px;padding-left: 55px;">{{ $v->am_acm_id }}</td>
-					<td style="max-width: 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 20px;padding-left: 20px;padding-right: 20px;">{{ $v->am_content }}</td>
-					<td style="padding-top: 20px;">
+					<td style="width:20px;padding-top: 35px;padding-left: 55px;">{{ $v->am_acm_id }}</td>
+					<td style="max-width: 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 35px;padding-left: 20px;padding-right: 20px;">{{ $v->am_content }}</td>
+					<td style="width:10px;padding-top: 35px;padding-left: 10px;">已发布</td>
+					<td style="padding-top: 5px;">
+						<a href="" class="btn btn-primary" style="margin-bottom: 5px;">发布</a>
+						<a href="" class="btn btn-primary" style="float: right;">关闭</a>
 						<a href="/admin/am/{{ $v->am_id }}/edit" class="btn btn-primary" style="float: right;">修改</a>
 						<form action="/admin/am/{{ $v->am_id }}" method="post">
 							{{ csrf_field() }}

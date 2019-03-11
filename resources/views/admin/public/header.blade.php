@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="/backstage_public/css/fullcalendar.css" />	
 		<link rel="stylesheet" href="/backstage_public/css/unicorn.main.css" />
 		<link rel="stylesheet" href="/backstage_public/css/unicorn.grey.css" class="skin-color" />
+		<link rel="stylesheet" href="/backstage_public/clock_css/clock.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 	<body>
 		
@@ -16,7 +17,7 @@
 		<div id="header"><a href="/admin/index"><h1>大迪克</h1></a></div>
 					
 		{{-- 搜索开始 --}}
-		<div id="search">
+		<div id="search" hidden>
 			<input type="text" placeholder="搜索..." /><button type="submit" class="tip-right" title="Search"><i class="icon-search icon-white"></i></button>
 		</div>
 		{{-- 搜索结束 --}}
@@ -128,11 +129,11 @@
 					</ul>
 				</li>
 
-				{{-- 9.用户意见模块 --}}
+				{{-- 9.联系我们模块 --}}
 				<li class="submenu @yield('cxy_10')">
-					<a href="#"><i class="icon icon-info-sign"></i></i> <span>用户建议</span> <span class="label">3</span></a>
+					<a href="#"><i class="icon icon-info-sign"></i></i> <span>用户建议</span> <span class="label">2</span></a>
 					<ul>
-						<li class="@yield('bxy_23')"><a href="">查看用户意见</a></li>
+						<li class="@yield('bxy_23')"><a href="/admin/aboutus">查看消息</a></li>
 						<li class="@yield('bxy_24')"><a href="">发布处理结果</a></li>
 					</ul>
 				</li>
@@ -161,6 +162,7 @@
             <script src="/backstage_public/js/fullcalendar.min.js"></script>
             <script src="/backstage_public/js/unicorn.js"></script>
             <script src="/backstage_public/js/unicorn.dashboard.js"></script>
+            <script src="/backstage_public/clock_css/clock.js"></script>
 
             {{-- 微博关注 --}}
             <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>

@@ -52,7 +52,7 @@
 		@section('bxy_21', '')
 		@section('bxy_22', '')
 
-{{-- 用户管理标签 --}}
+{{-- 用户建议标签 --}}
 	@section('cxy_10', '')
 		@section('bxy_23', '')
 		@section('bxy_24', '')
@@ -85,6 +85,7 @@
 							<i class="icon-home"></i>
 						</span>
 						<h5>本站信息</h5>
+						<h5 id="timeShow" ></h5>
 					</div>
 					<div class="widget-content">
 						<div class="invoice-content">
@@ -184,10 +185,10 @@
 							</p>
 							
 							{{-- 微博关注 --}}
-							<wb:follow-button uid="6124227284" type="red_1" width="67" height="24" ></wb:follow-button>
+							<wb:follow-button uid="6124227284" type="red_1" width="67" height="24" hidden></wb:follow-button>
 
 							{{-- 联系QQ --}}
-							<a href="tencent://message/?Menu=yes&uin=760811659& Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45">
+							<a href="tencent://message/?Menu=yes&uin=760811659& Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" hidden>
 								<button class="btn btn-info">
 									<img src="/backstage_public/img/qq112233.png" alt="" style="width: 15px;height: 16px;">
 									联系我们

@@ -48,22 +48,11 @@
 									<div class="btn-group">
 										<select name="acm_pid" style="margin-left: 20px;margin-top: 8px;margin-bottom: 10px;">
 											<option value="0" >--请选择--</option>
+
+
 @foreach($data as $k => $v)
 	<option value="{{ $v->acm_id }}" @if($mca_id == $v->acm_id) selected @endif >
-
 		{{ $v->acm_name }}</option>
-	@php  
-		$data_01 = $v->one
-	@endphp
-	@foreach($data_01 as $kk => &$vv)
-		@if ($kk == 'two')
-			@php
-            	continue;
-            @endphp
-        @else
-            <option value="{{ $vv->acm_id }}" disabled>{{ $vv->acm_name }}</option>
-        @endif
-	@endforeach
 @endforeach
 										</select>
 									</div>

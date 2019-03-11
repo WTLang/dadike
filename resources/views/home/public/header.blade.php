@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xmlns:wb="http://open.weibo.com/wb" lang="zh-CN">
 
 <head>
     <meta charset="utf-8">
@@ -13,8 +13,10 @@
     {{-- Style --}}
     <link href="/reception_public/css/style.css" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- 头部占位 --}}
     @yield('meta')
-
+    {{-- 微博关注 --}}
+    <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
     {{-- 头部开始 --}}
@@ -22,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <a href="/"><img src="/reception_public/images/logo.png" alt=""></a>
+                    <a href="/" style="font-size: 50px;">大迪克博客</a>
                 </div>
                 <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
                     <div class="navigation">
@@ -30,10 +32,10 @@
                             <ul>
                                 <li class="active"><a href="/" title="Home">主页</a>
                             </li>
-                                <li class="has-sub"><a href="service-list.html" title="Service List">博客</a>
+                                <li class="has-sub"><a href="javascript:;" title="Service List">博客</a>
                                     <ul>
-                                        <li><a href="service-list.html" title="Service List">分类一</a></li>
-                                        <li><a href="service-detail.html" title="Service Detail">分类二</a></li>
+                                        <li><a href="" title="Service List">分类一</a></li>
+                                        <li><a href="" title="Service Detail">分类二</a></li>
                                     </ul>
                                 </li>
                             <li class="has-sub"><a href="blog-default.html" title="Blog ">帖子</a>
@@ -48,7 +50,7 @@
                                     <li><a href="styleguide.html" title="Service Detail">新闻分类二</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html" title="Contact Us">联系我们</a></li>
+                            <li><a href="/aboutus" title="Contact Us">关于我们</a></li>
 
                             @if(\Session::get('us_name'))
                             <li class="has-sub"><a href="" title="Blog ">欢迎您,{{ \Session::get('us_name') }}</a>
@@ -149,7 +151,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="copyright-content">
-                    <p>© Men Salon 2020 | all rights reserved</p>
+                    <p>© 大迪克博客 2019 | 版权所有</p>
                 </div>
             </div>
         </div>
