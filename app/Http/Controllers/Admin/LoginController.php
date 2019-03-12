@@ -38,13 +38,6 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        // 添加
-        // $data = $request->except(['_token']);
-        // $data['admin_password'] = Hash::make($data['admin_password']);
-        // $res = Admin::create($data);
-        // if ($res) {
-            
-        // }
         $this->validate($request ,[
             'admin_name' => 'required',
             'admin_password' => 'required',
@@ -54,6 +47,7 @@ class LoginController extends Controller
         ]);
 
         $data = $request->except(['_token']);
+        //从数据库去出数据
         $res = DB::table('Admin')->where('admin_name', $data['admin_name'])->first();
         if ($res) {
             if (Hash::check($data['admin_password'],$res->admin_password)) {
@@ -114,6 +108,7 @@ class LoginController extends Controller
     }
 
     public function logout(Request $request){
+        //删除session里的用户
         session()->pull('admin_name');
         return redirect('/admin/login');
     }

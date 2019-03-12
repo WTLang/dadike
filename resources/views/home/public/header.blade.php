@@ -82,7 +82,6 @@
     @show
 
        {{-- 脚部开始 --}}
-
     <div class="footer">
         <div class="container">
             <div class="footer-block">
@@ -92,10 +91,10 @@
                         <div class="footer-widget footer-social">
                         {{-- social block --}}
                             <h2 class="widget-title">友情链接 </h2>
-                            {{-- 友情链接遍历开始 --}}
                             @php
-                                $friend_data = DB::table('friend_link')->where('flk_status',1)->limit(5)->get();
+                            $friend_data = DB::table('friend_link')->where('flk_status',1)->limit(5)->get();
                             @endphp
+                            {{-- 友情链接遍历开始 --}}
                             @foreach($friend_data as $k=>$v)
                             <ul class="listnone">
                                 <li>

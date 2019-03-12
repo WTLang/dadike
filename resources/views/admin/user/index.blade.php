@@ -1,6 +1,8 @@
 {{-- 继承后台模板 --}}
 @extends('admin.public.header')
 
+{{-- 后台内容填充开始 --}}
+
 {{-- 用户管理标签 --}}
 	@section('cxy_02', 'active open')
 		@section('bxy_03', '')
@@ -24,7 +26,6 @@
 			</div>
 			<div class="widget-box">
 			<div class="widget-title">
-
 				{{-- 搜索框 --}}
 				<form action="/admin/user" method="get">
 				<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">

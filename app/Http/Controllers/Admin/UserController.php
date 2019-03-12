@@ -18,6 +18,10 @@ class UserController extends Controller
     {
         $count = $request->input('count',5);
         $search = $request->input('search','');
+        //分页
+        $count = $request->input('count',5);
+        $search = $request->input('search','');
+        //搜索用户名
         $userdata = User::where('us_name','like','%'. $search.'%')->paginate($count);
 
         // 加载视图
