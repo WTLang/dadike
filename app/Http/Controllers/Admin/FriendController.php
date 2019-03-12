@@ -8,11 +8,7 @@ use App\Model\Admin\Friend;
 use App\Http\Requests\FriendStoreRequest;
 use DB;
 
-/*
-|--------------------------------------------------------------------------
-|           大迪克控制器->友情链接控制器 FriendController
-|--------------------------------------------------------------------------
- */
+
 class FriendController extends Controller
 {
     /**
@@ -75,7 +71,7 @@ class FriendController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -108,8 +104,9 @@ class FriendController extends Controller
         $res = $friend->update();
         /* 判断修改 */
         if($res){
-            return redirect('admin/friend')->with('success','修改成功');
+            return redirect('admin/friend?')->with('success','修改成功');
         }else{
+            DB::rollBack();
             return back()->with('error','修改失败');
         }
 

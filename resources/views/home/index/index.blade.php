@@ -1,11 +1,13 @@
 @extends('home.public.header')
 
-@section('content_01')
 
+@section('content_01')
+{{-- 调用轮播图 --}}
+@includeWhen(true,'home.public.lunbo')
 
 {{-- 博客文章分类导航开始 --}}
-<div style="background-color: white;height: 65px;">
-	<div style="float: left;padding-left: 30px;padding-top: 10px;">
+<div style="background-color: white;height: 68px;">
+	<div style="float: left;padding-left: 30px;padding-top: 20px;">
 		@foreach($acm_data_0 as $k => $v)
 		<div class="dropdown" style="float: left;padding-left: 10px;">
 			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -20,7 +22,7 @@
 			@foreach($acm_data_1 as $kk => $vv)
 				<li><a href="#">{{ $vv->acm_name }}</a></li>
 			@endforeach
-
+			
 			</ul>
 		</div>
 		@endforeach
@@ -31,8 +33,10 @@
 
 
 
-{{-- 博客文章推荐 --}}
+
 <div style="height: 1400px;">
+
+	{{-- 左侧内容开始 --}}
 	<div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
 	    <div class="post-block" style="width: 800px;margin-left: 100px;margin-top:30px;">
 	    		{{-- 博客遍历开始 --}}
@@ -71,11 +75,13 @@
 				{{-- 博客遍历结束 --}}
 	    	</div>
 	    </div>
-
+		{{-- 左侧内容结束 --}}
+		
+		{{-- 右侧内容开始 --}}
 	    <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
 	    	<div style="width: 600px;background-color: red;height: 500px;margin-top: 30px;">
 	    		<ul style="background-color: green;padding-top: 30px;"> 
-	    			<li>1</li>
+	    			<li>公告</li>
 	    			<li>2</li>
 	    			<li>3</li>
 	    			<li>4</li>
@@ -85,7 +91,7 @@
 	    	</div>
 	    	<div style="width: 600px;background-color: red;height: 350px;margin-top: 30px;">
 	    		<ul>
-	    			<li>1</li>
+	    			<li>按时间</li>
 	    			<li>2</li>
 	    			<li>3</li>
 	    			<li>4</li>
@@ -95,7 +101,7 @@
 	    	</div>
 	    	<div style="width: 600px;background-color: red;height: 350px;margin-top: 30px;">
 	    		<ul>
-	    			<li>1</li>
+	    			<li>按推荐</li>
 	    			<li>2</li>
 	    			<li>3</li>
 	    			<li>4</li>
@@ -104,9 +110,10 @@
 	    		</ul>
 	    	</div>
 	    </div>
+	    {{-- 右侧内容结束 --}}
+	    
 	</div>
 <div>
 
 </div>
-
 @endsection

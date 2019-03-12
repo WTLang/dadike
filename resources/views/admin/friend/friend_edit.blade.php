@@ -41,6 +41,10 @@
 								<span class="icon">
 									<i class="icon-align-justify"></i>									
 								</span>
+
+								<h5>Text inputs</h5>
+								<h5>修改友情链接</h5>
+
 								<h5>修改友情链接</h5>
 							</div>
 							<div class="widget-content nopadding">

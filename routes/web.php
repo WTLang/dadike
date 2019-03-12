@@ -1,7 +1,6 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-<<<<<<< HEAD
 | 								后台模块路由=Admin
 |--------------------------------------------------------------------------
  */
@@ -17,7 +16,7 @@ Route::group(['middleware' => 'Alogin'],function(){
 	});
 
 });
-//后台登录
+/* 后台登录 */
 Route::resource('admin/login','Admin\LoginController');
 Route::get('admin/login','Admin\LoginController@index')->name('Alogin');
 
@@ -40,6 +39,10 @@ Route::resource('admin/advertising','Admin\AdvertisingController');
 
 /* Admin->联系我们管理路由 */
 Route::resource('admin/aboutus','Admin\AboutUsController');
+
+/* Admin->树洞管理路由*/
+Route::resource('admin/tree','Admin\TreeController');
+
 /*
 |--------------------------------------------------------------------------
 | 								前台模块路由=Home
@@ -50,7 +53,7 @@ Route::resource('admin/aboutus','Admin\AboutUsController');
 Route::resource('/','Home\IndexController');
 
 /* Home->登录页路由 */
-Route::get('/login', 'Home\IndexController@login'); 
+// Route::get('/login', 'Home\IndexController@login'); 
 
 /* Home->判断登录路由 */
 Route::post('/dologin', 'Home\IndexController@dologin');
@@ -70,12 +73,11 @@ Route::get('/logout', 'Home\IndexController@logout');
 /* Home->个人中心 */
 Route::resource('/personal', 'Home\PersonalController');
 
-/* Home->关于我们 */
 Route::get('/aboutus', 'Home\AboutUsController@index');
 /* Home->关于我们->信息写入数据库 */
 Route::post('/aboutus/store', 'Home\AboutUsController@store');
 
-//前台登录页面
+/*前台登录页面*/
 Route::get('/login', 'Home\IndexController@login')->name('login');
 
 /*中间件:需要登录后才能进入的页面*/
@@ -96,5 +98,4 @@ Route::group(['middleware' => 'login'],function(){
 	Route::get('/namecheck', 'Home\IndexController@namecheck');
 
 });
-
 

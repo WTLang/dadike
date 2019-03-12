@@ -22,6 +22,7 @@ class FriendStoreRequest extends FormRequest
     }
 
     /**
+     *
      * 存放验证规则
      * @return array
      */

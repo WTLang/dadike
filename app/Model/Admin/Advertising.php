@@ -10,12 +10,15 @@ use Illuminate\Database\Eloquent\Model;
 |--------------------------------------------------------------------------
  */
 
+
 class Advertising extends Model
 {
     /**
      * 定义的表
      */
+
     public $table = "advertising_management";
+
 
     /**
      * 与模型关联的主键

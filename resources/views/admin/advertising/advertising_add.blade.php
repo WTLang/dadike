@@ -19,16 +19,19 @@
 
 				<h1>添加广告</h1>
 			</div>
+
+
 			{{-- 显示错误消息 开始 --}}
+
             @if (session('success'))
                 <div class="lert alert-success">
-                    {{ session('success') }}
+                    {{ session('ad_success') }}
                 </div>
             @endif
 
             @if (session('error'))
                 <div class="alert alert-error">
-                    {{ session('error') }}
+                    {{ session('ad_error') }}
                 </div>
             @endif
 			<div id="breadcrumb">
@@ -41,12 +44,13 @@
 						<div class="widget-box">
 							<div class="widget-title">
 								<span class="icon">
-									<i class="icon-align-justify"></i>									
-								</span>
+									<i class="icon-align-justify"></i>
+								</span>										
 								<h5>添加广告</h5>
 							</div>
 							<div class="widget-content nopadding">
 								{{-- 显示错误信息 --}}
+
 									@if (count($errors) > 0)
 									    <div class="alert alert-error">
 									        <ul>
@@ -56,8 +60,7 @@
 									        </ul>
 									    </div>
 									@endif
-								<form action="/admin/advertising" method="post" class="form-horizontal" enctype="multipart/form-data"
- />
+								<form action="/admin/advertising" method="post" class="form-horizontal" enctype="multipart/form-data"/>
 								{{ csrf_field() }}
 									<div class="control-group">
 										<label class="control-label">广告名称</label>

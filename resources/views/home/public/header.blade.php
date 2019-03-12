@@ -16,6 +16,12 @@
     @yield('meta')
     {{-- 微博关注 --}}
     <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    {{-- 轮播图样式 --}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/reception_public/Rotation/css/normalize.css" />
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/reception_public/Rotation/css/main.css">
 </head>
 <body>
     {{-- 头部开始 --}}
@@ -43,10 +49,10 @@
                                     <li><a href="blog-single.html" title="Blog Single ">帖子分类二</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#" title="Features">新闻</a>
+                            <li><a href="#" title="Features">树洞</a>
                                 <ul>
-                                    <li><a href="testimonial.html" title="Service List">新闻分类一</a></li>
-                                    <li><a href="styleguide.html" title="Service Detail">新闻分类二</a></li>
+                                    <li><a href="testimonial.html" title="Service List">吐槽</a></li>
+                                    <li><a href="styleguide.html" title="Service Detail">发表</a></li>
                                 </ul>
                             </li>
                             <li><a href="/aboutus" title="Contact Us">关于我们</a></li>
@@ -67,9 +73,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>   
     {{-- 头部结束 --}}
-
+    
     @section('content_01')
 
 
@@ -160,3 +166,4 @@
 </body>
 
 </html>
+

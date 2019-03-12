@@ -125,6 +125,7 @@
 					<ul>
 						<li class="@yield('bxy_20')"><a href="/admin/advertising">浏览广告</a></li>
 						<li class="@yield('bxy_21')"><a href="/admin/advertising/create">添加广告</a></li>
+
 						<li class="@yield('bxy_22')" hidden><a href="">修改广告</a></li>
 					</ul>
 				</li>
@@ -135,6 +136,16 @@
 					<ul>
 						<li class="@yield('bxy_23')"><a href="/admin/aboutus">查看消息</a></li>
 						<li class="@yield('bxy_24')"><a href="">发布处理结果</a></li>
+					</ul>
+				</li>
+
+				{{-- 10.帖子模块 --}}
+				<li class="submenu @yield('cxy_11')">
+					<a href="#"><i class="icon icon-heart"></i></i> <span>树洞管理</span> <span class="label">3</span></a>
+					<ul>
+						<li class="@yield('bxy_25')"><a href="/admin/tree">浏览树洞</a></li>
+						<li class="@yield('bxy_26')"><a href="/admin/tree/create">发表树洞</a></li>
+						<li class="@yield('bxy_27')"><a href="">修改心情</a></li>
 					</ul>
 				</li>
 
