@@ -20,7 +20,12 @@ class IndexController extends Controller
     {   
         /* 导航分类->查找顶级分类传入视图参数 */
         $acm_data_0 = DB::table('article_categories_manage')->where('acm_pid',0)->get();
-        return view('home.index.index',['acm_data_0'=>$acm_data_0]);
+
+        /*文章推荐内容*/
+        $am_data = DB::table('article_manage')->where('am_status',1)->orderBy('am_id', 'desc')->limit(4)->get();
+        // dd($am_data);
+
+        return view('home.index.index',['acm_data_0'=>$acm_data_0,'am_data'=>$am_data]);
     }
 
     /**
