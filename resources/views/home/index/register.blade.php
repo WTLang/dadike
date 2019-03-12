@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <input type="button" onclick="send(this)" id="sendBtn" value="发送验证码" class="btn btn-white btn-primary mt20" style="width: 110px;margin-top: 33px;padding-left: 20px;" >
+                            <input type="button" onclick="send(this)" id="sendBtn" value="发送验证码" class="btn btn-white btn-primary mt20" style="width: 130px;margin-top: 33px;padding-left: 20px;" >
 			            </div>
 
                         <div class="col-md-8">
@@ -84,7 +84,7 @@
 <script>
     function editCon()
         {
-            var t = 60;
+            var t = 30;
             var time = null;
             if(time == null){
                 time = setInterval(function(){

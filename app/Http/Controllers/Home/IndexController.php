@@ -25,22 +25,16 @@ class IndexController extends Controller
 
         /*文章推荐内容*/
         $am_data = DB::table('article_manage')->where('am_status',1)->orderBy('am_id', 'desc')->limit(4)->get();
-        // dd($am_data);
 
-
-        /*连接友情链接数据表*/
-        $friend_data = Friend::where('flk_status',1)->limit(5)->get();
         /*连接广告数据表*/
-
         $advertising_data = Advertising::where('ad_status',1)->limit(4)->get();
+        
         /* 获取第一个id */
-
         $first_id = $advertising_data[0]->ad_id;
         /*接收信息*/
         return view('home.index.index',[
             'acm_data_0'=>$acm_data_0,
             'am_data'=>$am_data,
-            'friend_data'=>$friend_data,
             'advertising_data'=>$advertising_data,
             'first_id'=>$first_id
         ]);

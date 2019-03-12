@@ -52,9 +52,6 @@ Route::resource('admin/tree','Admin\TreeController');
 /* Home->首页路由 */
 Route::resource('/','Home\IndexController');
 
-/* Home->登录页路由 */
-// Route::get('/login', 'Home\IndexController@login'); 
-
 /* Home->判断登录路由 */
 Route::post('/dologin', 'Home\IndexController@dologin');
 
@@ -67,12 +64,6 @@ Route::get('/check', 'Home\IndexController@check');
 /* Home->检测用户名是否与数据库重复 */
 Route::get('/namecheck', 'Home\IndexController@namecheck');
 
-/* Home->登出 */
-Route::get('/logout', 'Home\IndexController@logout');
-
-/* Home->个人中心 */
-Route::resource('/personal', 'Home\PersonalController');
-
 Route::get('/aboutus', 'Home\AboutUsController@index');
 /* Home->关于我们->信息写入数据库 */
 Route::post('/aboutus/store', 'Home\AboutUsController@store');
@@ -84,18 +75,10 @@ Route::get('/login', 'Home\IndexController@login')->name('login');
 Route::group(['middleware' => 'login'],function(){
 	//前台个人信息更新
 	Route::post('/personal/update', 'Home\PersonalController@update');
-	//前台注册检测用户名是否与数据库重复
-	Route::get('/namecheck', 'Home\IndexController@namecheck');
 	//前台登出
 	Route::get('/logout', 'Home\IndexController@logout');
 	//前台个人中心
 	Route::resource('/personal', 'Home\PersonalController')->middleware('login');
-	//前台发送验证码类
-	Route::get('/send', 'Home\IndexController@send');
-	//前台检测验证码是否正确
-	Route::get('/check', 'Home\IndexController@check');
-	//前台检测用户名是否与数据库重复
-	Route::get('/namecheck', 'Home\IndexController@namecheck');
 
 });
 

@@ -19,7 +19,7 @@ class AboutUsController extends Controller
 	 * @return 视图
 	 */
     public function index()
-    {
+    {   
     	return view('home.aboutus.index');
     }
 
