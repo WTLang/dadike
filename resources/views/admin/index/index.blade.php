@@ -67,7 +67,8 @@
 		{{-- 统计表开始 --}}
 		<div id="content">
 			<div id="content-header">
-				<h1>大迪克</h1>
+				<h1>{{ $title }}</h1>
+
 				<div class="btn-group">
 					<a class="btn btn-large tip-bottom" title="消息" style="width: 60px;">
 						<i class="icon-comment"></i>
@@ -79,8 +80,16 @@
 				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>分析</a>
 				<a href="/admin/index" class="current">本站</a>
 			</div>
+		@if (session('bulletin_error_error'))
+			<div class="alert alert-error">
+				<button class="close" data-dismiss="alert">×</button>
+				<strong>未知原因,发布失败!</strong>
+			</div>
+		@endif
 		
-
+		@if (session('bulletin_success'))
+			<script>alert('发布成功,前台首页已更新最新消息')</script>
+		@endif
 
 		<div class="span12">
 			<div class="row-fluid">
@@ -96,7 +105,7 @@
 						<div class="invoice-content">
 							<div class="invoice-head">
 								<div class="invoice-meta">
-									 <span class="invoice-number">大迪克 </span><span class="invoice-date">创建时间: 2019-2-25</span>
+									 <span class="invoice-number">{{ $title }} </span><span class="invoice-date">创建时间: 2019-2-25</span>
 								</div>
 								<h5>网站类型:技术博客</h5>
 								<div class="invoice-to">
@@ -119,6 +128,26 @@
 										</li>
 									</ul>
 								</div>
+							</div>
+							<div class="widget-content center">
+								<ul class="stats-plain">
+									<li>										
+										<h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $admin_data }}</font></font></h4>
+										<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理员</font></font></span>
+									</li>
+									<li>										
+										<h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $users_data }}</font></font></h4>
+										<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font></font></span>
+									</li>
+									<li>										
+										<h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $acm_data }}</font></font></h4>
+										<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文章</font></font></span>
+									</li>
+									<li>										
+										<h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $ad_data }}</font></font></h4>
+										<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接入广告</font></font></span>
+									</li>
+								</ul>
 							</div>
 							<div>
 								<table class="table table-bordered">
@@ -180,26 +209,14 @@
 								</tbody>
 								</table>
 							</div>
-							
-							<h5>Do you know?</h5>
-							<p>
-								There's nothing special about what's in here.
-							</p>
-							<p class="help-block">
-								<strong>Note:</strong> This line of English is just for good looking,
-							</p>
-							
-							{{-- 微博关注 --}}
-							<wb:follow-button uid="6124227284" type="red_1" width="67" height="24" hidden></wb:follow-button>
-
-							{{-- 联系QQ --}}
-							<a href="tencent://message/?Menu=yes&uin=760811659& Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" hidden>
-								<button class="btn btn-info">
-									<img src="/backstage_public/img/qq112233.png" alt="" style="width: 15px;height: 16px;">
-									联系我们
-								</button>
-							</a>
-
+							<div>
+						<h5><span>站前公告</span></h5>
+						<form action="/admin/zhanqian" method="post">
+							{{ csrf_field() }}
+							<textarea name="bulletin" cols="30" rows="10" style="margin:0px 0px 0px 30px;width: 550px;resize:none;font-size:22px;"></textarea>
+							<input type="submit" value="发布" style="margin:175px 0px 0px 30px;width: 80px;" class="btn btn-danger">
+						</form>
+						</div>
 						</div>
 					</div>
 				</div>

@@ -13,6 +13,8 @@ Route::group(['middleware' => 'Alogin'],function(){
 		Route::get('index', 'Admin\IndexController@index');
 
 		Route::get('count', 'Admin\IndexController@count');
+
+		Route::post('zhanqian', 'Admin\IndexController@zhanqian');
 	});
 
 });

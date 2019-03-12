@@ -46,10 +46,10 @@
 				{{-- 1.统计图模块 --}}
 				{{-- class="active"是左侧白色三角指向图标 --}}
 				<li class="submenu @yield('cxy_01')">
-					<a href="#"><i class="icon icon-home"></i><span>仪表盘</span><span class="label">2</span></a>
+					<a href="#"><i class="icon icon-home"></i><span>仪表盘</span></a>
 					<ul>
 						<li class="@yield('bxy_01')"><a href="/admin/index">本站信息</a></li>
-						<li class="@yield('bxy_02')"><a href="/admin/count">网站总览</a></li>
+						<li class="@yield('bxy_02')" hidden><a href="/admin/count">网站总览</a></li>
 					</ul>
 				</li>
 

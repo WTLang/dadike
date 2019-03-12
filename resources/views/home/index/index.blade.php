@@ -44,7 +44,7 @@
 		        <div class="row ">
 		            <div class="col-md-6">
 		                <div class="post-img" >
-		                    <a href="#"><img src="/all_uploads/{{ $v->am_img }}"class="img-responsive" style="padding-top: 40px;"></a>
+		                    <a href="#"><img src="/all_uploads/{{ $v->am_img }}"class="img-responsive" style="padding-top: 40px;width: 360px;height: 235px;"></a>
 		                </div>
 		            </div>
 		            <div class="col-md-6">
@@ -79,25 +79,29 @@
 		
 		{{-- 右侧内容开始 --}}
 	    <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
-	    	<div style="width: 600px;background-color: red;height: 500px;margin-top: 30px;">
-	    		<ul style="background-color: green;padding-top: 30px;"> 
-	    			<li>公告</li>
-	    			<li>2</li>
-	    			<li>3</li>
-	    			<li>4</li>
-	    			<li>5</li>
-	    			<li>6</li>
-	    		</ul>
+	    	<div style="width: 600px;background-color: white;height: 350px;margin-top: 30px;">
+	    		<div class="widget widget-archives">
+                    {{-- 公告 --}}
+                    <h1 class="widget-title"> 公告: </h1>
+                    <ul class="listnone">
+                        <li style="font-size: 20px;margin: 0px 20px 0px 20px;line-height :35px;">
+                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        	{{ $web_data }}
+                        </li>
+                    </ul>
+                </div>
 	    	</div>
 	    	<div style="width: 600px;background-color: red;height: 350px;margin-top: 30px;">
-	    		<ul>
-	    			<li>按时间</li>
-	    			<li>2</li>
-	    			<li>3</li>
-	    			<li>4</li>
-	    			<li>5</li>
-	    			<li>6</li>
-	    		</ul>
+	    		<div class="widget widget-archives">
+                    {{-- 公告 --}}
+                    <h1 class="widget-title"> 公告: </h1>
+                    <ul class="listnone">
+                        <li style="font-size: 20px;margin: 0px 20px 0px 20px;line-height :35px;">
+                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        	{{ $web_data }}
+                        </li>
+                    </ul>
+                </div>
 	    	</div>
 	    	<div style="width: 600px;background-color: red;height: 350px;margin-top: 30px;">
 	    		<ul>

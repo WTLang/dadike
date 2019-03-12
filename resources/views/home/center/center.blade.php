@@ -43,21 +43,14 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="widget widget-contact">
                     {{-- 显示错误的信息 --}}
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                    {{-- 显示修改的结果信息 --}}
-                    @if(session('psuccess'))
-                        <p>success!</p>
-                    @endif
-                    @if(session('perror'))
-                        <p>error!</p>
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     @endif
                     <h3 class="widget-title">我的信息</h3>
                     @if($userdata)
@@ -91,6 +84,7 @@
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        {{--  判断是否初次进入个人中心 --}}
                         @if(isset($userdata['infos']))
                         <form action="/personal/update" method="POST" enctype="multipart/form-data">
                         {{ method_field('PUT') }}
@@ -99,6 +93,18 @@
                         @endif
                             {{ csrf_field() }}
                             <img src="{{ !empty($userdata['infos']->usds_head)?'/all_uploads/'.$userdata['infos']->usds_head :'\reception_public\images\head\default.jpg' }}" alt="头像" style="width: 100px;height: 100px;float: right; " class="img-circle" id="img">
+
+                             {{-- 显示修改的结果信息 --}}
+                            @if(session('psuccess'))
+                                <div class="alert alert-success" style="width: 600px;">
+                                    修改成功!
+                                </div>
+                            @endif
+                            @if(session('perror'))
+                                <div class="alert alert-danger">
+                                    修改失败!
+                                </div>
+                            @endif
                             <h1>更多信息</h1>
                             <p>请完善您的个人信息,让大家都认识你!</p>
                             <label for="fileinp">

@@ -31,12 +31,17 @@ class IndexController extends Controller
         
         /* 获取第一个id */
         $first_id = $advertising_data[0]->ad_id;
+
+        /*告示内容*/
+        $web_data = (DB::table('web')->where('web_id',1)->get())[0]->web_bulletin;
+        // dd($web_data);
         /*接收信息*/
         return view('home.index.index',[
             'acm_data_0'=>$acm_data_0,
             'am_data'=>$am_data,
             'advertising_data'=>$advertising_data,
-            'first_id'=>$first_id
+            'first_id'=>$first_id,
+            'web_data'=>$web_data
         ]);
     }
 
