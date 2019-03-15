@@ -1,11 +1,13 @@
 {{-- 继承后台模板 --}}
 @extends('admin.public.header')
+
 {{-- 后台内容填充开始 --}}
 
-{{-- 友情链接标签 --}}
+{{-- 树洞链接标签 --}}
 	@section('cxy_11', 'active open')
 	@section('bxy_25', 'active')
-	@section('content_01')
+
+@section('content_01')
 		{{-- 统计表开始 --}}
 		<div id="content">
 			<div id="content-header">
@@ -15,7 +17,6 @@
 				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i> 树洞管理</a>
 				<a href="#" class="current">浏览树洞</a>
 			</div>
-
 				<div class="span12">		
 						<div class="widget-box">
 							<div class="widget-title">
@@ -23,7 +24,6 @@
 							{{-- 搜索框开始 --}}
 							<form action="/admin/tree" method="get" style="float: right;padding-top: 3px;padding-right: 3px;">
 								<label>Search: <input type="text" aria-controls="DataTables_Table_0" name="search" value="{{ $request['search'] or '' }}" ><button class="btn btn-info" style="float: right;padding-top: 3px;padding-right: 15px;">搜索</button></label>
-
 							</form>
 							{{-- 搜索框结束 --}}
 							</div>
@@ -41,9 +41,6 @@
 									</tr>
 									</thead>
 									<tbody>
-									{{--<tr class="gradeX" {{ $nbsp }}>
-										<td >搜索结果为空，<a href="">返回</a></td>
-									</tr>--}}
 									@foreach($tree_data as $k=>$v)
 									<tr class="gradeX">
 									<td style="padding-left:23px;padding-top:28px;width:25px">{{ $v->trd_id }}</td>
@@ -64,12 +61,13 @@
 									</tbody>
 									</table>	 
 								</div>
-								</div>
-									{{-- 分页开始 --}}
-									<div class="pagination alternate">
-     								{{ $tree_data->links() }}
-     								</div> 
-     								{{-- 分页结束 --}}
-								</div>
+							</div>
+								{{-- 分页开始 --}}
+								<div class="pagination alternate">
+ 								{{ $tree_data->links() }}
+ 								</div> 
+ 								{{-- 分页结束 --}}
+						</div>
+		{{-- 统计表结束 --}}
 @endsection
 {{-- 后台内容填充结束 --}}

@@ -1,10 +1,8 @@
 @extends('home.public.header')
 
 @section('content_01')
-
 <div class="leave-comments" style="height:342px;margin-top:0px;width:1000px;margin-left:230px">
     {{-- 显示错误信息 --}}
-
     @if (count($errors) > 0)
         <div class="alert alert-danger" style="margin-top:-40px;height:55px;margin-left:-40px;width:1000px;padding-left:42px">
                 <button class="close" data-dismiss="alert">×</button>
@@ -48,7 +46,6 @@
                 {{-- 树洞遍历 --}}
                 @foreach($tree_data as $k=>$v)
                 <div class="comment-body">
-                    
                     <div class="comment-info" style="padding-left:0px">
                         <div class="comment-header">
                             <div class="comment-meta"><span class="comment-meta-date pull-right" >{{ $v->created_at }} </span></div>
@@ -84,7 +81,6 @@
         $("#text-count").text(count);
     });
 </script>
-
 {{-- 点赞 --}}
 <script type="text/javascript">
     function getCaption(obj){

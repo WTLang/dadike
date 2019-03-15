@@ -91,7 +91,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="padding-left: 125px;">
                         <div class="footer-widget footer-social">
-                        {{-- social block --}}
+                        {{-- 友情链接开始 --}}
                             <h2 class="widget-title">友情链接 </h2>
                             @php
                             $friend_data = DB::table('friend_link')->where('flk_status',1)->limit(5)->get();
@@ -106,7 +106,7 @@
                             @endforeach
                             {{-- 友情链接遍历结束 --}}
                         </div>
-                    {{-- /.social block --}}
+                    {{-- 友情链接结束 --}}
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="footer-widget footer-social">
@@ -124,7 +124,6 @@
                                 </li>
                             </ul>
                         </div>
-                    {{-- /.social block --}}
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                         <div class="footer-widget widget-newsletter">
@@ -134,9 +133,7 @@
                                 {{-- 微信二维码图片 --}}
                                 <img src="/reception_public/Rotation/img/code.png" alt="" style="width:150px;height:150px">
                             </div>
-                        {{-- /input-group --}}
                         </div>
-                    {{-- newsletter block --}}
                     </div>
                 </div>
             <div class="tiny-footer">
@@ -150,7 +147,6 @@
                     </div>
                 </div>
             </div>
-            {{-- /.tiny footer block --}}
             </div>
         {{-- 脚部结束 --}}
         </div>

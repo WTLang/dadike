@@ -89,7 +89,6 @@ class TreeController extends Controller
 
     /**
      * 删除树洞
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($trd_id)

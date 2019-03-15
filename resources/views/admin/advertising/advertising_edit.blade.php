@@ -5,18 +5,11 @@
 
 {{-- 广告管理标签 --}}
 	@section('cxy_09', 'active open')
-		@section('bxy_20', '')
-		@section('bxy_21', 'active')
-		@section('bxy_22', '')
 
 @section('content_01')
 		{{-- 统计表开始 --}}
-
 		<div id="content">
-
 			<div id="content-header">
-				
-
 				<h1>修改广告</h1>
 			</div>
 			{{-- 显示错误消息 开始 --}}
@@ -25,13 +18,11 @@
                     {{ session('success') }}
                 </div>
             @endif
-
             @if (session('error'))
                 <div class="alert alert-error">
                     {{ session('error') }}
                 </div>
             @endif
-
             @if (session('ad_error'))
                 <div class="alert alert-error">
                     {{ session('ad_error') }}
@@ -63,8 +54,8 @@
 									    </div>
 									@endif
 								<form action="/admin/advertising/{{ $advertising->ad_id }}" method="post" class="form-horizontal" enctype="multipart/form-data"/>
-								{{ csrf_field() }}
-								{{ method_field('PUT') }}
+										{{ csrf_field() }}
+										{{ method_field('PUT') }}
 									<div class="control-group">
 										<label class="control-label">广告名称</label>
 										<div class="controls">
@@ -113,8 +104,6 @@
 						</div>						
 					</div>
 				</div>
-
 		{{-- 统计表结束 --}}
-
 @endsection
 {{-- 后台内容填充结束 --}}

@@ -16,5 +16,6 @@ class Tree extends Model
      */
     protected $primaryKey = 'trd_id';
 
+    /*获取所有*/
     protected $guarded = [];
 }

@@ -1,9 +1,7 @@
 @extends('home.public.header')
 
 @section('content_01')
-
     {{-- 显示错误信息 --}}
-
     <div class="comments-area">
     <h1 class="reply-title" style="margin-top:10px; padding-left:678px">我的发表</h1></br>
     @if (session('success'))
@@ -45,16 +43,4 @@
         </ul>
     </div>
 </div>
-
-<script type="text/javascript">
-    $("#textarea").on('input', function(event) {
-        var aa = $("#textarea").val().length;
-        if (aa > 225) {
-            alert("超出字数");
-            return false;
-            $("#textarea").attr("disabled",true);
-        }
-    });
-</script>
-
 @endsection

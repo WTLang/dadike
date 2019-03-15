@@ -5,14 +5,10 @@
 
 {{-- 广告管理标签 --}}
 	@section('cxy_09', 'active open')
-		@section('bxy_20', 'active')
-
-		@section('bxy_21', '')
-		@section('bxy_22', '')
+	@section('bxy_20', 'active')
 
 @section('content_01')
 		{{-- 统计表开始 --}}
-		
 		<div id="content">
 			<div id="content-header">
 				<h1>浏览广告</h1>
@@ -34,7 +30,6 @@
 								{{-- 搜索框开始 --}}
 								<form action="/admin/advertising" method="get" style="float: right;padding-top: 3px;padding-right: 3px;">
 									Search: <input type="text" aria-controls="DataTables_Table_0" name="search" value="{{ $request['search'] or '' }}" ><button class="btn btn-info" style="float: right;padding-top: 3px;padding-right: 15px;">搜索</button>
-
 								</form>
 								{{-- 搜索框结束 --}}
 							</div>
@@ -53,9 +48,6 @@
 									</tr>
 									</thead>
 									<tbody>
-									{{--<tr class="gradeX" {{ $nbsp }}>
-										<td >搜索结果为空，<a href="">返回</a></td>
-									</tr>--}}
 									@foreach($data as $k=>$v)
 									<tr class="gradeX">
 									<td style="padding-left:22px;padding-top:19px">{{ $v->ad_id }}</td>
@@ -77,14 +69,14 @@
 									</tr>
            							 @endforeach
 									</tbody>
-									</table>	 
-								</div>
-								</div>
-									{{-- 分页开始 --}}
-									<div class="pagination alternate">
-     								{{ $data->appends($request)->links() }}
-     								</div> 
-     								{{-- 分页结束 --}}
-								</div>
+								</table>	 
+							</div>
+						</div>
+						{{-- 分页开始 --}}
+						<div class="pagination alternate">
+						{{ $data->appends($request)->links() }}
+						</div> 
+						{{-- 分页结束 --}}
+					</div>
 @endsection
 {{-- 后台内容填充结束 --}}

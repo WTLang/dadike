@@ -1,4 +1,3 @@
-<<<<<<< HEAD
    {{-- 脚部开始 --}}
     <div class="footer">
         <div class="container">

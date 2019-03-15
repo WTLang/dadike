@@ -1,10 +1,12 @@
 {{-- 继承后台模板 --}}
 @extends('admin.public.header')
+
 {{-- 后台内容填充开始 --}}
 
 {{-- 友情链接标签 --}}
 	@section('cxy_06', 'active open')
-		@section('bxy_14', 'active')
+	@section('bxy_14', 'active')
+
 @section('content_01')
 		{{-- 统计表开始 --}}
 		<div id="content">
@@ -15,7 +17,6 @@
 				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i> 友情链接</a>
 				<a href="#" class="current">浏览友情链接</a>
 			</div>
-
 				<div class="span12">		
 						<div class="widget-box">
 							<div class="widget-title">
@@ -23,7 +24,6 @@
 							{{-- 搜索框开始 --}}
 							<form action="/admin/friend" method="get" style="float: right;padding-top: 3px;padding-right: 3px;">
 								<label>Search: <input type="text" aria-controls="DataTables_Table_0" name="search" value="{{ $request['search'] or '' }}" ><button class="btn btn-info" style="float: right;padding-top: 3px;padding-right: 15px;">搜索</button></label>
-
 							</form>
 							{{-- 搜索框结束 --}}
 							</div>
@@ -64,16 +64,16 @@
 									</td>
 									</tr>
            							 @endforeach
-
 									</tbody>
-									</table>	 
-								</div>
-								</div>
-									{{-- 分页开始 --}}
-									<div class="pagination alternate">
-     								{{ $data->appends($request)->links() }}
-     								</div> 
-     								{{-- 分页结束 --}}
-								</div>
+								</table>	 
+							</div>
+						</div>
+							{{-- 分页开始 --}}
+							<div class="pagination alternate">
+							{{ $data->appends($request)->links() }}
+							</div> 
+							{{-- 分页结束 --}}
+					</div>
+		{{-- 统计表结束 --}}
 @endsection
 {{-- 后台内容填充结束 --}}

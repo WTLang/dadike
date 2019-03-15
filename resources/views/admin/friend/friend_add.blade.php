@@ -5,18 +5,12 @@
 
 {{-- 友情链接标签 --}}
 	@section('cxy_06', 'active open')
-		@section('bxy_14', '')
-		@section('bxy_15', 'active')
-		@section('bxy_16', '')
+	@section('bxy_15', 'active')
 
 @section('content_01')
 		{{-- 统计表开始 --}}
-
 		<div id="content">
-
 			<div id="content-header">
-				
-
 				<h1>添加友情链接</h1>
 			</div>
 			{{-- 显示错误消息 开始 --}}
@@ -25,7 +19,6 @@
                     {{ session('success') }}
                 </div>
             @endif
-
             @if (session('error'))
                 <div class="alert alert-error">
                     {{ session('error') }}
@@ -57,7 +50,7 @@
 									    </div>
 									@endif
 								<form action="/admin/friend" method="post" class="form-horizontal" />
-								{{ csrf_field() }}
+									{{ csrf_field() }}
 									<div class="control-group">
 										<label class="control-label">网站名称</label>
 										<div class="controls">
@@ -105,8 +98,6 @@
 						</div>						
 					</div>
 				</div>
-
 		{{-- 统计表结束 --}}
-
 @endsection
 {{-- 后台内容填充结束 --}}

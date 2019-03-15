@@ -88,9 +88,7 @@ class AdvertisingController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
+     * 一键发布/关闭
      * @return \Illuminate\Http\Response
      */
     public function show($ad_id)
