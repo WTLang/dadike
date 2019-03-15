@@ -31,8 +31,7 @@ class AdvertisingController extends Controller
     }
 
     /**
-     *
-     * @return 加载视图
+     *  加载视图
      */
     public function create()
     {
@@ -68,6 +67,7 @@ class AdvertisingController extends Controller
         /* 处理接收的数据 */
         $data = $request->except(['_token']);
         $data['ad_image']=$img_res;
+        /* 添加数据 */
         $ad = new Advertising;
         $ad->ad_name = $data['ad_name'];
         $ad->ad_url = $data['ad_url']; 
@@ -78,20 +78,16 @@ class AdvertisingController extends Controller
         /*执行添加*/
         $res = $ad->save();
         /* 判断添加 */
-        if($res)
-        {
+        if($res){
             return redirect('admin/advertising')->with('ad_success','添加成功');
-        }else
-        {
+        }else{
             return back()->with('ad_error','添加失败');
         }  
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 更新广告状态
+     * @return bool
      */
     public function show($ad_id)
     {
@@ -103,10 +99,11 @@ class AdvertisingController extends Controller
         $ad->ad_status = $new_status;
         /*更新数据*/
         $res = $ad->update();
+        /*判断*/
         if($res){
-                return redirect('admin/advertising');
+            return redirect('admin/advertising');
         }else{
-                return back();
+            return back();
         }
     }
 
@@ -149,6 +146,7 @@ class AdvertisingController extends Controller
         /* 判断上传文件是否发生变化 */
         if ($img_file) {
             $img_res = $img_file->store('Backstage_images');
+            /* 更新数据 */
             $ad = Advertising::find($ad_id);
             $ad->ad_name = $request->input('ad_name','');
             $ad->ad_image = $img_res;
@@ -169,7 +167,9 @@ class AdvertisingController extends Controller
             }
         }else{
             $new_data = DB::table('advertising_management')->where('ad_id',$ad_id)->get();
+            /* 旧图的路径 */
             $old_img_path= $new_data[0]->ad_image;
+            /* 更新数据 */
             $ad = Advertising::find($ad_id);
             $ad->ad_name = $request->input('ad_name','');
             $ad->ad_image = $old_img_path;

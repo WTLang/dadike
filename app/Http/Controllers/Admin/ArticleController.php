@@ -26,8 +26,7 @@ class ArticleController extends Controller
         /* 接收搜索信息 */
         $search = $request->input('search','');
         /* 模糊搜索 */
-        $data = ArticleManage::where('am_title','like','%'.$search.'%')->paginate($count);
-        // dd($data);
+        $data = ArticleManage::where('am_title','like','%'.$search.'%')->orderBy('am_create_time','desc')->paginate($count);
          return view('admin.article_manage.index',['data'=>$data,'request'=>$request->all()]);
     }
 
@@ -105,7 +104,8 @@ class ArticleController extends Controller
         $res = $am_data->update();
         /* 判断 */
         if ($res) {
-            return redirect('admin/am');
+            return back();
+            // return redirect('admin/am');
         }else{
             return back();
         }
@@ -117,12 +117,10 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
         /* 获取文章分类的一级分类导入到视图中 */
         $acm_sort = DB::table('article_categories_manage')
                    ->where('acm_path','like','%,%')
                    ->get();
-
         /* 获取该id的在文章表里面的所有信息 */
         $am_data = DB::table('article_manage')
                    ->where('am_id',$id)
@@ -160,6 +158,7 @@ class ArticleController extends Controller
         if ($new_file) {
             /* 把新图放入文件夹中 */
             $new_file_path = $new_file->store('Backstage_images');
+            /* 更新数据 */
             $am_data = ArticleManage::find($id);
             $am_data->am_title = $request->input('am_title');
             $am_data->am_author = $request->input('am_author');
@@ -178,6 +177,7 @@ class ArticleController extends Controller
                 return back()->with('article_update_error','修改失败');
             }
         }else{
+            /* 更新数据 */
             $am_data = ArticleManage::find($id);
             $am_data->am_title = $request->input('am_title');
             $am_data->am_author = $request->input('am_author');
@@ -201,7 +201,6 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
         /* 获取要删除的该id的所有信息 */
         $res = ArticleManage::destroy($id);
         /* 判断 */

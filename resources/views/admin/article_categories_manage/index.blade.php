@@ -73,7 +73,7 @@
 			</div>
 			
 			@if (session('sort_success'))
-				<div class="rt-success alert-block">
+				<div class="alert alert-success alert-block">
 					<button class="close" data-dismiss="alert">×</button>
 					<strong>添加成功!</strong>
 				</div>
@@ -159,7 +159,7 @@
 									{{ method_field('DELETE') }}
 									<input type="submit" value="删除" class="btn btn-danger btn-mini" style="width: 68px;">
 								</form>
-								<a href="/admin/acm/create/{{ $v->acm_id }}" class="btn btn-inverse btn-mini" style="margin-top: 4px;width: 120px;">添加子分类</a>
+								<a href="/admin/acm/create/{{ $v->acm_id }}" class="btn btn-inverse btn-mini {{ $v->acm_pid == 0 ? ' ':'hidden' }}" style="margin-top: 4px;width: 120px;"  >添加子分类</a>
 							</td>
 						</tr>
 						@endforeach

@@ -11,7 +11,13 @@ use DB;
 use SESSION;
 use App\Model\Home\Friend;
 use App\Model\Home\Advertising;
+use URL;
 
+/*
+|--------------------------------------------------------------------------
+|           大迪克控制器->前台->主页控制器
+|--------------------------------------------------------------------------
+ */
 class IndexController extends Controller
 {
     /**
@@ -22,33 +28,32 @@ class IndexController extends Controller
     {   
         /* 导航分类->查找顶级分类传入视图参数 */
         $acm_data_0 = DB::table('article_categories_manage')->where('acm_pid',0)->get();
-
-        /*文章推荐内容*/
+        /*文章左侧内容*/
         $am_data = DB::table('article_manage')->where('am_status',1)->orderBy('am_id', 'desc')->limit(4)->get();
-
         /*连接广告数据表*/
         $advertising_data = Advertising::where('ad_status',1)->limit(4)->get();
-        
         /* 获取第一个id */
         $first_id = $advertising_data[0]->ad_id;
-
         /*告示内容*/
         $web_data = (DB::table('web')->where('web_id',1)->get())[0]->web_bulletin;
-        // dd($web_data);
+        /*文章最新内容*/
+        $am_data_1 = DB::table('article_manage')->where('am_status',1)->orderBy('am_create_time', 'desc')->limit(5)->get();
+        /*文章随机内容*/
+        $am_data_2 = DB::table('article_manage')->orderBy(DB::raw('rand()'))->limit(5)->get();
         /*接收信息*/
         return view('home.index.index',[
             'acm_data_0'=>$acm_data_0,
             'am_data'=>$am_data,
             'advertising_data'=>$advertising_data,
             'first_id'=>$first_id,
-            'web_data'=>$web_data
+            'web_data'=>$web_data,
+            'am_data_1'=>$am_data_1,
+            'am_data_2'=>$am_data_2
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * 加载视图
      */
     public function create(Request $request)
     {
@@ -56,14 +61,12 @@ class IndexController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * 用户注册
+     * @return bool
      */
     public function store(Request $request)
     {
-        //表单输入判断
+        /* 表单输入判断 */
         $this->validate($request ,[
             'us_name' => 'required|regex:/^[a-zA-Z]{1}[\w]{5,16}$/',
             'us_password' => 'required|regex:/^[\w]{6,18}$/',
@@ -84,12 +87,14 @@ class IndexController extends Controller
             'us_email.regex'=>'输入正确的邮箱',
             'code.required'=>'验证码必填',
         ]);
+        /* 去除无用的键 */
         $data = $request->except(['_token','code','reus_password']);
         $code = $request->get('code');
-        //密码加密
+        /* 密码加密 */
         $data['us_password'] = Hash::make($data['us_password']);
-        //存入数据库
+        /* 存入数据库 */
         $res = User::create($data);
+        /* 判断 */
         if ($res) {
             echo "<script>alert('注册成功!');location='/login';</script>";
         }else{
@@ -147,9 +152,13 @@ class IndexController extends Controller
         return view('home.index.login');
     }
 
+    /**
+     * 登录页->判断
+     * @return bool
+     */
     public function dologin(Request $request)
     {
-        //表单判断
+        /* 表单判断 */
         $this->validate($request ,[
             'us_name' => 'required',
             'us_password' => 'required',
@@ -161,22 +170,21 @@ class IndexController extends Controller
         ]);
         session_start();
         $data = $request->all();
-        //判断验证码是否正确
+        /* 判断验证码是否正确 */
         if(strtolower($_POST['code']) !== strtolower($_SESSION['code'])){
             return redirect()->back()->withInput()->with('msg','验证码错误');
         }else{
-            //干掉session中的验证码
+            /* 干掉session中的验证码 */
             unset($_SESSION['code']);
-
-            //查询数据库
+            /* 查询数据库 */
             $res = DB::table('users')->where('us_name', $data['us_name'])->first();
             if ($res) {
                 if (Hash::check($_POST['us_password'],$res->us_password)) {
-                    
-                    echo "<script>alert('登录成功!');location='/';</script>";
-                    //登录成功把用户名写入session
+                    /* 登录成功把用户名写入session */
                     session(['us_name' => $res->us_name]);
                     session(['uid' => $res->uid]);
+                    /*这里加判断*/
+                    echo "<script>alert('登录成功!');location='/';</script>";
                 }else{
                     return back()->with('msg','密码错误');
                 }
@@ -184,7 +192,6 @@ class IndexController extends Controller
                 return redirect()-> back()->withInput()->with('msg','用户不存在');
             }
         }
-        
     }
 
     
@@ -195,11 +202,11 @@ class IndexController extends Controller
     public function send()
     {
         session_start();
-        //随机一个6位数的数字作为用户的验证码
+        /* 随机一个6位数的数字作为用户的验证码 */
         $code = mt_rand(000000,999999);
-        //存入session
+        /* 存入session */
         $_SESSION['code'] = $code;
-        //发送
+        /* 发送邮件验证码 */
         $codes = Mail::raw($code,function($message){
             $us_email = $_GET['us_email'];
             $message->subject('激活提示信息,以下是您的验证码');
@@ -210,15 +217,16 @@ class IndexController extends Controller
 
     /**
      * 检测验证码是否正确
-     * @return [type] [description]
+     * @return bool
      */
     public function check()
     {
         session_start();
         $code = $_SESSION['code'];
         $us_code = $_GET['code'];
+        /* 判断 */
         if ($code == $us_code) {
-            //如果一样,清除掉session
+            /* 如果一样,清除掉session */
             session()->pull('code');
             return 1;
         }else{
@@ -233,7 +241,9 @@ class IndexController extends Controller
     public function namecheck()
     {
         $us_name = $_GET['us_name'];
+        /* 查找用户的信息 */
         $res = DB::table('users')->where('us_name', $us_name)->first();
+        /* 判断 */
         if ($res) {
             return 1;
         }else{
@@ -243,7 +253,6 @@ class IndexController extends Controller
 
     /**
      * 退出登录
-     * @return [type] [description]
      */
     public function logout()
     {
@@ -251,5 +260,4 @@ class IndexController extends Controller
         session()->pull('uid');
         return redirect('/');
     }
-
 }

@@ -32,6 +32,7 @@ class AboutUsController extends Controller
     	/* 文章内容验证 */
         if (($request->about_name != null)&&($request->about_phone != null)&&($request->about_email != null)&&($request->about_message != null)) {
             $about_data = $request->except(['_token']);
+            /* 添加数据 */
             $aboutus = new AboutUs;
             $aboutus->au_name = $request->about_name;
             $aboutus->au_phone = $request->about_phone;

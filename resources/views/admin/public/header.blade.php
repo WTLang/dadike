@@ -26,14 +26,6 @@
 		<div id="user-nav" class="navbar navbar-inverse">
             <ul class="nav btn-group">
                 <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">管理员</span></a></li>
-                <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">消息</span> <span class="label label-important">0</span> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a class="sAdd" title="" href="#">新消息</a></li>
-                        <li><a class="sInbox" title="" href="#">收件箱</a></li>
-                        <li><a class="sOutbox" title="" href="#">发件箱</a></li>
-                        <li><a class="sTrash" title="" href="#">垃圾</a></li>
-                    </ul>
-                </li>
                 <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">设置</span></a></li>
                 <li class="btn btn-inverse"><a title="" href="/admin/logout"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
             </ul>
@@ -82,7 +74,7 @@
 					</ul>
 				</li>
 
-				{{-- 4.文章分类管理模块 --}}
+				{{-- 4.文章排行管理模块 (关闭)
 				<li class="submenu @yield('cxy_05')">
 					<a href="#"><i class="icon icon-signal"></i></i> <span>文章排行</span> <span class="label">3</span></a>
 					<ul>
@@ -91,6 +83,7 @@
 						<li class="@yield('bxy_13')"><a href="">按浏览</a></li>
 					</ul>
 				</li>
+				--}}
 
 				{{-- 5.友情链接模块 --}}
 				<li class="submenu @yield('cxy_06')">
@@ -111,13 +104,14 @@
 					</ul>
 				</li>
 
-				{{-- 7.评论模块 --}}
+				{{-- 7.文章回复模块--}}
 				<li class="submenu @yield('cxy_08')">
-					<a href="#"><i class="icon icon-comment"></i></i> <span>评论管理</span> </a>
-					{{-- 	<ul>
-						<li class="@yield('bxy_19')"><a href="">审核评论</a></li>
-					</ul> --}}
+					<a href="#"><i class="icon icon-comment"></i></i> <span>文章回复</span> </a>
+					<ul>
+						<li class="@yield('bxy_19')"><a href="/admin/reply">审核回复</a></li>
+					</ul>
 				</li>
+				
 
 				{{-- 8.广告模块 --}}
 				<li class="submenu @yield('cxy_09')">
@@ -139,7 +133,7 @@
 					</ul>
 				</li>
 
-				{{-- 10.帖子模块 --}}
+				{{-- 10.树洞模块 --}}
 				<li class="submenu @yield('cxy_11')">
 					<a href="#"><i class="icon icon-heart"></i></i> <span>树洞管理</span> <span class="label">3</span></a>
 					<ul>

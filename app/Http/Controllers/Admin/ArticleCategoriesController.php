@@ -14,19 +14,18 @@ use DB;
  */
 class ArticleCategoriesController extends Controller
 {
-
-
     /**
      * 静态分类方法
-     *
      * @titile 大迪克
      */
     public static function getdata()
     {
+        /* 获取数据 */
         $ac_data = ArticleCategories::select('*',DB::raw("concat(acm_path,',',acm_id) as paths"))->orderBy('paths','asc')->get();
         foreach ($ac_data as $k => $v) {
+            /* 计算符号的个数 */
             $n = substr_count($v->acm_path,',');
-
+            /* 编排分类的等级 */
             $ac_data[$k]->acm_name = str_repeat('|--->',$n).$v->acm_name;
         }
 
@@ -35,13 +34,13 @@ class ArticleCategoriesController extends Controller
 
     /**
      * 文章分类 --首页
-     *
      * @titile 大迪克
      */
     public function index()
     {
+        /* 调用静态数据 */
         $data = self::getdata();
-        // dd($data);
+        // dd($data->limit(5));
         return view('admin.article_categories_manage.index',['data'=>$data]);
     }
 
@@ -55,14 +54,13 @@ class ArticleCategoriesController extends Controller
     {   
         /* 接收$id的值 */
         $mca_id = $id;
-
+        /* 调用静态数据 */
         $data = self::getdata();
         return view('admin.article_categories_manage.create',['mca_id'=>$mca_id,'data'=>$data]);
     }
 
     /**
      * 文章分类 --处理
-     *
      * @data  接收文章添加页的内容
      * @return 返回 bool
      */
@@ -101,17 +99,6 @@ class ArticleCategoriesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * 修改文章分类名页
      */
     public function edit($id)
@@ -132,7 +119,6 @@ class ArticleCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         if($request['acm_name']){
             /* 查询该ID没修改之前的acm_name的名称 */
             $update_get = DB::table('article_categories_manage')->where('acm_id',$id)->get();
@@ -152,17 +138,14 @@ class ArticleCategoriesController extends Controller
                 }
             }
         }else{
-            // return back()->with('acm_updata_error_01');
             return redirect('admin/acm/18/edit')->with('acm_updata_error_01','内容不能为空');
         }
 
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 分类和子分类删除
+     * @return bool
      */
     public function destroy($id)
     {
@@ -171,8 +154,6 @@ class ArticleCategoriesController extends Controller
         if ($child_data) {
             return back()->with('sonsort_error','当前分类有子分类.无法删除');
         }
-
-
         /* 执行删除 */
         if(ArticleCategories::destroy($id)){
             return redirect('admin/acm')->with('sonsort_success','删除成功');
@@ -180,6 +161,4 @@ class ArticleCategoriesController extends Controller
             return back()->with('sort_error','删除失败');
         }
     }
-
-    
 }

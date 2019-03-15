@@ -18,7 +18,7 @@ class LoginMiddleware
         if ($request->session()->has('us_name')) {
             return $next($request);
         }else{
-            return redirect()->route('login');
+            return redirect()->route('login')->with('login_no','未登录');
         }
     }
 }

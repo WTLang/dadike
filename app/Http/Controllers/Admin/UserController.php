@@ -7,24 +7,27 @@ use App\Http\Controllers\Controller;
 use App\Model\Home\User;
 use DB;
 
+/*
+|--------------------------------------------------------------------------
+|           大迪克控制器->后台用户管理控制器 UserController
+|--------------------------------------------------------------------------
+ */
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * 加载用户管理视图
+     * @return $data
      */
     public function index(Request $request)
     {
-        $count = $request->input('count',5);
-        $search = $request->input('search','');
-        //分页
-        $count = $request->input('count',5);
-        $search = $request->input('search','');
-        //搜索用户名
-        $userdata = User::where('us_name','like','%'. $search.'%')->paginate($count);
 
-        // 加载视图
+        /* 分页 */
+        $count = $request->input('count',5);
+        /* 搜索判断 */
+        $search = $request->input('search','');
+        /* 搜索用户名 */
+        $userdata = User::where('us_name','like','%'. $search.'%')->paginate($count);
+        /*加载视图 */
         return view('admin.user.index',['userdata'=>$userdata,'request'=>$request->all()]);
     }
 

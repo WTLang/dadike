@@ -4,6 +4,11 @@
 
 <!-- 显示错误处理 -->
 
+@if (session('login_no'))
+    <script>
+        alert('您还未登录,请登录后再回复!')
+    </script>
+@endif
 <div class="content">
     <div class="container">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

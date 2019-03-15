@@ -8,7 +8,11 @@ use App\Model\Admin\Friend;
 use App\Http\Requests\FriendStoreRequest;
 use DB;
 
-
+/*
+|--------------------------------------------------------------------------
+|           大迪克控制器->友情链接控制器 FriendController
+|--------------------------------------------------------------------------
+ */
 class FriendController extends Controller
 {
     /**
@@ -53,25 +57,11 @@ class FriendController extends Controller
         /* 执行添加 */
         $res = $friends->save();
         /* 判断添加 */
-        if($res)
-        {
+        if($res){
             return redirect('admin/friend')->with('success','添加成功');
-        }else
-        {
+        }else{
             return back()->with('error','添加失败');
         }
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        
     }
 
     /**
@@ -93,6 +83,7 @@ class FriendController extends Controller
      */
     public function update(FriendStoreRequest $request, $flk_id)
     {
+        /* 更新数据 */
         $friend = Friend::find($flk_id);
         $friend->flk_name = $request->input('flk_name','');
         $friend->flk_image = $request->input('flk_image','');

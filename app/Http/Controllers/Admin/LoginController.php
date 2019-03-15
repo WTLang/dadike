@@ -8,12 +8,15 @@ use App\Model\Admin\Admin;
 use Hash;
 use DB;
 
+/*
+|--------------------------------------------------------------------------
+|           大迪克控制器->后台登录控制器 LoginController
+|--------------------------------------------------------------------------
+ */
 class LoginController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * 后台登录视图
      */
     public function index(Request $request)
     {
@@ -21,23 +24,12 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * 判断登录
+     * @return bool
      */
     public function store(Request $request)
     {
+        /* 验证 */
         $this->validate($request ,[
             'admin_name' => 'required',
             'admin_password' => 'required',
@@ -45,13 +37,13 @@ class LoginController extends Controller
             'admin_name.required' => '管理员名称必填',
             'admin_password.required' => '密码必填' 
         ]);
-
+        /* 去除无用的键 */
         $data = $request->except(['_token']);
-        //从数据库去出数据
+        /* 从数据库去出数据 */
         $res = DB::table('Admin')->where('admin_name', $data['admin_name'])->first();
         if ($res) {
             if (Hash::check($data['admin_password'],$res->admin_password)) {
-                //登录成功把用户名写入session
+                /* 登录成功把用户名写入session */
                 session(['admin_name' => $res->admin_name]);
                 echo "<script>alert('登录成功!');location='/admin/index';</script>";
             }else{
@@ -63,50 +55,9 @@ class LoginController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 退出登录->清空session('admin_name')
+     * @return 路由
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function logout(Request $request){
         //删除session里的用户
         session()->pull('admin_name');

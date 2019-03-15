@@ -41,7 +41,6 @@
 
 			</div>
 				<div class="widget-content nopadding">
-
 					<table class="table table-bordered data-table">
 						<thead>
 						<tr>

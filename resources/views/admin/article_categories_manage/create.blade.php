@@ -48,12 +48,10 @@
 									<div class="btn-group">
 										<select name="acm_pid" style="margin-left: 20px;margin-top: 8px;margin-bottom: 10px;">
 											<option value="0" >--请选择--</option>
-
-
-@foreach($data as $k => $v)
-	<option value="{{ $v->acm_id }}" @if($mca_id == $v->acm_id) selected @endif >
-		{{ $v->acm_name }}</option>
-@endforeach
+											@foreach($data as $k => $v)
+												<option value="{{ $v->acm_id }}" @if($mca_id == $v->acm_id) selected @endif {{ $v->acm_pid == 0 ? ' ':'hidden'}}>
+													{{ $v->acm_name }}</option>
+											@endforeach
 										</select>
 									</div>
 								</div>

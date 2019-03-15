@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Home\AboutUs;
 use DB;
-
 /*
 |--------------------------------------------------------------------------
 |           大迪克控制器->后台->联系我们 控制器(处理用户问题)
@@ -15,47 +14,14 @@ use DB;
 class AboutUsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * 加载视图.
+     * @return $data
      */
     public function index()
     {
+        /* 查找数据 */
         $about_data = AboutUs::all();
-        // dd($about_data);
         return view('admin.aboutus.index',['about_data'=>$about_data]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -76,9 +42,11 @@ class AboutUsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        /*判断数据内容是否为空*/
         if ($request->up_message == null) {
             return back()->with('aboutus_edit_error','内容不能为空');
         }else{
+            /* 更新数据 */
             $au_datas =AboutUs::find($id);
             $au_datas->au_status = 0;
             $au_datas->au_solve = $request->up_message;
@@ -101,6 +69,5 @@ class AboutUsController extends Controller
         }else{
             return back()->with('aboutus_error','删除失败');
         }
-        
     }
 }

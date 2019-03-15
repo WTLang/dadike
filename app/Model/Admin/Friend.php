@@ -11,18 +11,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Friend extends Model
 {
-    //
-    /*定义的表
-    定义的主键
-    是否开启时间轴
-    需要取出的数据或者去掉不要的数据*/
-
+    /**
+     * 与模型关联的数据表
+     * @var string
+     */
     public $table ="friend_link";
 
 
     /**
      * 与模型关联的主键
-     *
      * @var string
      */
     protected $primaryKey = 'flk_id';
