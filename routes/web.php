@@ -73,14 +73,28 @@ Route::post('/aboutus/store', 'Home\AboutUsController@store');
 /*前台登录页面*/
 Route::get('/login', 'Home\IndexController@login')->name('login');
 
+/* Home->树洞页面 */
+	Route::get('/tree/index','Home\TreeController@index');
+
+/* Home->树洞点赞 */
+	Route::get('/tree/zan/{id}/{goods}','Home\TreeController@zan');
+	
+/* Home->树洞踩赞 */
+	Route::get('/tree/cai/{id}/{bad}','Home\TreeController@cai');
+
 /*中间件:需要登录后才能进入的页面*/
 Route::group(['middleware' => 'login'],function(){
+	//前台树洞
+	Route::resource('/tree','Home\TreeController');
 	//前台个人信息更新
 	Route::post('/personal/update', 'Home\PersonalController@update');
 	//前台登出
 	Route::get('/logout', 'Home\IndexController@logout');
 	//前台个人中心
-	Route::resource('/personal', 'Home\PersonalController')->middleware('login');
-
+	Route::resource('/personal', 'Home\PersonalController');
+	//树洞发表
+	Route::post('/tree','Home\TreeController@store');
+	//我的发表
+	Route::post('/tree/show','Home\TreeController@show');
 });
 

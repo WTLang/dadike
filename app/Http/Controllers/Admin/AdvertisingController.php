@@ -104,7 +104,7 @@ class AdvertisingController extends Controller
         /*更新数据*/
         $res = $ad->update();
         if($res){
-                return redirect('admin/advertising');
+                 return back();
         }else{
                 return back();
         }

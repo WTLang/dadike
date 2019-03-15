@@ -18,3 +18,5 @@ class User extends Model
     	return $this->hasOne('App\Model\Home\User_details','uid','uid');
     }
 }
+
+

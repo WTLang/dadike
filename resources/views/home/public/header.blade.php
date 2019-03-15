@@ -35,8 +35,9 @@
                     <div class="navigation">
                         <div id="navigation">
                             <ul>
-                                <li class="active"><a href="/" title="Home">主页</a>
-                            </li>
+                                <li class="active">
+                                    <a href="/" title="Home">主页</a>
+                                </li>
                                 <li class="has-sub"><a href="javascript:;" title="Service List">博客</a>
                                     <ul>
                                         <li><a href="" title="Service List">分类一</a></li>
@@ -49,12 +50,13 @@
                                     <li><a href="blog-single.html" title="Blog Single ">帖子分类二</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#" title="Features">树洞</a>
+                            <li class="has-sub"><a href="" title="Blog ">树洞</a>
                                 <ul>
-                                    <li><a href="testimonial.html" title="Service List">吐槽</a></li>
-                                    <li><a href="styleguide.html" title="Service Detail">发表</a></li>
+                                    <li><a href="/tree/index" title="Blog">发表树洞</a></li>
+                                    <li><a href="/tree/show" title="Blog Single ">我的发表</a></li>
                                 </ul>
                             </li>
+                            
                             <li><a href="/aboutus" title="Contact Us">关于我们</a></li>
                             @if(\Session::get('us_name'))
                             <li class="has-sub"><a href="" title="Blog ">欢迎您,{{ \Session::get('us_name') }}</a>
@@ -165,11 +167,11 @@
         </div>
     </div>
     {{-- 最底下文字结束 --}}
-    <script src="reception_public/js/jquery.min.js"></script>
-    <script src="reception_public/js/bootstrap.min.js"></script>
-    <script src="reception_public/js/menumaker.js"></script>
-    <script src="reception_public/js/jquery.sticky.js"></script>
-    <script src="reception_public/js/sticky-header.js"></script>
+    <script src="/reception_public/js/jquery.min.js"></script>
+    <script src="/reception_public/js/bootstrap.min.js"></script>
+    <script src="/reception_public/js/menumaker.js"></script>
+    <script src="/reception_public/js/jquery.sticky.js"></script>
+    <script src="/reception_public/js/sticky-header.js"></script>
 </body>
 
 </html>

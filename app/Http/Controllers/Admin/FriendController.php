@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\Friend;
 use App\Http\Requests\FriendStoreRequest;
 use DB;
-
+/*
+|--------------------------------------------------------------------------
+|           大迪克控制器->友情链接控制器 FriendController
+|--------------------------------------------------------------------------
+ */
 
 class FriendController extends Controller
 {
