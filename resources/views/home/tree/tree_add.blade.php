@@ -54,9 +54,9 @@
                             <div class="comment-meta"><span class="comment-meta-date pull-right" >{{ $v->created_at }} </span></div>
                         </div>
                         <div class="comment-content">
-                            <p style="width:1300px;padding-left:100px">{{ $v->trd_content }}</p>
+                            <p style="width:1300px;padding-left:230px">{{ $v->trd_content }}</p>
                         </div>
-                        <button onclick="zz(this,{{ $v->trd_id }})" class="btn btn-default" id="zz" style="margin-left: 100px" >赞 &nbsp;{{ $v->trd_good }}</button>
+                        <button onclick="zz(this,{{ $v->trd_id }})" class="btn btn-default" id="zz" style="margin-left: 225px" >赞 &nbsp;{{ $v->trd_good }}</button>
                         <button onclick="cc(this,{{ $v->trd_id }})" class="btn btn-default" id="cc" style="" >踩 &nbsp;{{ $v->trd_bad }}</button>
                     </div>
                 </div>
