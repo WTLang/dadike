@@ -16,8 +16,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $count = $request->input('count',5);
-        $search = $request->input('search','');
         //分页
         $count = $request->input('count',5);
         $search = $request->input('search','');

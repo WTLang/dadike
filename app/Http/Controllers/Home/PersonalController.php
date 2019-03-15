@@ -55,6 +55,8 @@ class PersonalController extends Controller
         if ($img_file) {
             $img_res = $img_file->store('Reception_images');
             $data['usds_head'] = $img_res;
+        }else{
+            $data['usds_head'] = "";
         }
         $res = User_details::create($data);
         if ($res) {
@@ -95,16 +97,6 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->validate($request ,[
-        //     'usds_true_name' => 'regex:/.{0,50}$/',
-        //     'usds_addr' => 'regex:/.{0,200}$/',
-        //     'usds_describe' => 'regex:/.{0,200}$/',
-        // ],[
-        //     'usds_true_name.regex' =>'用户名太长了',
-        //     'usds_addr.regex' =>'地址太长了',
-        //     'usds_describe.regex' =>'描述太长了',
-        // ]);
-         //获取uid
         $uid = $request->session()->get('uid');
 
         //获取数据库里旧头像的路径
@@ -116,7 +108,6 @@ class PersonalController extends Controller
 
         $data = $request->all();
         $data = $request->except(['_token','_method']);
-
         //获取上传的文件
         $img_file = $request->file('usds_head');
         //如果有上传文件,获取该文件
@@ -134,8 +125,11 @@ class PersonalController extends Controller
             //删除旧头像的图片
             unlink($usds_old_head_dir);
             return redirect('/personal')->with('psuccess','个人信息修改成功');
+        }
+        if($res){
+            return redirect('/personal')->with('psuccess','个人信息修改成功');
         }else{
-            return redirect('/personal')->with('perror','个人信息修改失败');
+            return back()->with('perror','个人信息修改失败');
         }
     }
 

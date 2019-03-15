@@ -25,7 +25,7 @@
 		{{-- 导航开始 --}}
 		<div id="user-nav" class="navbar navbar-inverse">
             <ul class="nav btn-group">
-                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">管理员</span></a></li>
+                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">欢迎您,{{ session('admin_name') }}</span></a></li>
                 <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">消息</span> <span class="label label-important">0</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a class="sAdd" title="" href="#">新消息</a></li>
@@ -57,8 +57,10 @@
 				<li class="submenu @yield('cxy_02') ">
 					<a href="#"><i class="icon icon-user"></i> <span>用户管理</span> <span class="label">2</span></a>
 					<ul>
-						<li class="@yield('bxy_03')"><a href="">管理员</a></li>
-						<li class="@yield('bxy_04')"><a href="/admin/user">会员管理</a></li>
+						<li class="@yield('bxy_03')"><a href="/admin/user">会员管理</a></li>
+					</ul>
+					<ul>
+						<li class="@yield('bxy_04')"><a href="/admin/admin">管理员</a></li>
 					</ul>
 				</li>
 
@@ -146,6 +148,17 @@
 						<li class="@yield('bxy_25')"><a href="/admin/tree">浏览树洞</a></li>
 						<li class="@yield('bxy_26')"><a href="/admin/tree/create">发表树洞</a></li>
 						<li class="@yield('bxy_27')"><a href="">修改心情</a></li>
+					</ul>
+				</li>
+
+				{{-- 11.权限模块 --}}
+				<li class="submenu @yield('cxy_12')">
+					<a href="#"><i class="icon icon-warning-sign"></i></i> <span>权限管理</span> <span class="label">3</span></a>
+					<ul>
+						<li class="@yield('bxy_28')"><a href="/admin/nodes">角色</a></li>
+						<li class="@yield('bxy_29')"><a href="/admin/nodes/create">添加角色</a></li>
+						<li class="@yield('bxy_30')"><a href="/admin/node/nodeadd">添加权限节点</a></li>
+
 					</ul>
 				</li>
 
