@@ -27,7 +27,7 @@
                 <div class="col-md-12">
                     <label class="control-label" for="textarea">分享你的故事</label>
                     <div>
-                    <textarea class="form-control" id="textarea" name="trd_content" rows="6" placeholder="请填写审核原因描述"></textarea>
+                    <textarea class="form-control" id="textarea" name="trd_content" rows="6" placeholder="请填写要发表的内容"></textarea>
                     <p style="margin-top:-22px;padding-left: 850px"><span id="text-count">500</span>/500</p>
                     </div>
                     <input type="text" name='trd_good' value='0' hidden>
