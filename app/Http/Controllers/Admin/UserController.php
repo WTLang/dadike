@@ -91,4 +91,23 @@ class UserController extends Controller
     {
         //
     }
+
+    public function ban($id){
+        $res = User::where('uid',$id)->update(['identify'=>1]);
+        if ($res) {
+            return redirect('/admin/user')->with('success','操作成功');
+        }else{
+            return back()->with('aerror','添加失败');
+        }
+
+    }
+
+    public function res($id){
+        $res = User::where('uid',$id)->update(['identify'=>0]);
+        if ($res) {
+            return redirect('/admin/user')->with('success','操作成功');
+        }else{
+            return back()->with('aerror','添加失败');
+        }
+    }
 }

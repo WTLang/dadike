@@ -34,7 +34,8 @@ Route::group(['middleware' => ['Alogin','rbac']],function(){
 
 	/* Admin->后台用户管理页 */
 	Route::resource('admin/user','Admin\UserController');
-	Route::get('admin/logout','Admin\LoginController@logout');
+	Route::get('/admin/user/ban/{uid}','Admin\UserController@ban');
+	Route::get('/admin/user/res/{uid}','Admin\UserController@res');
 
 	/* Admin->文章分类模块路由 */
 	Route::resource('admin/acm','Admin\ArticleCategoriesController');
@@ -55,9 +56,14 @@ Route::group(['middleware' => ['Alogin','rbac']],function(){
 	/* Admin->树洞管理路由*/
 	Route::resource('admin/tree','Admin\TreeController');
 
-
-
 });
+	//管理员登出
+	Route::get('admin/logout','Admin\LoginController@logout')->middleware('Alogin');
+	//权限不足的显示的页面
+	Route::get('/403',function(){
+		return view('admin.power.403');
+	});
+
 
 /* 后台登录 */
 Route::resource('admin/login','Admin\LoginController');

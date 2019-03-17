@@ -47,25 +47,27 @@ class LoginController extends Controller
         ]);
 
         $data = $request->except(['_token']);
-        //从数据库去出数据
-        $res = DB::table('Admin')->where('admin_name', $data['admin_name'])->first();
-        $admin_nodes = DB::select('select n.cname,n.aname from nodes as n,users_roles as ur,roles_nodes as rn where ur.aid = '.$res->id.' and ur.rid = rn.rid and rn.nid = n.id;');
-        // dump($admin_nodes);
-        $arr = [];
-        foreach ($admin_nodes as $key => $value) {
-            $arr[$value->cname][] = $value->aname;
-            if ($value->aname == 'creat') {
-                $arr[$value->cname][] = 'store';
-            }
-        }
-        $arr['indexcontroller'][] = 'index';
-        // dd($arr);
+        //从数据库取去出数据
+        $res = DB::table('admin')->where('admin_name', $data['admin_name'])->first();
         if ($res) {
             if (Hash::check($data['admin_password'],$res->admin_password)) {
+                //获取权限
+                $admin_nodes = DB::select('select n.cname,n.aname from nodes as n,users_roles as ur,roles_nodes as rn where ur.aid = '.$res->id.' and ur.rid = rn.rid and rn.nid = n.id;');
+                $arr = [];
+                foreach ($admin_nodes as $key => $value) {
+                    $arr[$value->cname][] = $value->aname;
+                    if ($value->aname == 'creat') {
+                        $arr[$value->cname][] = 'store';
+                    }
+                }
+                //首页的权限写进去
+                $arr['indexcontroller'][] = 'index';
                 //登录成功把用户名写入session
                 session(['admin_name' => $res->admin_name]);
                 //将权限压入session
                 session(['admin_node_type'=>$arr]);
+                //将身份传入session
+                session(['identify'=>$res->identify]);
                 echo "<script>alert('登录成功!');location='/admin/index';</script>";
             }else{
                 return redirect()->back()->withInput()->with('msg','密码错误');

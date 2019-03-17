@@ -37,7 +37,7 @@
 						<label class="control-label">职位</label>
 						<div class="controls">
 							@foreach($role_data as $k=>$v)
-							<label><input type="checkbox" name="rids[]" value="{{ $v->id }}" @if(in_array($v->id,$user_role_data_rids))checked  @endif />{{ $v->rname }}</label>
+							<label><input type="radio" name="rids" value="{{ $v->id }}" @if($admin->identify == $v->id)checked  @endif />{{ $v->rname }}</label>
 							@endforeach
 						</div>
 					</div>

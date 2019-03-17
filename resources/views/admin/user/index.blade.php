@@ -40,7 +40,12 @@
 
 			</div>
 				<div class="widget-content nopadding">
-
+					@if (session('success'))
+						<div class="alert alert-success">
+							<button class="close" data-dismiss="alert">×</button>
+							<strong>操作成功!</strong>
+						</div>
+					@endif
 					<table class="table table-bordered data-table">
 						<thead>
 						<tr>
@@ -48,8 +53,8 @@
 							<th>用户名</th>
 							<th>手机号</th>
 							<th>电子邮箱</th>
-							<th>身份</th>
 							<th>注册时间</th>
+							<th>操作</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -60,14 +65,14 @@
 							<td>{{ $v->us_name }}</td>
 							<td>{{ $v->us_tel }}</td>
 							<td>{{ $v->us_email }}</td>
-							@if($v->identify == 0)
-							<td>普通会员</td>
-							@elseif($v->identify == 1)
-							<td>VIP</td>
-							@else
-							<td>管理员</td>
-							@endif
 							<td>{{ $v->created_at }}</td>
+							<td>
+								@if($v->identify == 0)
+								<a href="/admin/user/ban/{{$v->uid}}" class="btn btn-success"  value="{{$v->id}}" onclick="return confirm('确定封号吗?')"> 状态:正常</a>
+								@else
+								<a href="/admin/user/res/{{$v->uid}}" class="btn btn-danger"  value="{{$v->id}}" onclick="return confirm('确定解封吗?')"> 状态:封禁</a>
+								@endif
+							</td>
 						</tr>
 						@endforeach
 						</tbody>

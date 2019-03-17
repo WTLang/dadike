@@ -70,7 +70,7 @@ class AdminController extends Controller
         //存入数据库
         $res = Admin::create($data);
         if ($res) {
-            return redirect('/admin/admin')->with('asuccess','添加成功');
+            return redirect('/admin/admin')->with('success','添加成功');
         }else{
             return back()->with('aerror','添加失败');
         }
