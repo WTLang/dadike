@@ -102,6 +102,7 @@ class AdvertisingController extends Controller
         /*判断*/
         if($res){
             return redirect('admin/advertising');
+                 return back();
         }else{
             return back();
         }

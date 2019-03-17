@@ -46,9 +46,9 @@
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
                             </ul>
                         </div>
                     @endif
@@ -57,11 +57,11 @@
                     <address>
                         <strong>{{$userdata->us_name}}</strong>
                         <br> TEL:{{$userdata->us_tel}}
-                        @if($userdata->identify == 0)
+                            @if($userdata->identify == 0)
                             <br>普通会员
-                        @else
+                            @else
                             <br>VIP
-                        @endif
+                            @endif
                         <br> 注册于:{{$userdata->created_at}}
                     </address>
                     <address>
@@ -71,7 +71,6 @@
                     </address>
                     @endif
                 </div>
-                <!-- /.widget search -->
                 <div class="widget widget-social">
                     <div class="social-circle">
                         <a href="#" class="#"><i class="fa fa-facebook"></i></a>

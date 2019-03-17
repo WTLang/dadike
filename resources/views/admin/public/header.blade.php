@@ -135,11 +135,11 @@
 
 				{{-- 10.树洞模块 --}}
 				<li class="submenu @yield('cxy_11')">
-					<a href="#"><i class="icon icon-heart"></i></i> <span>树洞管理</span> <span class="label">3</span></a>
+					<a href="#"><i class="icon icon-heart"></i></i> <span>树洞管理</span> <span class="label">1</span></a>
 					<ul>
 						<li class="@yield('bxy_25')"><a href="/admin/tree">浏览树洞</a></li>
-						<li class="@yield('bxy_26')"><a href="/admin/tree/create">发表树洞</a></li>
-						<li class="@yield('bxy_27')"><a href="">修改心情</a></li>
+						<li class="@yield('bxy_26')" hidden><a href="/admin/tree/create">发表树洞</a></li>
+						<li class="@yield('bxy_27')" hidden><a href="">修改心情</a></li>
 					</ul>
 				</li>
 

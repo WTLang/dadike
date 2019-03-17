@@ -4,7 +4,6 @@
 {{-- 文章管理标签 --}}
 	@section('cxy_03', 'active open')
 	@section('bxy_06', 'active')
-
 @section('content_01')
 
 		
@@ -17,14 +16,13 @@
 		<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 文章管理</a>
 		<a href="#" class="tip-bottom">添加文章</a>
 	</div>
-
 	{{-- 验证内容,显示错误信息 --}}
 	@if (count($errors) > 0)
     <div class="alert alert-error">
     	<button class="close" data-dismiss="alert">×</button>
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
@@ -36,8 +34,6 @@
 			<strong>添加失败!</strong> 未知原因,请重试.
 		</div>
 	@endif
-
-
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
@@ -97,7 +93,6 @@
 			</div>
 		</div>
 	</div>
-
 {{-- 文章添加结束 --}}	
 
 @endsection

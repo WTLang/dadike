@@ -2,15 +2,11 @@
 
 
 @section('content_01')
-{{-- 调用轮播图 --}}
-
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 80px;background-color: white;">
 	<h1 style="color: #aa9144;" >
 		<a href="/" style="margin-left: 100px;">返回首页</a>
 	</h1>
 </div>
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-offset-2 col-md-8">

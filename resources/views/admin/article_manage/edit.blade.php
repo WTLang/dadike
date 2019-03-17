@@ -3,9 +3,7 @@
 
 {{-- 文章管理标签 --}}
 	@section('cxy_03', 'active open')
-
 @section('content_01')
-
 		
 {{-- 文章修改开始 --}}	
 <div id="content">
@@ -16,7 +14,6 @@
 		<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 文章管理</a>
 		<a href="#" class="tip-bottom">修改文章</a>
 	</div>
-
 	{{-- 验证内容,显示错误信息 --}}
 	@if (count($errors) > 0)
     <div class="alert alert-error">
@@ -35,7 +32,6 @@
 			<strong>修改失败!</strong> 未知原因,部分内容为空.
 		</div>
 	@endif
-
 
 	<div class="container-fluid">
 		<div class="row-fluid">
@@ -98,7 +94,6 @@
 			</div>
 		</div>
 	</div>
-
 {{-- 文章修改结束 --}}	
 
 @endsection

@@ -16,42 +16,42 @@
 				<a href="/admin/index" class="current">浏览文章</a>
 			</div>
 		@if (session('article_manage_success'))
-			<div class="alert alert-success">
-				<button class="close" data-dismiss="alert">×</button>
-				<strong>添加成功!</strong>
-			</div>
+		<div class="alert alert-success">
+			<button class="close" data-dismiss="alert">×</button>
+			<strong>添加成功!</strong>
+		</div>
 		@endif
 
 		@if (session('article_update_success'))
-			<div class="alert alert-success">
-				<button class="close" data-dismiss="alert">×</button>
-				<strong>修改成功!</strong>
-			</div>
+		<div class="alert alert-success">
+			<button class="close" data-dismiss="alert">×</button>
+			<strong>修改成功!</strong>
+		</div>
 		@endif
 
 		@if (session('article_delete_success'))
-			<div class="alert alert-success">
-				<button class="close" data-dismiss="alert">×</button>
-				<strong>添加成功!</strong>
-			</div>
+		<div class="alert alert-success">
+			<button class="close" data-dismiss="alert">×</button>
+			<strong>添加成功!</strong>
+		</div>
 		@endif
 
 		@if (session('article_delete_error'))
-			<div class="alert alert-error">
-				<button class="close" data-dismiss="alert">×</button>
-				<strong>删除失败!</strong>
-			</div>
+		<div class="alert alert-error">
+			<button class="close" data-dismiss="alert">×</button>
+			<strong>删除失败!</strong>
+		</div>
 		@endif
 
 <div class="widget-box span12">
-		<div class="widget-title">
-			<h5>添加文章</h5>
-		{{-- 搜索框开始 --}}
+	<div class="widget-title">
+		<h5>添加文章</h5>
+			{{-- 搜索框开始 --}}
 			<form action="/admin/am" method="get" style="float: right;padding-top: 3px;padding-right: 3px;">
 				Search: <input type="text" aria-controls="DataTables_Table_0" name="search" value="{{ $request['search'] or '' }}" ><button class="btn btn-info" style="float: right;padding-top: 3px;padding-right: 15px;">搜索</button>
 			</form>
-		{{-- 搜索框结束 --}}
-		</div>
+			{{-- 搜索框结束 --}}
+	</div>
 	<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
 		<table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
 			<thead>
@@ -101,7 +101,6 @@
 							操作<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
 						</div>
 					</th>
-
 				</tr>
 				</thead>
 				<tbody role="alert" aria-live="polite" aria-relevant="all">
@@ -132,9 +131,9 @@
 			</tbody>
 		</table>
 	</div>
-		<div class="pagination pagination-lg">
-			{{ $data->appends($request)->links() }}			
-		</div>
+	<div class="pagination pagination-lg">
+		{{ $data->appends($request)->links() }}			
+	</div>
 </div>
 		{{-- 文章添加首页结束 --}}
 @endsection

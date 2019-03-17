@@ -13,15 +13,12 @@
 		<a href="/admin/aboutus" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i>用户建议</a>
 		<a href="#" class="current">解决回复</a>
 	</div>
-
-
-@if (session('aboutus_edit_error'))
+	@if (session('aboutus_edit_error'))
 	<div class="alert alert-error">
 		<button class="close" data-dismiss="alert">×</button>
 		<strong>内容是空的!</strong>
 	</div>
-@endif
-
+	@endif
 	<div class="span12">
 		<div class="widget-box">
 			<div class="widget-title">
@@ -35,7 +32,6 @@
 					问&nbsp;&nbsp;&nbsp;&nbsp;题 : {{ $au_data[0]->au_message }}
 				</div>
 				<div style="padding-left: 42px;padding-top: 15px;">解决方法:</div>
-					
 				<form action="/admin/aboutus/{{ $au_data[0]->au_id }}" style="padding-left: 110px;padding-bottom: 50px;" method="post">
 					{{ csrf_field() }}
 					{{ method_field('PUT') }}
@@ -45,6 +41,9 @@
 			</div>
 		</div>
 	</div>
+
+
+
 
 @endsection
 {{-- 后台内容填充结束 --}}

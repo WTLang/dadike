@@ -80,16 +80,16 @@
 		<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>分析</a>
 		<a href="/admin/index" class="current">本站</a>
 	</div>
-@if (session('bulletin_error_error'))
+	@if (session('bulletin_error_error'))
 	<div class="alert alert-error">
 		<button class="close" data-dismiss="alert">×</button>
 		<strong>未知原因,发布失败!</strong>
 	</div>
-@endif
+	@endif
 
-@if (session('bulletin_success'))
+	@if (session('bulletin_success'))
 	<script>alert('发布成功,前台首页已更新最新消息')</script>
-@endif
+	@endif
 
 <div class="span12">
 	<div class="row-fluid">

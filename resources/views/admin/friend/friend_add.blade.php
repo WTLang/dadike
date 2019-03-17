@@ -1,35 +1,27 @@
 {{-- 继承后台模板 --}}
 @extends('admin.public.header')
 
-{{-- 后台内容填充开始 --}}
-
 {{-- 友情链接标签 --}}
 	@section('cxy_06', 'active open')
-		@section('bxy_14', '')
 		@section('bxy_15', 'active')
-		@section('bxy_16', '')
 
 @section('content_01')
 		{{-- 统计表开始 --}}
-
 		<div id="content">
-
 			<div id="content-header">
-				
-
 				<h1>添加友情链接</h1>
 			</div>
 			{{-- 显示错误消息 开始 --}}
             @if (session('success'))
-                <div class="lert alert-success">
-                    {{ session('success') }}
-                </div>
+            <div class="lert alert-success">
+                {{ session('success') }}
+            </div>
             @endif
 
             @if (session('error'))
-                <div class="alert alert-error">
-                    {{ session('error') }}
-                </div>
+            <div class="alert alert-error">
+                {{ session('error') }}
+            </div>
             @endif
 			<div id="breadcrumb">
 				<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 友情链接</a>

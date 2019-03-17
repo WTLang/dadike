@@ -1,9 +1,6 @@
 @extends('home.public.header')
 
 @section('content_01')
-
-<!-- 显示错误处理 -->
-
 @if (session('login_no'))
     <script>
         alert('您还未登录,请登录后再回复!')
@@ -50,12 +47,10 @@
                                 <label class="" for="name"> 用户名</label>
                                 <input type="text" name="us_name" id="name" placeholder="" class="form-control" value="{{ old('us_name') }}" >
                             </div>
-
                             <div class="col-md-12">
                                 <label class="" for="pass">密码</label>
                                 <input type="password" name="us_password" id="pass" placeholder="" class="form-control">
                             </div>
-
                              <div class="col-md-8">
                                 <label class="" for="pass">验证码</label>
                                 <input type="text" name="code" id="pass" placeholder="" class="form-control">
@@ -65,7 +60,6 @@
                             </div>
                             <div class="col-md-5">
                                 <input type="submit" name="login" value="登录" class="btn btn-white btn-lg mt20" style="width: 200px;">
-                                <!-- <a href="/dologin" class="btn btn-white btn-lg mt20" style="width: 200px;">登录</a> -->
                             </div>
                             </form>
                             <div class="col-md-2"></div>
@@ -75,12 +69,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="tiny-footer"><!-- 底部填充 --></div>
+                <div class="tiny-footer"></div>
             </div>
         </div>
     </div>
 </div>
-<!-- 登录 -->
 <script>
     function changeimg(){
         var a = document.getElementById('verify');

@@ -13,6 +13,7 @@ use DB;
 |           大迪克控制器->友情链接控制器 FriendController
 |--------------------------------------------------------------------------
  */
+
 class FriendController extends Controller
 {
     /**

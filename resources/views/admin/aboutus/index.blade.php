@@ -15,27 +15,26 @@
 		<a href="#" class="current">查看信息</a>
 	</div>
 
-@if (session('aboutus_success'))
+	@if (session('aboutus_success'))
 	<div class="alert alert-success">
 		<button class="close" data-dismiss="alert">×</button>
 		<strong>添加成功!</strong>
 	</div>
-@endif
+	@endif
 
-@if (session('aboutus_error'))
+	@if (session('aboutus_error'))
 	<div class="alert alert-error">
 		<button class="close" data-dismiss="alert">×</button>
 		<strong>删除失败!</strong>
 	</div>
-@endif
+	@endif
 
-@if (session('aboutus_edit_success'))
+	@if (session('aboutus_edit_success'))
 	<div class="alert alert-success">
 		<button class="close" data-dismiss="alert">×</button>
 		<strong>又解决一个问题了!</strong>
 	</div>
-@endif
-
+	@endif
 	<div class="span12">
 		<div class="widget-box">
 			<div class="widget-title">
@@ -78,6 +77,5 @@
 			</div>
 		</div>
 	</div>
-
 @endsection
 {{-- 后台内容填充结束 --}}

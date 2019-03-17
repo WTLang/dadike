@@ -78,8 +78,7 @@
 	</div>
     
 
-{{-- 评论   --}}
-
+    {{-- 评论   --}}
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 30px;">
 	    <form action="/articlecontent/create" method="post" style="margin: 10px 0px 0px 20px;">
             {{ csrf_field() }}
@@ -90,8 +89,6 @@
 	    	<input type="submit" value="回复" style="margin: 140px 0px 0px 20px;border-radius: 20px;background-color: #1E9FFF;border: none;width: 150px;height: 30px;color: white;">
 	    </form>
 	    <h3 style="margin: 10px 0px 0px 20px;">{{ $acr_count }} 条评论</h3>
-
-
 	    {{-- 遍历 --}}
         @if($acr_data == '0')
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
@@ -119,7 +116,6 @@
     		</div>
             @endforeach
         @endif
-
     </div>
 </div>
 <script src="/reception_public/js/jquery.min.js"></script>

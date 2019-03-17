@@ -22,29 +22,23 @@
 			@foreach($acm_data_1 as $kk => $vv)
 				<li><a href="acm/{{ $vv->acm_id }}/{{ $v->acm_name }}/{{ $vv->acm_name }}">{{ $vv->acm_name }}</a></li>
 			@endforeach
-			
 			</ul>
 		</div>
 		@endforeach
 	</div>
-		<form action="articlecontent/search" method="post">
-			<div class="input-group" style="float: right;width: 300px;margin: 20px 20px 0px 0px;">
-				{{ csrf_field() }}
-	            <input type="text" name="search_content" class="form-control" placeholder="搜索文章标题" aria-describedby="basic-addon2">
-	            <span class="input-group-addon" id="basic-addon2">
-					<input type="submit" value="搜索" class="fa fa-search" style="border:0px;background-color: #eee">
-	        	</span>
-	        </div>
-        </form>
+	<form action="articlecontent/search" method="post">
+		<div class="input-group" style="float: right;width: 300px;margin: 20px 20px 0px 0px;">
+			{{ csrf_field() }}
+            <input type="text" name="search_content" class="form-control" placeholder="搜索文章标题" aria-describedby="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">
+				<input type="submit" value="搜索" class="fa fa-search" style="border:0px;background-color: #eee">
+        	</span>
+        </div>
+    </form>
 </div>
 {{-- 博客文章分类导航结束 --}}
 
-
-
-
-
 <div style="height: 1400px;clear:both">
-
 	{{-- 左侧内容开始 --}}
 	<div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
 	    <div class="post-block" style="width: 800px;margin-left: 100px;margin-top:30px;">
@@ -131,11 +125,7 @@
 	    	</div>
 	    </div>
 	    {{-- 右侧内容结束 --}}
-	    
 	</div>
-<div>
-
-</div>
 @endsection
 
 

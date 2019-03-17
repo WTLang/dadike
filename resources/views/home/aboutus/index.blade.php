@@ -19,13 +19,13 @@
     </div>
 </div>
 
-@if (session('aboutus_error'))
-        <script language="javascript">alert("发送失败,有内容为空");</script>
-@endif
+    @if (session('aboutus_error'))
+    <script language="javascript">alert("发送失败,有内容为空");</script>
+    @endif
 
-@if (session('aboutus_success'))
-        <script language="javascript">alert("发送成功,我们会尽一切努力尽快回复您。");</script>
-@endif
+    @if (session('aboutus_success'))
+    <script language="javascript">alert("发送成功,我们会尽一切努力尽快回复您。");</script>
+    @endif
 
 <div class="content">
     <div class="container">
@@ -47,10 +47,7 @@
                         <a href="mailto:#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">123456@gmail.com</font></font></a>
                     </address>
                 </div>
-                <!-- /.widget search -->
-                
                 <div class="widget widget-social">
-
                     <div class="social-circle">
                         <a href="javascript:;"  onclick="weibo()">博</a>
                         <a href="tencent://message/?Menu=yes&uin=760811659& Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" >Q</a>
@@ -62,7 +59,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -142,7 +138,6 @@
     {
         window.open("https://weibo.com/u/2991975565?refer_flag=9549880000_guanzhuanniu&is_all=1"); 
     }
-
     /* 微信 */
     function weixin_select()
     {
@@ -150,14 +145,12 @@
         weixin.hidden = '' ;
         return true;
     }
-
     function weixin_hidden()
     {
         var weixin = document.getElementById('weixin_img'); 
         weixin.hidden = 'hidden' ;
         return true;
     }
-
 </script> 
 
 @endsection
