@@ -31,15 +31,8 @@ class IndexController extends Controller
 
         /*连接广告数据表*/
         $advertising_data = Advertising::where('ad_status',1)->limit(4)->get(); 
-        // exit;
-        /* 获取第一个id */
-        if(empty($advertising_data)){
-            dump($advertising_data);
-            $first_id = $advertising_data[0]->ad_id;
-        }else{
-            $advertising_data = false;
-            $first_id = false;
-        }
+        $first_id = empty($advertising_data[0])?0:$advertising_data[0]->ad_id;
+        
 
         /*告示内容*/
         $web_data = (DB::table('web')->where('web_id',1)->get())[0]->web_bulletin;

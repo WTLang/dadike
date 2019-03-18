@@ -3,10 +3,16 @@
 
 @section('content_01')
 
-
+@php
+	if(empty($advertising_data[0])){
+	$res = false;
+}else{
+	$res = 'true';
+}
+@endphp
 
 {{-- 调用轮播图 --}}
-@includeWhen(true,'home.public.lunbo')
+@includeWhen($res,'home.public.lunbo')
 
 {{-- 博客文章分类导航开始 --}}
 <div style="background-color: white;height: 68px;">

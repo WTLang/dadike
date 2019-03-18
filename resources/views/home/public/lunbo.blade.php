@@ -1,8 +1,6 @@
 {{-- 轮播开始 --}}
-    
-@if($advertising_data != false)
+
   <div class="trent-slider">
-    
     {{-- 轮播图遍历 --}}
     @foreach($advertising_data as $k =>$v)
     <div class="t-slide {{ $v->ad_id == $first_id ? 'current-t-slide': '' }} ">
@@ -37,5 +35,4 @@
     <script src="/reception_public/Rotation/js/main.js"></script>
 
 
-@endif
     
