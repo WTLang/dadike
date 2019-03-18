@@ -28,10 +28,19 @@ class IndexController extends Controller
         $acm_data_0 = DB::table('article_categories_manage')->where('acm_pid',0)->get();
         /*文章左侧内容*/
         $am_data = DB::table('article_manage')->where('am_status',1)->orderBy('am_id', 'desc')->limit(4)->get();
+
         /*连接广告数据表*/
-        $advertising_data = Advertising::where('ad_status',1)->limit(4)->get();
+        $advertising_data = Advertising::where('ad_status',1)->limit(4)->get(); 
+        // exit;
         /* 获取第一个id */
-        $first_id = $advertising_data[0]->ad_id;
+        if(empty($advertising_data)){
+            dump($advertising_data);
+            $first_id = $advertising_data[0]->ad_id;
+        }else{
+            $advertising_data = false;
+            $first_id = false;
+        }
+
         /*告示内容*/
         $web_data = (DB::table('web')->where('web_id',1)->get())[0]->web_bulletin;
         /*文章最新内容*/

@@ -126,6 +126,7 @@ Route::group(['middleware' => 'login'],function(){
 Route::prefix('acm')->group(function ()
 	{
 		Route::get('{id}/{acm_name}/{macm_name}', 'Home\ArticleCategoriesController@index');
+		Route::post('{id}/{acm_name}/{macm_name}', 'Home\ArticleCategoriesController@index');
 	});
 
 /* 文章内容路由组 */

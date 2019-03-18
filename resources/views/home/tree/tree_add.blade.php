@@ -26,7 +26,7 @@
                     <label class="control-label" for="textarea">分享你的故事</label>
                     <div>
                     <textarea class="form-control" id="textarea" name="trd_content" rows="6" placeholder="请填写要发表的内容"></textarea>
-                    <p style="margin-top:-22px;padding-left: 850px"><span id="text-count">500</span>/500</p>
+                    <p style="margin-top:-22px;padding-left: 850px"><span id="text-count">100</span>/100</p>
                     </div>
                     <input type="text" name='trd_good' value='0' hidden>
                     <input type="text" name='trd_bad' value='0' hidden>
@@ -49,11 +49,11 @@
                 <div class="comment-body">
                     <div class="comment-info" style="padding-left:0px">
                         <div class="comment-content">
-                            <p style="width:1234px;padding-left:230px">{{ $v->trd_content }}</p>
+                            <p style="max-width:1234px;padding-left:230px;text-overflow: ellipsis;word-break:break-all;">{{ $v->trd_content }}</p>
                         </div>
                         <button onclick="zz(this,{{ $v->trd_id }})" class="btn btn-default" id="zz" style="margin-left: 225px" >赞 &nbsp;{{ $v->trd_good }}</button>
                         <button onclick="cc(this,{{ $v->trd_id }})" class="btn btn-default" id="cc" style="" >踩 &nbsp;{{ $v->trd_bad }}</button>
-                        <span class="comment-meta-date pull-right" style="padding-right:295px;padding-top:10px;color: black">{{ $v->created_at }} </span>
+                        <p class="comment-meta-date pull-right" style="padding-right:295px;padding-top:10px;color: black">{{ $v->created_at }} </p>
                         
                     </div>
                 </div>
@@ -74,10 +74,10 @@
         var $this = $(this),
                 _val = $this.val(),
                 count = "";
-        if (_val.length > 500) {
-            $this.val(_val.substring(0, 500));
+        if (_val.length > 100) {
+            $this.val(_val.substring(0, 100));
         }
-        count = 500 - $this.val().length;
+        count = 100 - $this.val().length;
         $("#text-count").text(count);
     });
 </script>
