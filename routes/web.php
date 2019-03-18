@@ -6,17 +6,33 @@
  */
 
 /* 中间件:需要登录后才能进入的后台 */
-Route::group(['middleware' => 'Alogin'],function(){
+Route::group(['middleware' => ['Alogin','rbac']],function(){
 	//路由组,后台首页
 	Route::prefix('admin')->group(function ()
 	{
 		Route::get('index', 'Admin\IndexController@index');
 		Route::post('zhanqian', 'Admin\IndexController@zhanqian');
 	});
+	/* Admin->后台管理员管理页 */
+	Route::resource('admin/admin','Admin\AdminController');
+	Route::get('admin/admin/role/{id}','Admin\AdminController@role');
+	Route::post('admin/admin/updatarole/{aid}','Admin\AdminController@updatarole');
+	Route::get('admin/admin/edit/{id}','Admin\AdminController@edit');
+	Route::get('admin/admin/editpass/{id}','Admin\AdminController@editpass');
+	Route::post('/admin/admin/updatepass/{id}','Admin\AdminController@updatepass');
+	Route::get('/admin/admin/del/{id}','Admin\AdminController@del');
+
+	/* Admin->管理员权限管理路由*/
+	Route::resource('admin/nodes','Admin\NodesController');
+	Route::get('admin/node/nodeadd','Admin\NodesController@nodeadd');
+	Route::post('admin/node/insert','Admin\NodesController@insert');
 
 	/* Admin->后台用户管理页 */
 	Route::resource('admin/user','Admin\UserController');
-	Route::get('admin/logout','Admin\LoginController@logout');
+	Route::get('/admin/user/ban/{uid}','Admin\UserController@ban');
+	Route::get('/admin/user/res/{uid}','Admin\UserController@res');
+	Route::get('/admin/user/del/{uid}','Admin\UserController@del');
+
 
 	/* Admin->文章分类模块路由 */
 	Route::resource('admin/acm','Admin\ArticleCategoriesController');
@@ -41,7 +57,14 @@ Route::group(['middleware' => 'Alogin'],function(){
 	Route::resource('admin/reply','Admin\ArticleReplyController');
 });
 
-/* 后台登录 */
+/* Admin->管理员登出 */
+Route::get('admin/logout','Admin\LoginController@logout')->middleware('Alogin');
+/* Admin->权限不足的显示的页面 */
+Route::get('/403',function(){
+	return view('admin.power.403');
+});
+
+/* Admin->后台登录 */
 Route::resource('admin/login','Admin\LoginController');
 Route::get('admin/login','Admin\LoginController@index')->name('Alogin');
 
@@ -82,7 +105,6 @@ Route::get('/login', 'Home\IndexController@login')->name('login');
 /* Home->树洞踩赞 */
 	Route::get('/tree/cai/{id}/{bad}','Home\TreeController@cai');
 
-/*中间件:需要登录后才能进入的页面*/
 Route::group(['middleware' => 'login'],function(){
 	/* 前台个人信息更新 */
 	Route::post('/personal/update', 'Home\PersonalController@update');
@@ -104,7 +126,6 @@ Route::group(['middleware' => 'login'],function(){
 Route::prefix('acm')->group(function ()
 	{
 		Route::get('{id}/{acm_name}/{macm_name}', 'Home\ArticleCategoriesController@index');
-		Route::post('{id}/{acm_name}/{macm_name}', 'Home\ArticleCategoriesController@index');
 	});
 
 /* 文章内容路由组 */

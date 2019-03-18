@@ -6,94 +6,71 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Home\User;
 use DB;
-
 /*
 |--------------------------------------------------------------------------
-|           大迪克控制器->后台用户管理控制器 UserController
+|           大迪克控制器->后台->用户管理
 |--------------------------------------------------------------------------
  */
 class UserController extends Controller
 {
-    /**
-     * 加载用户管理视图
-     * @return $data
+     /**
+     * 显示用户页面
+     *
+     * @param  int  $id
+     * @return view
      */
     public function index(Request $request)
     {
-
-        /* 分页 */
+        //分页
         $count = $request->input('count',5);
-        /* 搜索判断 */
         $search = $request->input('search','');
-        /* 搜索用户名 */
+        //搜索用户名
         $userdata = User::where('us_name','like','%'. $search.'%')->paginate($count);
-        /*加载视图 */
+
+        // 加载视图
         return view('admin.user.index',['userdata'=>$userdata,'request'=>$request->all()]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
+     /**
+     * 封禁用户
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return view
      */
-    public function show($id)
-    {
-        //
-    }
+    public function ban($id){
+        $res = User::where('uid',$id)->update(['identify'=>1]);
+        if ($res) {
+            return redirect('/admin/user')->with('success','操作成功');
+        }else{
+            return back()->with('aerror','添加失败');
+        }
 
+    }
     /**
-     * Show the form for editing the specified resource.
+     * 解禁用户
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return view
      */
-    public function edit($id)
-    {
-        //
+    public function res($id){
+        $res = User::where('uid',$id)->update(['identify'=>0]);
+        if ($res) {
+            return redirect('/admin/user')->with('success','操作成功');
+        }else{
+            return back()->with('aerror','添加失败');
+        }
     }
-
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
+     * 删除用户
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return view
      */
-    public function destroy($id)
-    {
-        //
+    public function del($id){
+        $res = User::where('uid',$id)->delete();
+        if ($res) {
+            return redirect('/admin/user')->with('success','操作成功');
+        }else{
+            return back()->with('aerror','添加失败');
+        }
     }
 }

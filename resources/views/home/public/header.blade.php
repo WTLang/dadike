@@ -38,18 +38,6 @@
                                 <li class="active">
                                     <a href="/" title="Home">主页</a>
                                 </li>
-                                <li class="has-sub"><a href="javascript:;" title="Service List">博客</a>
-                                    <ul>
-                                        <li><a href="" title="Service List">分类一</a></li>
-                                        <li><a href="" title="Service Detail">分类二</a></li>
-                                    </ul>
-                                </li>
-                            <li class="has-sub hidden"><a href="blog-default.html" title="Blog ">帖子</a>
-                                <ul>
-                                    <li><a href="blog-default.html" title="Blog">帖子分类一</a></li>
-                                    <li><a href="blog-single.html" title="Blog Single ">帖子分类二</a></li>
-                                </ul>
-                            </li>
                             <li class="has-sub"><a href="" title="Blog ">树洞</a>
                                 <ul>
                                     <li><a href="/tree/index" title="Blog">发表树洞</a></li>

@@ -25,7 +25,7 @@ class AboutUsController extends Controller
 
     /**
      * 接受会员发过来的数据
-     * @return [type] [description]
+     * @return [bool] 
      */
     public function store(Request $request)
     {

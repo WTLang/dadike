@@ -21,7 +21,7 @@
 @endsection
 
 @section('content_01')
-<div class="page-header">
+<div class="page-header2">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -46,9 +46,15 @@
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
+<<<<<<< HEAD
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
+=======
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+>>>>>>> 8a5c9f1edfd04f7fcec98956ff78fea651166e8d
                             </ul>
                         </div>
                     @endif

@@ -13,7 +13,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 	<body>
 		
-		
 		<div id="header"><a href="/admin/index"><h1>大迪克</h1></a></div>
 					
 		{{-- 搜索开始 --}}
@@ -25,7 +24,15 @@
 		{{-- 导航开始 --}}
 		<div id="user-nav" class="navbar navbar-inverse">
             <ul class="nav btn-group">
-                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">管理员</span></a></li>
+                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">欢迎您,{{ session('admin_name') }}</span></a></li>
+                <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">消息</span> <span class="label label-important">0</span> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="sAdd" title="" href="#">新消息</a></li>
+                        <li><a class="sInbox" title="" href="#">收件箱</a></li>
+                        <li><a class="sOutbox" title="" href="#">发件箱</a></li>
+                        <li><a class="sTrash" title="" href="#">垃圾</a></li>
+                    </ul>
+                </li>
                 <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">设置</span></a></li>
                 <li class="btn btn-inverse"><a title="" href="/admin/logout"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
             </ul>
@@ -48,9 +55,11 @@
 				{{-- 2.用户管理模块 --}}
 				<li class="submenu @yield('cxy_02') ">
 					<a href="#"><i class="icon icon-user"></i> <span>用户管理</span> <span class="label">2</span></a>
+					<ul hidden>
+						<li class="@yield('bxy_03')"><a href="/admin/user">会员管理</a></li>
+					</ul>
 					<ul>
-						<li class="@yield('bxy_03')"><a href="">管理员</a></li>
-						<li class="@yield('bxy_04')"><a href="/admin/user">会员管理</a></li>
+						<li class="@yield('bxy_04')"><a href="/admin/admin">管理员</a></li>
 					</ul>
 				</li>
 
@@ -95,15 +104,6 @@
 					</ul>
 				</li>
 
-				{{-- 6.权限模块 --}}
-				<li class="submenu @yield('cxy_07')">
-					<a href="#"><i class="icon icon-tag"></i></i> <span>用户权限</span> <span class="label">2</span></a>
-					<ul>
-						<li class="@yield('bxy_17')"><a href="">浏览用户权限</a></li>
-						<li class="@yield('bxy_18')"><a href="">修改用户权限</a></li>
-					</ul>
-				</li>
-
 				{{-- 7.文章回复模块--}}
 				<li class="submenu @yield('cxy_08')">
 					<a href="#"><i class="icon icon-comment"></i></i> <span>文章回复</span> </a>
@@ -111,7 +111,6 @@
 						<li class="@yield('bxy_19')"><a href="/admin/reply">审核回复</a></li>
 					</ul>
 				</li>
-				
 
 				{{-- 8.广告模块 --}}
 				<li class="submenu @yield('cxy_09')">
@@ -126,10 +125,9 @@
 
 				{{-- 9.联系我们模块 --}}
 				<li class="submenu @yield('cxy_10')">
-					<a href="#"><i class="icon icon-info-sign"></i></i> <span>用户建议</span> <span class="label">2</span></a>
+					<a href="#"><i class="icon icon-info-sign"></i></i> <span>用户建议</span> </a>
 					<ul>
 						<li class="@yield('bxy_23')"><a href="/admin/aboutus">查看消息</a></li>
-						<li class="@yield('bxy_24')"><a href="">发布处理结果</a></li>
 					</ul>
 				</li>
 
@@ -143,12 +141,20 @@
 					</ul>
 				</li>
 
-		
+				{{-- 11.权限模块 --}}
+				<li class="submenu @yield('cxy_12') ">
+					<a href="#"><i class="icon icon-warning-sign"></i></i> <span>权限管理</span> <span class="label">3</span></a>
+					<ul>
+						<li class="@yield('bxy_28')"><a href="/admin/nodes">角色</a></li>
+						<li class="@yield('bxy_29')"><a href="/admin/nodes/create">添加角色</a></li>
+						<li class="@yield('bxy_30')"><a href="/admin/node/nodeadd">添加权限节点</a></li>
+
+					</ul>
+				</li>
+			</ul>
 		</div>
 		{{-- 侧边结束 --}}
-
 		@section('content_01')
-		
 		
 		@show
 			<div class="row-fluid">

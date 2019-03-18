@@ -11,11 +11,9 @@ use DB;
 use SESSION;
 use App\Model\Home\Friend;
 use App\Model\Home\Advertising;
-use URL;
-
 /*
 |--------------------------------------------------------------------------
-|           大迪克控制器->前台->主页控制器
+|           大迪克控制器->前台->前台控制器(处理用户问题)
 |--------------------------------------------------------------------------
  */
 class IndexController extends Controller
@@ -53,7 +51,9 @@ class IndexController extends Controller
     }
 
     /**
-     * 加载视图
+     * Show the form for creating a new resource.
+     *
+     * @return view
      */
     public function create(Request $request)
     {
@@ -61,12 +61,14 @@ class IndexController extends Controller
     }
 
     /**
-     * 用户注册
-     * @return bool
+     * 用户注册逻辑
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return view
      */
     public function store(Request $request)
     {
-        /* 表单输入判断 */
+        //表单输入判断
         $this->validate($request ,[
             'us_name' => 'required|regex:/^[a-zA-Z]{1}[\w]{5,16}$/',
             'us_password' => 'required|regex:/^[\w]{6,18}$/',
@@ -87,14 +89,12 @@ class IndexController extends Controller
             'us_email.regex'=>'输入正确的邮箱',
             'code.required'=>'验证码必填',
         ]);
-        /* 去除无用的键 */
         $data = $request->except(['_token','code','reus_password']);
         $code = $request->get('code');
-        /* 密码加密 */
+        //密码加密
         $data['us_password'] = Hash::make($data['us_password']);
-        /* 存入数据库 */
+        //存入数据库
         $res = User::create($data);
-        /* 判断 */
         if ($res) {
             echo "<script>alert('注册成功!');location='/login';</script>";
         }else{
@@ -103,62 +103,24 @@ class IndexController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * 用户登录页面
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return view
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function login()
     {
         return view('home.index.login');
     }
-
     /**
-     * 登录页->判断
-     * @return bool
+     * 用户登录逻辑
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return view
      */
     public function dologin(Request $request)
     {
-        /* 表单判断 */
+        //表单判断
         $this->validate($request ,[
             'us_name' => 'required',
             'us_password' => 'required',
@@ -170,28 +132,35 @@ class IndexController extends Controller
         ]);
         session_start();
         $data = $request->all();
-        /* 判断验证码是否正确 */
+        //判断验证码是否正确
         if(strtolower($_POST['code']) !== strtolower($_SESSION['code'])){
             return redirect()->back()->withInput()->with('msg','验证码错误');
         }else{
-            /* 干掉session中的验证码 */
+            //干掉session中的验证码
             unset($_SESSION['code']);
-            /* 查询数据库 */
+
+            //查询数据库
             $res = DB::table('users')->where('us_name', $data['us_name'])->first();
+            //查询账号是否被封禁
+            if ($res->identify == 1) {
+                return redirect()->back()->withInput()->with('msg','账户已经被封禁,请联系管理员');
+            }
+            //查询结果
             if ($res) {
+                //查询密码是否正确
                 if (Hash::check($_POST['us_password'],$res->us_password)) {
-                    /* 登录成功把用户名写入session */
+                    echo "<script>alert('登录成功!');location='/';</script>";
+                    //登录成功把用户名写入session
                     session(['us_name' => $res->us_name]);
                     session(['uid' => $res->uid]);
-                    /*这里加判断*/
-                    echo "<script>alert('登录成功!');location='/';</script>";
                 }else{
                     return back()->with('msg','密码错误');
                 }
             }else{
-                return redirect()-> back()->withInput()->with('msg','用户不存在');
+                return redirect()->back()->withInput()->with('msg','用户不存在');
             }
         }
+        
     }
 
     
@@ -202,11 +171,11 @@ class IndexController extends Controller
     public function send()
     {
         session_start();
-        /* 随机一个6位数的数字作为用户的验证码 */
+        //随机一个6位数的数字作为用户的验证码
         $code = mt_rand(000000,999999);
-        /* 存入session */
+        //存入session
         $_SESSION['code'] = $code;
-        /* 发送邮件验证码 */
+        //发送
         $codes = Mail::raw($code,function($message){
             $us_email = $_GET['us_email'];
             $message->subject('激活提示信息,以下是您的验证码');
@@ -217,16 +186,15 @@ class IndexController extends Controller
 
     /**
      * 检测验证码是否正确
-     * @return bool
+     * @return [type] [bool]
      */
     public function check()
     {
         session_start();
         $code = $_SESSION['code'];
         $us_code = $_GET['code'];
-        /* 判断 */
         if ($code == $us_code) {
-            /* 如果一样,清除掉session */
+            //如果一样,清除掉session
             session()->pull('code');
             return 1;
         }else{
@@ -241,9 +209,7 @@ class IndexController extends Controller
     public function namecheck()
     {
         $us_name = $_GET['us_name'];
-        /* 查找用户的信息 */
         $res = DB::table('users')->where('us_name', $us_name)->first();
-        /* 判断 */
         if ($res) {
             return 1;
         }else{
@@ -253,6 +219,7 @@ class IndexController extends Controller
 
     /**
      * 退出登录
+     * @return [type] [description]
      */
     public function logout()
     {
