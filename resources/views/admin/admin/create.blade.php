@@ -13,17 +13,9 @@
 			<h1>大迪克</h1>
 		</div>
 		<div id="breadcrumb">
-			<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>管理员管理</a>
-			<a href="/admin/index" class="current">添加管理员</a>
+			<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>管理员管理</a>
+			<a href="javascript:;" class="current">添加管理员</a>
 		</div>
-
-		<!-- @if (session('sort_error'))
-			<div class="alert alert-error">
-				<button class="close" data-dismiss="alert">×</button>
-				<strong>发生错误!</strong> 分类不能为空.
-			</div>
-		@endif -->
-
 		<div class="span12">
 			<div class="row-fluid">
 					<div class="widget-box">

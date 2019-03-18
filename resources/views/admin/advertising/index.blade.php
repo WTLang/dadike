@@ -12,8 +12,8 @@
 		<h1>浏览广告</h1>
 	</div>
 	<div id="breadcrumb">
-		<a href="#" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i>广告管理</a>
-		<a href="#" class="current">浏览广告</a>
+		<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i>广告管理</a>
+		<a href="javascript:;" class="current">浏览广告</a>
 	</div>
 		@if (session('success'))
 		<div class="alert alert-success">
@@ -28,7 +28,6 @@
 					{{-- 搜索框开始 --}}
 					<form action="/admin/advertising" method="get" style="float: right;padding-top: 3px;padding-right: 3px;">
 						Search: <input type="text" aria-controls="DataTables_Table_0" name="search" value="{{ $request['search'] or '' }}" ><button class="btn btn-info" style="float: right;padding-top: 3px;padding-right: 15px;">搜索</button>
-
 					</form>
 					{{-- 搜索框结束 --}}
 				</div>
@@ -66,11 +65,11 @@
         						<a href="/admin/advertising/{{ $v->ad_id }}" class="btn btn-primary">发布/关闭</a>
 							</td>
 						</tr>
-							 @endforeach
+						@endforeach
 						</tbody>
 					</table>	 
 				</div>
-				</div>
+			</div>
 			{{-- 分页开始 --}}
 			<div class="pagination alternate">
 				{{ $data->appends($request)->links() }}

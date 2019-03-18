@@ -1,10 +1,8 @@
 @extends('home.public.header')
 
 @section('content_01')
-
-<div class="leave-comments" style="height:342px;margin-top:0px;width:1000px;margin-left:230px">
+<div class="leave-comments" style="height:350px;margin-top:0px;width:1000px;margin-left:230px">
     {{-- 显示错误信息 --}}
-
     @if (count($errors) > 0)
         <div class="alert alert-danger" style="margin-top:-40px;height:55px;margin-left:-40px;width:1000px;padding-left:42px">
                 <button class="close" data-dismiss="alert">×</button>
@@ -42,22 +40,21 @@
         </div>
     </form>
 </div>
+<hr>
     <div class="comments-area">
         <ul class="comment-list">
             <li class="comment">
                 {{-- 树洞遍历 --}}
                 @foreach($tree_data as $k=>$v)
                 <div class="comment-body">
-                    
                     <div class="comment-info" style="padding-left:0px">
-                        <div class="comment-header">
-                            <div class="comment-meta"><span class="comment-meta-date pull-right" >{{ $v->created_at }} </span></div>
-                        </div>
                         <div class="comment-content">
-                            <p style="width:1300px;padding-left:230px">{{ $v->trd_content }}</p>
+                            <p style="width:1234px;padding-left:230px">{{ $v->trd_content }}</p>
                         </div>
                         <button onclick="zz(this,{{ $v->trd_id }})" class="btn btn-default" id="zz" style="margin-left: 225px" >赞 &nbsp;{{ $v->trd_good }}</button>
                         <button onclick="cc(this,{{ $v->trd_id }})" class="btn btn-default" id="cc" style="" >踩 &nbsp;{{ $v->trd_bad }}</button>
+                        <span class="comment-meta-date pull-right" style="padding-right:295px;padding-top:10px;color: black">{{ $v->created_at }} </span>
+                        
                     </div>
                 </div>
                 @endforeach
@@ -84,7 +81,6 @@
         $("#text-count").text(count);
     });
 </script>
-
 {{-- 点赞 --}}
 <script type="text/javascript">
     function getCaption(obj){

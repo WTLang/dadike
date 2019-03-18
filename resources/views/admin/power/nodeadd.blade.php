@@ -15,8 +15,8 @@
 		<h1>文章添加</h1>
 		</div>
 		<div id="breadcrumb">
-			<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 用户管理</a>
-			<a href="#" class="tip-bottom">创建管理员</a>
+			<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 用户管理</a>
+			<a href="javascript:;" class="tip-bottom">创建管理员</a>
 		</div>
 
 		<div class="row-fluid">

@@ -12,8 +12,8 @@
 				<h1>大迪克</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>文章管理</a>
-				<a href="/admin/index" class="current">浏览文章</a>
+				<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>文章管理</a>
+				<a href="javascript:;" class="current">浏览文章</a>
 			</div>
 		@if (session('article_manage_success'))
 		<div class="alert alert-success">

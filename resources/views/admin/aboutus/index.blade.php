@@ -11,8 +11,8 @@
 		<h1>用户建议</h1>
 	</div>
 	<div id="breadcrumb">
-		<a href="#" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i>用户建议</a>
-		<a href="#" class="current">查看信息</a>
+		<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i>用户建议</a>
+		<a href="javascript:;" class="current">查看信息</a>
 	</div>
 
 	@if (session('aboutus_success'))

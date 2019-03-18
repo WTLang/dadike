@@ -24,8 +24,8 @@
             </div>
             @endif
 			<div id="breadcrumb">
-				<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 友情链接</a>
-				<a href="#" class="tip-bottom">添加友情链接</a>
+				<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 友情链接</a>
+				<a href="javascript:;" class="tip-bottom">添加友情链接</a>
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
@@ -97,7 +97,6 @@
 						</div>						
 					</div>
 				</div>
-
 		{{-- 统计表结束 --}}
 
 @endsection

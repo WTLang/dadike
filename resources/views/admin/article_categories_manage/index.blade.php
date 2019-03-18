@@ -12,8 +12,8 @@
 		<h1>大迪克 </h1>
 	</div>
 	<div id="breadcrumb">
-		<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>文章分类</a>
-		<a href="/admin/index" class="current">浏览分类</a>
+		<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>文章分类</a>
+		<a href="javascript:;" class="current">浏览分类</a>
 	</div>
 	
 	@if (session('sort_success'))

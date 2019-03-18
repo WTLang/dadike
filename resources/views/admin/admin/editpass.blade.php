@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div id="breadcrumb">
-				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon icon-user"></i>用户管理</a>
+				<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon icon-user"></i>用户管理</a>
 				<a href="/admin/index" class="current">管理员修改</a>
 			</div>
 			<div class="widget-box">

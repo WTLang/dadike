@@ -11,7 +11,7 @@
 	</div>
 	<div id="breadcrumb">
 		<a href="/admin/aboutus" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i>用户建议</a>
-		<a href="#" class="current">解决回复</a>
+		<a href="javascript:;" class="current">解决回复</a>
 	</div>
 	@if (session('aboutus_edit_error'))
 	<div class="alert alert-error">
@@ -41,9 +41,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 @endsection
 {{-- 后台内容填充结束 --}}

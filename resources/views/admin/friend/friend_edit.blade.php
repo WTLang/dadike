@@ -1,19 +1,11 @@
 {{-- 继承后台模板 --}}
 @extends('admin.public.header')
 
-{{-- 后台内容填充开始 --}}
-
 {{-- 友情链接标签 --}}
 	@section('cxy_06', 'active open')
-		@section('bxy_14', '')
-		@section('bxy_15', '')
-		@section('bxy_16', 'active')
-
 @section('content_01')
 		{{-- 统计表开始 --}}
-
 		<div id="content">
-
 			<div id="content-header">
 				{{-- 显示错误消息开始 --}}
             @if (session('success'))
@@ -30,8 +22,8 @@
 				<h1>修改友情链接</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 友情链接</a>
-				<a href="#" class="tip-bottom">修改友情链接</a>
+				<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 友情链接</a>
+				<a href="javascript:;" class="tip-bottom">修改友情链接</a>
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
@@ -39,12 +31,7 @@
 						<div class="widget-box">
 							<div class="widget-title">
 								<span class="icon">
-									<i class="icon-align-justify"></i>									
 								</span>
-
-								<h5>Text inputs</h5>
-								<h5>修改友情链接</h5>
-
 								<h5>修改友情链接</h5>
 							</div>
 							<div class="widget-content nopadding">
@@ -108,8 +95,6 @@
 						</div>						
 					</div>
 				</div>
-
 		{{-- 统计表结束 --}}
-
 @endsection
 {{-- 后台内容填充结束 --}}

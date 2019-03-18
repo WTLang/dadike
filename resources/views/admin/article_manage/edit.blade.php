@@ -11,8 +11,8 @@
 		<h1>文章修改</h1>
 	</div>
 	<div id="breadcrumb">
-		<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 文章管理</a>
-		<a href="#" class="tip-bottom">修改文章</a>
+		<a href="javascript:;" title="Go to Home" class="tip-bottom"><i class="icon icon-asterisk"></i></i> 文章管理</a>
+		<a href="javascript:;" class="tip-bottom">修改文章</a>
 	</div>
 	{{-- 验证内容,显示错误信息 --}}
 	@if (count($errors) > 0)

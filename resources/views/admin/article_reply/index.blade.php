@@ -12,8 +12,8 @@
 		<h1>文章回复</h1>
 	</div>
 	<div id="breadcrumb">
-		<a href="#" class="tip-bottom" data-original-title="Go to Home"><i class="icon-home"></i>文章回复</a>
-		<a href="#" class="current">审核回复</a>
+		<a href="javascript:;" class="tip-bottom" data-original-title="Go to Home"><i class="icon-home"></i>文章回复</a>
+		<a href="javascript:;" class="current">审核回复</a>
 	</div>
 			
 	@if (session('acr_delete_yes'))
