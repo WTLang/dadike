@@ -134,6 +134,7 @@ class IndexController extends Controller
         ]);
         session_start();
         $data = $request->all();
+        
         //判断验证码是否正确
         if(strtolower($_POST['code']) !== strtolower($_SESSION['code'])){
             return redirect()->back()->withInput()->with('msg','验证码错误');
@@ -143,12 +144,12 @@ class IndexController extends Controller
 
             //查询数据库
             $res = DB::table('users')->where('us_name', $data['us_name'])->first();
-            //查询账号是否被封禁
-            if ($res->identify == 1) {
-                return redirect()->back()->withInput()->with('msg','账户已经被封禁,请联系管理员');
-            }
             //查询结果
             if ($res) {
+                //查询账号是否被封禁
+                if ($res->identify == 1) {
+                    return redirect()->back()->withInput()->with('msg','账户已经被封禁,请联系管理员');
+                }
                 //查询密码是否正确
                 if (Hash::check($_POST['us_password'],$res->us_password)) {
                     echo "<script>alert('登录成功!');location='/';</script>";
